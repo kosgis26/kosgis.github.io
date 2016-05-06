@@ -1,0 +1,43 @@
+body{
+	background-color: silver;
+	line-height: 20px;
+	font-size: 20px;
+}
+.main{
+	background-color: white;
+	width: 500px;
+	height: auto;
+	margin: 0 auto 0;
+}
+.shapka{
+	text-align: center;
+	padding-top: 10px;
+	font-size: 13px;
+}
+.img{
+	text-align: center;
+}
+p{
+	padding-left: 50px;
+}
+a{
+	padding-left: 50px;
+}
+ul{
+	color: black;
+	padding-left: 70px;
+}
+.line{
+	width: 400px;
+	height: 1px;
+	background:black;
+	overflow: hidden;
+	margin: 30px auto 22px;
+}
+.end{
+	padding-left: 50px;
+	padding-bottom: 50px;
+}
+.other{
+	margin-bottom: 1px;
+}
