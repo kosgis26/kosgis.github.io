@@ -1,7 +1,7 @@
 body{
-	background-color: silver;
+	background-color: #efefef;
 	line-height: 20px;
-	font-size: 20px;
+	font-size: 14px;
 }
 .main{
 	background-color: white;
@@ -12,7 +12,7 @@ body{
 .shapka{
 	text-align: center;
 	padding-top: 10px;
-	font-size: 13px;
+	/*font-size: 12px;*/
 }
 .img{
 	text-align: center;
@@ -22,17 +22,18 @@ p{
 }
 a{
 	padding-left: 50px;
+	text-decoration: none;
 }
 ul{
 	color: black;
 	padding-left: 70px;
 }
 .line{
-	width: 400px;
+	width: 440px;
 	height: 1px;
-	background:black;
+	background:grey;
 	overflow: hidden;
-	margin: 30px auto 22px;
+	margin: 10px auto 22px;
 }
 .end{
 	padding-left: 50px;
