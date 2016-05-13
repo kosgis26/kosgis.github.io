@@ -35,8 +35,13 @@ menu li {
 }
 menu li:hover {
 	background: linear-gradient(to top, #2e2e2e, #4a4a4a);
+	height: 16px;
 	color: #ffe;
-	border: 1px solid white;
+}
+menu li:hover {
+	padding: 12px 29px;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
 }
 ul {
 	list-style: none;
