@@ -3,3 +3,35 @@ body{
 	line-height: 20px;
 	font-size: 14px;
 }
+.main{
+	background-color: white;
+	width: 400px;
+	height: auto;
+	margin: 0 auto;
+	box-shadow: 0 0 5px 0 grey;
+	padding-left: 30px;
+}
+.img{
+	padding-top: 10px;
+	text-align: center;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	color: black;
+}
+.line{
+	width: 380px;
+	/*height: 1px;*/
+	/*background:grey;*/
+	/*overflow: hidden;*/
+	border-bottom: 1px solid black;
+ 	border-color: #7b7b7b;
+}
+.end{
+	padding-bottom: 30px;
+}
+.other{
+	margin-bottom: 1px;
+}
