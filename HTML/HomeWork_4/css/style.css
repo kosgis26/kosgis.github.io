@@ -104,6 +104,7 @@ menu {
 	margin: 0px;
 	padding: 0px;
 	height: 28px;
+	width: 1000px;
 	font-size: 16px;
 	font-family: Georgia;
 	box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.80);
@@ -125,6 +126,7 @@ ul.menu_top {
 	/*border-bottom: 1px solid black;*/
 	box-shadow: 0 2px 3px 2px silver;
 	position: absolute;
+	width: 1000px;
 }
 ul.menu_top > li {
 	float: left;
@@ -175,6 +177,8 @@ ul.submenu > li > a:hover {
 .article {
 	clear: both;
 	display: block;
+	/*position:relative;*/
+	/*overflow:hidden;*/
 	margin: 0;
 	border: 3px solid black;
 }
