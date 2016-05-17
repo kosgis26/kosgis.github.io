@@ -49,18 +49,23 @@ ul {
 	margin: 0;
 }
 .conteiner {
-  padding-top:40px;
+	padding-top:40px;
 }
 
 .left {
-  width: 200px;
-  float: left;	
+	width: 200px;
+	float: left;	
 }
 .left li {
-	width: 250px;
+	width: 230px;
 	padding: 10px;
 	line-height: 15px;
 	border: 1px solid silver;
+	border-top: none;
+	border-collapse: collapse;
+}
+.left li:first-child {
+	border-top: 1px solid silver;
 }
 .left li a{
 	text-decoration: none;
