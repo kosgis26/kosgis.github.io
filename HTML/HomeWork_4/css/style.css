@@ -132,6 +132,7 @@ ul {
 	margin-bottom: 8px;
 }
 .sumenu {
+	left: -9999px;
 	display: none;
 	position: absolute;
 	box-shadow: 0 4px 10px -4px rgba(0,0,0,0.75);
@@ -147,8 +148,9 @@ ul {
 	text-decoration:none;
 	list-style: none;
 }
-.topmenu li::hover submenu {
+.topmenu li:hover submenu {
 	display: block;
+	left: 0px;
 }
 .submenu > li > a:hover {
 	text-decoration: underline;
