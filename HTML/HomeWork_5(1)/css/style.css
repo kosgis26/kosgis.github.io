@@ -1,0 +1,240 @@
+@font-face {
+	font-family: Helvetica Neue;
+	src: url(//font/HelveticaNeue.ttf);
+}
+* {
+	margin:0px;
+	padding:0px;
+	font-family: Helvetica Neue, Tahoma, Arial ;
+}
+body {
+	margin:0 auto;
+	height: 1064px;
+	width: 1215px;
+}
+		/*<-- HEADER -->*/
+.header {
+	height: 36px;
+	background-color:#07508f;
+}
+menu {
+	
+}
+menu > ul {
+	float: right;
+}
+ul {
+	margin: 0 auto;
+	height: 36px;
+	list-style:none;
+}
+li {
+	vertical-align: top;
+	margin: 0 auto;
+	display: inline-block;
+	padding: 2px 10px 0px 10px;
+	line-height: 32px;
+}
+li a {
+	font-family: Tahoma;
+	font-size: 15px;
+	font-weight: 100;
+}
+li:hover {
+	background-color: #4eabda;
+}
+.menu_7:hover, .menu_8:hover {
+	background: #51b1dc;
+	background: -moz-linear-gradient(top, #51b1dc 0%, #51b1dc 0%, #2e7ac4 100%);
+	background: -webkit-linear-gradient(top, #51b1dc 0%,#51b1dc 0%,#2e7ac4 100%);
+	background: linear-gradient(to bottom, #51b1dc 0%,#51b1dc 0%,#2e7ac4 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#51b1dc', endColorstr='#2e7ac4',GradientType=0 );
+}
+li a {
+	text-decoration: none;
+	color: #cfd4dc;
+	font-family: sens-serif;
+	vertical-align: middle;
+}
+.menu_6, .menu_5 {
+	display: inline;
+	height: 32px;
+}
+.menu_6 > img {
+	margin-top: 5px;
+	padding-left: 10px;
+	border-left: 1px solid #4eabda;
+}
+.menu_6 {
+	line-height: 28px;
+	margin-top:4px;
+	padding:0px;
+
+}
+li.menu_6:hover {
+	background-color:#07508f;
+	height: 32px;
+}
+		/*<-- /HEADER -->*/
+.image {
+	clear:both;
+	display: block;
+	position: absolute;
+	z-index: -1;
+}
+.block_1 {
+	font-size: 26px;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+	margin: auto auto;
+	line-height: 62px;
+	height: 62px;
+	width: 560px;
+	border-bottom: 2px solid;
+}
+.forma {
+	width: 560px;
+	position: relative;
+	top: 213px;
+	left: 353px;
+	vertical-align: middle;
+	line-height:36px;
+	background-color: rgba(0, 0, 0, 0.6);
+	padding-bottom: 15px;
+}
+.ou {
+	width: 560px;
+}
+.ou_img {
+	padding-left: 10px;
+}
+.block_2 {
+	height: 36px;
+	padding: 36px 137px;
+	font-weight: 100;
+	padding-bottom: 18px;
+	
+}
+.block_2 a {
+	font-weight: 100;
+	padding: 0px 8px 0 25px;
+	width: 200px;
+}
+.block_2 b {
+	font-size: 30px;
+	padding: 0px 15px;
+	border-right: 1px solid #444;
+}
+.facebook {
+	height: 36px;
+	width: 280px;
+	border-radius: 5px;
+	background: #3c5597;
+	border-top: 1px solid silver;
+}
+button {
+	float:left;
+	height: 36px;
+	color: white;
+	background: #3c5597;
+	border:none;
+}
+button:hover {
+	background: #0B8AC3;
+	border: none;
+	box-shadow: 0 0 3px 2px rgba(147,147,240,0.5);
+}
+.with {
+	float:left;
+	display: block;   
+}
+.with::before {
+	font-weight: 900;
+	content: " Log In ";
+}
+.with::after {
+	font-weight: 900;
+	content: " Facebook >";
+}
+.ou::before {
+	content: '';
+	float: left;
+	margin-top: 16px;
+	width: 260px;  
+	box-shadow: 0 1px #000;  
+	border-bottom: 1px solid #666;
+}
+.ou::after {   
+	content: '';    
+	display: block;   
+	float: right;   
+	margin-top: 16px; 
+	width: 260px;  
+	box-shadow: 0 1px #000;   
+	border-bottom: 1px solid #666;
+}
+.block_3 {
+	/*height: 36px;*/
+	padding: 18px 142px 0 142px;
+	font-weight: 100;
+	width: 272px;
+}
+#basa {
+	width: 260px;
+	height: 36px;
+	background-color: rgba(0, 0, 0, 0.6);
+	margin-bottom:15px;
+	font-size: 18px;
+	padding-left: 16px;
+	color: #B7AFAF;
+	border: none;
+	border-bottom: 1px solid #666;
+}
+#basa:hover {
+	box-shadow: 0 0 10px 5px rgba(147,147,240,0.5);
+}
+::-webkit-input-placeholder {
+	color: #B7AFAF;
+	font-size: 14px;
+}
+#Send {
+	height:15px;
+	margin-top: 11px;
+	vertical-align: top;
+	cursor:pointer;
+}
+label {
+	color: #B7AFAF;
+	cursor:pointer;
+	padding-left: 5px;
+	text-weight: 100;
+}
+#create {
+	margin: 10px 0 15px 64px;
+	height: 36px;
+	background: linear-gradient(to bottom, #51b1dc 0%,#51b1dc 0%,#2e7ac4 100%);
+	color: white;
+	font-size: 14px;
+	padding: 0 10px;
+	border: none;
+	box-shadow: 0 0 2px 1px rgba(147,147,240,0.5);
+}
+#create:hover {
+	margin: 10px 0 15px 64px;
+	height: 36px;
+	font-size: 14px;
+	padding: 0 10px;
+	background: #0B8AC3;
+	border: none;
+	box-shadow: 0 0 3px 2px rgba(147,147,240,0.5);
+}
+.content {
+	padding-bottom: 20px;
+}
+p {
+	text-align:center;
+	line-height: 20px;
+	color: #B7AFAF;
+	font-size: 12px;
+}
