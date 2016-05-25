@@ -1,110 +1,215 @@
 ﻿<!DOCTYPE HTML>
 <html lang="ru-RU">
 <head>
+	<title>Zazor</title>
 	<meta charset="UTF-8">
-	<title>Asia-holidays</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="main">
-		<header>
-			<div class="box_1"></div>
-			<div class="box_2"></div>
-			<div class="box_3"></div>	
+	<main>
+		<header class="log">
+			<img src="img/header/telephone.png">
+			<a>(044)123-45-67 (044)567-89-10</a>
+			<div class="log-line">
+				<img src="img/header/people.png">
+				<form action="#">
+					<input type="text" value="" name="login" class="login" placeholder="логин">
+					<input type="password" value="" class="password" name="password" placeholder="пароль">
+					<input type="submit" class="enter" value="вход">
+				</form>
+				<div class="line"> | </div>
+				<a href="" class="reg">регистация</a>
+				<a href="" class="recover">забыли пароль?</a>
+			</div>
+			<nav class="map">
+				<img src="img/header/home.png">
+				<img src="img/header/karta.png">
+				<img src="img/header/email.png">
+			</nav>
 		</header>
-			<div class="content">
-				<div class="up">
-					<img class="logo" src="img/емблема.png">
-					<div class="info">
-						<div class="contactu">
-							<h1>Наши контакты</h1>
-							<p>+9-098-765-4321</p>
-							<p>+9-0123-456-890</p>
-							<p><a href="#">info@asia-holidays.com</p>
-						</div>
-						<div class="country">
-							<div class="country_1">
-								<img src="img/индия.png">
-								<p><a href="#">Индия</a></p>
-							</div>
-							<div class="country_2">
-								<img src="img/непал.png">
-								<p><a href="#">Непал</a></p>
-							</div>
-							<div class="country_3">
-								<img src="img/тибет.png">
-								<p><a href="#">Тибет</a></p>
-							</div>
-							<div class="country_4">
-								<img src="img/бутан.png">
-								<p><a href="#">Бутан</a></p>
-							</div>
-							<div class="country_5">
-								<img src="img/шри-ланка.png">
-								<p><a href="#">Шри-Ланка</a></p>
-							</div>
-							<div class="country_6">
-								<img src="img/мальдивы.png">
-								<p><a href="#">Мальдивы</a></p>
-							</div>
-						</div>
-					</div>
+		<img class="baner" src="img/baner.png">
+		<menu class="menu">
+			<ul>
+				<li><a href="">О КОМПАНИ</a></li>
+				<li><a href="">ОПЛАТА</a></li>
+				<li><a href="">ДОСТАВКА</a></li>
+				<li><a href="">СТАТЬИ</a></li>
+				<li><a href="">КОНТАКТЫ</a></li>
+			</ul>	
+			<ul>
+				<div class="basket">
+					<img src="img/menu/basket.png">
+					<p>товаров:</p>
+						<a href="">0</a>
+					<p class="price">на сумму:</p>
+						<a href="">0,00 грн</a>
 				</div>
-				<div class="image">
-					<img src="img/пляж.png">
+			</ul>
+		</menu>
+		<div class="forms">
+			<img src="img/form/findPoAvto.png">
+			<img src="img/form/findTires.png">
+			<img src="img/form/findDisc.png">
+		</div>
+		<div class="content">
+			<aside class="catalog_type">
+				<header class="catalog_header">
+					<img src="img/menu/catalog.png">
+					<a>КАТАЛОГ ПРОДУКЦИИ:</a>
+				</header>
+					<menu class="catalog_menu">
+						<div class="catalog_menu_1lvl">
+						<img src="img/menu/groupe.png"><a>ШИНЫ</a>
+						</div>
+						<ul>
+							<li class="catalog_groupe">Наименование 1</li>
+							<li class="catalog_groupe">Наименование 2</li>
+							<li class="catalog_groupe">Наименование 3</li>
+							<li class="catalog_groupe">Наименование 4</li>
+						</ul>
+						<div class="catalog_menu_1lvl">
+						<img src="img/menu/groupe.png"><a>ДИСКИ</a>
+						</div>
+						<ul>
+							<li class="catalog_groupe">Наименование 1</li>
+							<li class="catalog_groupe">Наименование 2</li>
+							<li class="catalog_groupe">Наименование 3</li>
+							<li class="catalog_groupe">Наименование 4</li>
+						</ul>
+						<div class="catalog_menu_1lvl">
+						<img src="img/menu/groupe.png"><a>БОЛТЫ</a>
+						</div>
+						<ul>
+							<li class="catalog_groupe">Наименование 1</li>
+							<li class="catalog_groupe">Наименование 2</li>
+							<li class="catalog_groupe">Наименование 3</li>
+							<li class="catalog_groupe">Наименование 4</li>
+						</ul>
+					</menu>
+				
+			</aside>
+			<section class="catalog_goods">
+				<figure class="goods">
+					<figcaption>Goodyear</figcaption>
+					<h3>Ultra Grip Extreme</h3>
+					<img src="img/tovar/goodyear.png">
+					<a href="#">90.00 грн.</a>
+				</figure>
+				<figure class="goods">
+					<figcaption>Nokian</figcaption>
+					<h3>Hakkapeliitta R</h3>
+					<img src="img/tovar/nokian.png">
+					<a href="#">115.00 грн.</a>
+				</figure>
+				<figure class="goods">
+					<figcaption>Hankook</figcaption>
+					<h3>K 708 155/65 R14</h3>
+					<img src="img/tovar/hankook.png">
+					<a href="#">393.00 грн.</a>
+				</figure>
+				<figure class="goods">
+					<figcaption>Goodyear</figcaption>
+					<h3>Ultra Grip Extreme</h3>
+					<img src="img/tovar/goodyear.png">
+					<a href="#">90.00 грн.</a>
+				</figure>
+				<figure class="goods">
+					<figcaption>Nokian</figcaption>
+					<h3>Hakkapeliitta R</h3>
+					<img src="img/tovar/nokian.png">
+					<a href="#">115.00 грн.</a>
+				</figure>
+				<figure class="goods">
+					<figcaption>Hankook</figcaption>
+					<h3>K 708 155/65 R14</h3>
+					<img src="img/tovar/hankook.png">
+					<a href="#">393.00 грн.</a>
+				</figure>
+				<figure class="goods">
+					<figcaption>Goodyear</figcaption>
+					<h3>Ultra Grip Extreme</h3>
+					<img src="img/tovar/goodyear.png">
+					<a href="#">90.00 грн.</a>
+				</figure>
+				<figure class="goods">
+					<figcaption>Nokian</figcaption>
+					<h3>Hakkapeliitta R</h3>
+					<img src="img/tovar/nokian.png">
+					<a href="#">115.00 грн.</a>
+				</figure>
+				<figure class="goods">
+					<figcaption>Hankook</figcaption>
+					<h3>K 708 155/65 R14</h3>
+					<img src="img/tovar/hankook.png">
+					<a href="#">393.00 грн.</a>
+				</figure>
+			</section>
+			<aside class="catalog_brend">
+				<header class="catalog_header">
+					<img src="img/menu/catalog.png">
+					<a>БРЕНДЫ:</a>
+				</header>
+				<menu class="catalog_menu">
+					<div class="catalog_menu_1lvl">
+					<img src="img/menu/groupe.png"><a>ШИНЫ</a>
+					</div>
+					<label for="brend">
+						<input type="checkbox">
+						<a>Бренд 1</a>
+					</label>	
+					<label for="brend">
+						<input type="checkbox">
+						<a>Бренд 2</a>
+					</label>
+					<label for="brend">
+						<input type="checkbox">
+						<a>Бренд 3</a>
+					</label>	
+					<div class="catalog_menu_1lvl">
+					<img src="img/menu/groupe.png"><a>ДИСКИ</a>
+					</div>
+					<label for="brend">
+						<input type="checkbox">
+						<a>Бренд 1</a>
+					</label>	
+					<label for="brend">
+						<input type="checkbox">
+						<a>Бренд 2</a>
+					</label>
+					<label for="brend">
+						<input type="checkbox">
+						<a>Бренд 3</a>
+					</label>	
+					<input type="submit" class="submit" name="button" value="ВЫБРАТЬ">
+				</menu>
+			</aside>
+		</div>
+		<footer>
+			<div class="logo">
+				<div class="model">
+					<img src="img/logo/1.png">
+					<img src="img/logo/2.png">
+					<img src="img/logo/3.png">
+					<img src="img/logo/4.png">
+					<img src="img/logo/5.png">
+					<img src="img/logo/6.png">
+					<img src="img/logo/7.png">
+					<img src="img/logo/8.png">
 				</div>
-				<menu>
-					<ul class="menu_top">
-						<li><a href="#">Главная</a></li>
-						<li><a href="#">Путишествие <i>&#9660;</i></a>
-							<ul class="submenu">
-								<li><a href="#">Путишествие 1</a></li>
-								<li><a href="#">Путишествие 2</a></li>
-								<li><a href="#">Путишествие 3</a></li>
-								<li><a href="#">Путишествие 4</a></li>
-								<li><a href="#">Путишествие 5</a></li>
-							</ul>
-						</li>
-						<li><a href="#">Услуги <i>&#9660;</i></a>
-							<ul class="submenu">
-								<li><a href="#">Услуги 1</a></li>
-								<li><a href="#">Услуги 2</a></li>
-								<li><a href="#">Услуги 3</a></li>
-								<li><a href="#">Услуги 4</a></li>
-								<li><a href="#">Услуги 5</a></li>
-							</ul>
-						</li>
-						<li><a href="#">Партнерам <i>&#9660;</i></a>
-							<ul class="submenu">
-								<li><a href="#">Партнерам 1</a></li>
-								<li><a href="#">Партнерам 2</a></li>
-								<li><a href="#">Партнерам 3</a></li>
-								<li><a href="#">Партнерам 4</a></li>
-								<li><a href="#">Партнерам 5</a></li>
-							</ul>
-						</li>
-						<li><a href="#">Отзыв клиента</a></li>
-						<li><a href="#">О нас</a></li>
-						<li><a href="#">Контакты</a></li>
-					</ul>
-				</menu>	
-				<article>
-					<div class="left">
-						<h2>Информация</h2>
-						<p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </p>
-					</div>
-					<div class="center">
-						<p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </p>
-					</div>
-					<div class="right">
-						<h2>Новости</h2>
-						<p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </p>
-					</div>
-				</article>
-			</div>	
-		<div class="end">
-			<a>Copiright(C) asia-holidays.com. 2010</a>
-		</div>		
-	</div>
+			</div>
+			<div class="link">
+				<ul>
+					<li><a href="#">О компании</a></li>
+					<li class="line"> | </li>
+					<li><a href="#">Дставка</a></li>
+					<li class="line"> | </li>
+					<li><a href="#">Статьи</a></li>
+					<li class="line"> | </li>
+					<li><a href="#">Контакты</a></li>
+				</ul>
+				<p><a>Создание сайта</a>©<a>Global Vision</a></p>
+			</div>
+		</footer>
+	</main>
 </body>
 </html>
