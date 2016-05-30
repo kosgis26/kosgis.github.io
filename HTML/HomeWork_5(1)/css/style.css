@@ -1,24 +1,21 @@
-@font-face {
+﻿@font-face {
 	font-family: Helvetica Neue;
-	src: url(//font/HelveticaNeue.ttf);
+	src: url(../font/HelveticaNeue.ttf);
 }
 * {
-	margin:0px;
+	margin: 0px 0px;
 	padding:0px;
-	font-family: Helvetica Neue, Tahoma, Arial ;
+	font-family: HelveticaNeue, Arial;
 }
 body {
-	margin:0 auto;
 	height: 1064px;
-	width: 1215px;
+	/* width: 1215px; */
+	background-image: url(../img/Image.jpg);
+	background-size: cover;
 }
-		/*<-- HEADER -->*/
 .header {
 	height: 36px;
 	background-color:#07508f;
-}
-menu {
-	
 }
 menu > ul {
 	float: right;
@@ -36,11 +33,15 @@ li {
 	line-height: 32px;
 }
 li a {
-	font-family: Tahoma;
 	font-size: 15px;
 	font-weight: 100;
+	text-decoration: none;
+	color: #cfd4dc;
+	font-family: sens-serif;
+	vertical-align: middle;
 }
 li:hover {
+	height: 34px;
 	background-color: #4eabda;
 }
 .menu_7:hover, .menu_8:hover {
@@ -49,12 +50,6 @@ li:hover {
 	background: -webkit-linear-gradient(top, #51b1dc 0%,#51b1dc 0%,#2e7ac4 100%);
 	background: linear-gradient(to bottom, #51b1dc 0%,#51b1dc 0%,#2e7ac4 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#51b1dc', endColorstr='#2e7ac4',GradientType=0 );
-}
-li a {
-	text-decoration: none;
-	color: #cfd4dc;
-	font-family: sens-serif;
-	vertical-align: middle;
 }
 .menu_6, .menu_5 {
 	display: inline;
@@ -77,10 +72,13 @@ li.menu_6:hover {
 }
 		/*<-- /HEADER -->*/
 .image {
+	margin: auto;
 	clear:both;
 	display: block;
 	position: absolute;
 	z-index: -1;
+	background-image: url(//img/Image.png);
+	background-size: 100%;
 }
 .block_1 {
 	font-size: 26px;
@@ -91,23 +89,43 @@ li.menu_6:hover {
 	line-height: 62px;
 	height: 62px;
 	width: 560px;
-	border-bottom: 2px solid;
+	border-bottom: 2px solid rgba(255,255,255, 0.5);
+}
+.forma a {
+	font-family: Tahoma;
 }
 .forma {
+	font-family: HelveticaNeue;
 	width: 560px;
+	height: 600px;
 	position: relative;
-	top: 213px;
-	left: 353px;
-	vertical-align: middle;
+	margin: 180px auto;
 	line-height:36px;
 	background-color: rgba(0, 0, 0, 0.6);
 	padding-bottom: 15px;
 }
-.ou {
+/* .forma {
+	font-family: HelveticaNeue;
 	width: 560px;
+	height: 600px;
+	position: absolute;
+	left:50%;
+	top:50%;
+	margin:-300px 0 0 -280px;
+	line-height:36px;
+	background-color: rgba(0, 0, 0, 0.6);
+	padding-bottom: 15px;
+} */
+.ou {
+	width: 275px;
+	padding: 0px 142px 0px 142px;
 }
-.ou_img {
+/* .ou_img {
 	padding-left: 10px;
+} */
+.ou a {
+	padding-left: 7px;
+	color: #999999;
 }
 .block_2 {
 	height: 36px;
@@ -119,31 +137,42 @@ li.menu_6:hover {
 .block_2 a {
 	font-weight: 100;
 	padding: 0px 8px 0 25px;
-	width: 200px;
+	width: 195px;
 }
 .block_2 b {
-	font-size: 30px;
+	background-color: none;
+	font-size: 28px;
 	padding: 0px 15px;
-	border-right: 1px solid #444;
 }
-.facebook {
-	height: 36px;
-	width: 280px;
-	border-radius: 5px;
-	background: #3c5597;
-	border-top: 1px solid silver;
-}
-button {
+.f_img button {
 	float:left;
+	width: 38px;
+	height: 36px;
+	color: white;
+	background: #3c5597;
+	border: none;
+	border-top: 1px solid #7789b7;
+	border-right: 1px solid #213568;
+	border-radius: 3px 0 0 3px;
+}
+.f_link button {
+	float:left;
+	width: 242px;
 	height: 36px;
 	color: white;
 	background: #3c5597;
 	border:none;
+	border-top: 1px solid #7789b7;
+	border-left: 1px solid #4d68ab;
+	border-radius: 0 3px 3px 0;
 }
-button:hover {
+.f_img button:hover {
+	box-shadow: 0 0 5px 2px rgba(147,147,240,0.5);
 	background: #0B8AC3;
-	border: none;
-	box-shadow: 0 0 3px 2px rgba(147,147,240,0.5);
+}
+.f_link button:hover {
+	box-shadow: 0 0 5px 2px rgba(147,147,240,0.5);
+	background: #0B8AC3;
 }
 .with {
 	float:left;
@@ -161,17 +190,17 @@ button:hover {
 	content: '';
 	float: left;
 	margin-top: 16px;
-	width: 260px;  
-	box-shadow: 0 1px #000;  
+	width: 120px;
+	box-shadow: 0 1px #000;
 	border-bottom: 1px solid #666;
 }
-.ou::after {   
-	content: '';    
-	display: block;   
-	float: right;   
-	margin-top: 16px; 
-	width: 260px;  
-	box-shadow: 0 1px #000;   
+.ou::after {
+	content: '';
+	display: block;
+	float: right;
+	margin-top: 16px;
+	width: 120px;
+	box-shadow: 0 1px #000;
 	border-bottom: 1px solid #666;
 }
 .block_3 {
@@ -183,7 +212,7 @@ button:hover {
 #basa {
 	width: 260px;
 	height: 36px;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.8);
 	margin-bottom:15px;
 	font-size: 18px;
 	padding-left: 16px;
@@ -192,10 +221,12 @@ button:hover {
 	border-bottom: 1px solid #666;
 }
 #basa:hover {
+	background: 0, 0, 0, 0.8;
+	background-color: #1b5288;
 	box-shadow: 0 0 10px 5px rgba(147,147,240,0.5);
 }
 ::-webkit-input-placeholder {
-	color: #B7AFAF;
+	color: #cccccc;
 	font-size: 14px;
 }
 #Send {

@@ -8,6 +8,7 @@ td {
 }
 tr {
 	height: 50px;
+	border: white;
 }
 .content {
 	margin: 0px auto;
@@ -26,6 +27,7 @@ table {
 	border-collapse: collapse;
 	width: 380px;
 	margin: 0px auto;
+	border: 6px solid white;
 }
 .white {
 	background-color: white;
