@@ -1,4 +1,4 @@
-@font-face {
+﻿@font-face {
 	font-family: 'LucidaSansUnicode';
 	src: url('../fonts/LucidaSansUnicode-Regular.ttf');
 }
@@ -47,7 +47,8 @@ body {
 	border-radius: 3px;
 	margin-left: 23px;
 	padding: 0px 0px 0px 5px;
-	box-shadow: 3px 3px 4px silver;
+	/* box-shadow: 3px 3px 4px silver; */
+	box-shadow: 1px 3px 3px 0.00px rgba(150, 150, 150, 0.75);
 	width: 485px;
 }
 .log > *, .log-line > * {
@@ -89,7 +90,7 @@ body {
 	padding: 0px 5px 0px 0px;
 }
 .map {
-	margin: 2px 0 0 17px;
+	margin: 2px 0 0 18px;
 	padding: 2px 5px;
 	border-radius: 10px;
 	border: 1px solid silver;
@@ -98,33 +99,24 @@ body {
 	width: 60px;
 }
 .map a {
-	padding: 0px 4px;
+	margin: 0px 4px;
 	float: left;
 	list-style: none;
 	height: 12px;
 	width: 12px;
 }
-.home:before {
-	height: 12px;
-	width: 12px;
-	background: url('../img/header/home.png')
-	position: absolute;
+.home {
+	background: url('../img/header/home.png') no-repeat;
 	top: 0px;
 	left: 0px;
 }
-.karta:before {
-	height: 12px;
-	width: 12px;
-	background: url('../img/header/email.png')
-	position: absolute;
+.karta {
+	background: url('../img/header/karta.png') no-repeat;
 	top: 0px;
 	left: 0px;
 }
-.email:before {
-	height: 12px;
-	width: 12px;
-	background: url('../img/header/email.png')
-	position: absolute;
+.email {
+	background: url('../img/header/email.png') no-repeat;
 	top: 0px;
 	left: 0px;
 }
@@ -175,6 +167,7 @@ body {
 	font-size: 12px;
 	padding: 2px 5px 0px 2px;
 	text-decoration:none;
+	color: #4a5e86;
 }
 .basket p {
 	color: #b3bbbe;
@@ -227,14 +220,14 @@ body {
 figcaption {
 	font-size: 15px;
 	font-weight: bold;
-	color: #2a4393;
+	color: #426986;
 	height: 15px;
 	text-shadow: #9C9C9C 0px 1px 1px;
 }
 .goods > a {
 	font-size: 15px;
 	/*font-weight: 600;*/
-	color: #2a4364;
+	color: #3a4a62;
 	text-decoration: none;
 	font-family: "ArialBoldItalic";
 	text-shadow: #9C9C9C 0px 1px 1px;
@@ -263,6 +256,7 @@ figcaption {
 	line-height:0px;
 	vertical-align:text-top;
 	text-decoration: none;
+	font-size: 13px;
 }
 .catalog_menu_1lvl a {
 	font-size: 14px;
@@ -282,15 +276,16 @@ figcaption {
 .catalog_groupe {
 	list-style-type: circle;
 	margin-left: 15px;
-	padding: 6px 6px;
+	padding: 6px;
+	font-size: 13px;
 }
 .catalog_groupe:hover {
 	text-decoration: underline;
 	color: #213555;
-	font-size: 12px;
+	font-size: 13px;
 	font-style: italic;
 	font-weight:700;
-	padding: 5px 6px;
+	padding: 6px;
 }
 .catalog_menu ul {
 	margin-left: 35px;
@@ -354,7 +349,7 @@ label {
 
 .link {/* 	background: linear-gradient( to bottom, #e5e7e8, #93a7b0); */background: #2e3d4e;display: block;font-family: "Arial";padding-top: 15px;}
 .link > ul > li {
-	color: #213555;
+	color: #919da5;
 	display: inline;
 }
 .link > ul {
