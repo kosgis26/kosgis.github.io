@@ -298,7 +298,7 @@ li a:hover {
 .footer__silver-block h1 {
     color:#454545;
     text-shadow: 0px 1px 0px rgba(255, 255, 255, 1);
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 }    
 .footer__silver-block span {
     text-shadow: none;
@@ -405,7 +405,7 @@ li a:hover {
         clear:both;
     }
     .footer__silver-block {
-        height: 190px;
+        height: 195px;
         overflow: hidden;
     }
 }
