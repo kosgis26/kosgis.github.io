@@ -900,9 +900,8 @@ li a:hover {
         box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.05);
         white-space:wrap;
     }
-    .testimonial__context-blog
-        p {
-        padding-top: 5px;
+    .testimonial__context-blog p {
+	padding-top: 5px;
         height: 155px;
     }
     .testimonial__recent {
