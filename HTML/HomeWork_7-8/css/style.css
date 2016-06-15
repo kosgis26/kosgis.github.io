@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
     font-family: LeagueGothic;
     src: url('../fonts/LeagueGothic.otf');
 }
@@ -171,7 +171,11 @@ li a:hover {
     text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
 }
 .about__content:before {
+<<<<<<< HEAD
     margin: 12px 0px 0px -40px;
+=======
+    margin: 10px 0px 0px -35px;
+>>>>>>> 1f3c05d438726a2f23f99f415d67da8a4df701e2
     position:absolute;
     content:"";
     background: url(../img/blurbs-sprite.png) 0px 0px no-repeat;
@@ -580,7 +584,11 @@ li a:hover {
     .header__submenu-hide {
         display:none;
         width: 250px;
+<<<<<<< HEAD
         height: 43px;
+=======
+        height: 42px;
+>>>>>>> 1f3c05d438726a2f23f99f415d67da8a4df701e2
         box-sizing: border-box;
     }
     .header__submenu-top:hover .header__submenu-hide {
@@ -817,7 +825,11 @@ li a:hover {
     .header__submenu-hide {
         display:none;
         width: 250px;
+<<<<<<< HEAD
         height: 43px;
+=======
+        height: 42px;
+>>>>>>> 1f3c05d438726a2f23f99f415d67da8a4df701e2
         box-sizing: border-box;
     }
     .header__submenu-top:hover .header__submenu-hide {
@@ -900,8 +912,14 @@ li a:hover {
         box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.05);
         white-space:wrap;
     }
+<<<<<<< HEAD
     .testimonial__context-blog p {
 	padding-top: 5px;
+=======
+    .testimonial__context-blog
+        p {
+        padding-top: 5px;
+>>>>>>> 1f3c05d438726a2f23f99f415d67da8a4df701e2
         height: 155px;
     }
     .testimonial__recent {
