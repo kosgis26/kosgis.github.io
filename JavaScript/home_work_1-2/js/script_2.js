@@ -12,15 +12,3 @@ if (arr.indexOf(name) == -1 ){
 } else {
     alert(name + ', ви успішно ввійшли');
 }
-// var yes = 0;
-// for (var i = 0; i < 5; i++) {
-//     var el = arr[i];
-//     if (name == el) {
-//        alert(name + ', ви успішно ввійшли');
-//        yes = 1;
-//        break;
-//     }
-// }
-// if (yes == 0) {
-//     alert ('Помилка');
-// }
