@@ -6,46 +6,6 @@
 	<title>Kravchuk JS_3-4</title>
 </head>
 <body>
-<script>
-	var gen = {
-		title: "Тест по программированию",
-		questions: [ "Вопрос №1" , "Вопрос №2 " , "Вопрос №3 " ] ,
-		answers : [["Вариант ответа №1","Вариант ответа №2","Вариант ответа №3"],["Вариант ответа №1","Вариант ответа №2","Вариант ответа №3"],["Вариант ответа №1","Вариант ответа №2","Вариант ответа №3"]];
-		gen_question : function(title){
-			var div = document.createElement(1div');
-				div.innerHTML = title;
-				document.body.appendChild(div) ;
-				//console.log(this.questions.length);
-		},
-		render : function () {
-			var q = this.questions.length;
-			var answ,ul;
-			var li;
-			for (var i=0;i<q;i++){ 
-			var p = document.createElement(1p');
-				p.innerHTML = this.questions[i];
-				document.body.appendChild(p);
-		
-				ul = document.createElement(1ul1);
-				p. appendChild (ul) ;
-
-				answ = this.answers[i].length;
-
-				for (vaz: j=0; j<answ; j++) {
-					//console.log(j);
-
-					li = document.createElement('li1);
-					li.innerHTML = "<input type = checkbox>"+this.answers 
-					// li.innerHTML = "BapnaHO? OTBeTa №"+Number (i+1) ; 
-					ul.appendChild(li) ;
-				}
-			}
-		}
-	}
-	gen.gen_question("Тест");
-	gen.answers[0][1] = "Новый вариант ответа";
-	gen.answers[0][2] = "Новый вариант ответа";
-	console.log(gen); gen.г();
-</script>
+	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
