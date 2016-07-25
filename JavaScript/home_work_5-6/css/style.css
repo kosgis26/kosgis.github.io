@@ -1,0 +1,42 @@
+﻿* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  width: 200px;
+  margin: 10px auto 0px auto;
+}
+
+.Timer {
+  text-align: center;
+  height: 40px;
+  border: 1px solid red;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 32px;
+  color: blue;
+  text-aling: center;
+}
+
+.str {
+  vertical-align: text-bottom;
+}
+.button {
+  width: 80%;
+  margin: auto;
+}
+.btn {
+  width: 50%;
+  height: 30px;
+  margin-left: -3px;
+  margin-right: -3px;
+}
+
+.btn:nth-child(1) {
+  margin-left: 0px;
+  text-aling: center;
+}
+.second {
+  float: right;
+}
