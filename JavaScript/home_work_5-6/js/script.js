@@ -1,25 +1,31 @@
 ﻿start.addEventListener("click", start_click);
-// pause.addEventListener("click", pause_click);
 stp.addEventListener("click", stp_click);
 var intId;
+var ms = 0;
 var sec = 0;
 var min = 0;
 var hour = 0;
+// По іншому не правильно веде відлік мілісекунд
+var tick = 4; // Мало = 13
 
 function start_click() {
-  if (start.innerHTML == "Start") {    
-    intId = setInterval(updateTime, 1000);
-    start.innerHTML = "Pause";
+  if (start.innerHTML == "start") {   
+    intId = setInterval(updateTime);
+    start.innerHTML = "pause";
   } else {
-    if (start.innerHTML == "Pause") {
-      start.innerHTML = "Start";
+    if (start.innerHTML == "pause") {
+      start.innerHTML = "start";
       clearInterval(intId);
     }
   }
 };
 
 function updateTime() {
-  sec++;
+  ms += tick;
+  if (ms >=999) {
+    sec++;
+    ms = 0;
+  }
   if (sec >= 60) {
     min++;
     sec = 0;
@@ -43,17 +49,20 @@ function updateTime() {
   document.querySelector(".hour").innerHTML = hourZ;
   document.querySelector(".min").innerHTML = minZ;
   document.querySelector(".sec").innerHTML = secZ;
+  document.querySelector(".ms").innerHTML = ms;
 }
 
 function stp_click() {
-  if (start.innerHTML == "Pause") {
-    start.innerHTML = "Start";
+  if (start.innerHTML == "pause") {
+    start.innerHTML = "start";
     clearInterval(intId);
   } 
   hour = 0;
   min = 0;
   sec = 0;
+  ms = 0;
   document.querySelector(".hour").innerHTML = "00";
   document.querySelector(".min").innerHTML = "00";
   document.querySelector(".sec").innerHTML = "00";
+  document.querySelector(".ms").innerHTML = "000";
 }
