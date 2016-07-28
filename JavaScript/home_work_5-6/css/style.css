@@ -13,12 +13,16 @@ body {
   height: 40px;
   border: 1px solid red;
   margin-bottom: 10px;
-  padding: 5px;
+  padding: 5px 5px 10px 5px;
   font-size: 32px;
   color: blue;
   text-aling: center;
 }
-
+.ms {
+  font-size: 12px;
+  text-aling: right;
+  padding-left: 150px;
+}
 .str {
   vertical-align: text-bottom;
 }
