@@ -1,7 +1,29 @@
-var namber = prompt('Введите число', '');
-console.log('Число =', namber);
-var exp = prompt('Введите степень числа', '');
-console.log('Степень =', exp);
-result = Math.pow(namber, exp)
-console.log('Результат =', result);
-alert('Решение'+namber+' ^ '+exp+' = '+result);
+function power() {
+  var nomerStr = prompt('Введите число', '');
+  if (nomerStr === null) {
+  	return;
+  }
+  var nomer = parseInt(nomerStr);
+  console.log('Число =', nomer);
+  if (isNaN(nomer)) {
+     power();
+     return;
+  }
+  
+  var expStr = prompt('Введите степень числа', '');
+  if (expStr === null) {
+  	return;
+  }
+  var exp = parseInt(expStr);
+  console.log('Степень =', exp);
+  if (isNaN(exp)) {
+  	power()
+  	return;
+  }
+  
+  result = Math.pow(nomer, exp);
+  console.log('Результат =', result);
+  alert('Решение'+nomer+' ^ '+exp+' = '+result);  
+}
+power();
+

@@ -5,34 +5,43 @@ var ms = 0;
 var sec = 0;
 var min = 0;
 var hour = 0;
-// По іншому не правильно веде відлік мілісекунд
-var tick = 4; // Мало = 13
+var startTime = 0; 
+var pauseTime = 0;
+var timerTime = 0;
 
 function start_click() {
-  if (start.innerHTML == "start") {   
-    intId = setInterval(updateTime);
+  var currentTime = new Date();
+  if (start.innerHTML == "start") {       
+    if (pauseTime == 0) {      
+      startTime = currentTime; // Сохраняем время когда пользователь нажал на кнопку START    
+    } else { // Если на таймере не "нули" (была нажата кнопка PAUSE), то берем не текущее время, а то что было когда нажали на паузу      
+      startTime = new Date(currentTime - pauseTime);
+    }
+    // Пусть работает каждую миллисикунду, как можно чаще
+    intId = setInterval(updateTime, 1);
     start.innerHTML = "pause";
   } else {
     if (start.innerHTML == "pause") {
+      pauseTime = new Date(currentTime - startTime); // Сохраняем сколько времени на таймере в момент нажатия кнопки PAUSE
       start.innerHTML = "start";
       clearInterval(intId);
     }
   }
 };
 
-function updateTime() {
-  ms += tick;
-  if (ms >=999) {
-    sec++;
-    ms = 0;
+function updateTime() {  
+  var currentTime = new Date(); // Смотрим сколько сейчас время  
+  timerTime = new Date(currentTime - startTime); // Получаем разницу, чтобы понимать сколько времени прошло с момента запуска таймера  
+  hour = timerTime.getUTCHours(); // Берем по отдельности часы, минуты, секунды и миллисекунды
+  min = timerTime.getMinutes();
+  sec = timerTime.getSeconds();
+  ms = timerTime.getMilliseconds();
+  var msZ = ms;
+  if (ms < 10) {
+    msZ = "00" + ms;
   }
-  if (sec >= 60) {
-    min++;
-    sec = 0;
-  }
-  if (min >= 60) {
-    hour++;
-    min = 0;
+  if (ms < 100) {
+    msZ = "0" + ms;
   }
   var secZ = sec;
   if (sec < 10) {
@@ -49,7 +58,7 @@ function updateTime() {
   document.querySelector(".hour").innerHTML = hourZ;
   document.querySelector(".min").innerHTML = minZ;
   document.querySelector(".sec").innerHTML = secZ;
-  document.querySelector(".ms").innerHTML = ms;
+  document.querySelector(".ms").innerHTML = msZ;
 }
 
 function stp_click() {
@@ -57,12 +66,9 @@ function stp_click() {
     start.innerHTML = "start";
     clearInterval(intId);
   } 
-  hour = 0;
-  min = 0;
-  sec = 0;
-  ms = 0;
+  pauseTime = 0;
   document.querySelector(".hour").innerHTML = "00";
   document.querySelector(".min").innerHTML = "00";
   document.querySelector(".sec").innerHTML = "00";
-  document.querySelector(".ms").innerHTML = "000";
+  document.querySelector(".ms").innerHTML = "";
 }
