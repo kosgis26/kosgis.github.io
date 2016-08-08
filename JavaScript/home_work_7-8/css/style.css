@@ -1,1 +1,11 @@
-﻿
+﻿#tabs article img {
+	float: left;
+	padding: 20px 20px 30px 0;
+	width: 200px;
+}
+#tabs {
+	margin: 0 auto;
+	overflow: hidden;
+	width: 700px;
+	height: 550px;
+}

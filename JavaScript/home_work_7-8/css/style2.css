@@ -1,0 +1,18 @@
+﻿ul {
+	padding-left: 10px;
+}
+li {
+	list-style: none;
+	padding-bottom: 10px;
+	padding-top:10px;
+}
+label {
+	font-size: 18px;
+	font-family: "Trebuchet MS", sans-serif;
+	display: inline-block;
+	width: 80px;
+}
+.forma {
+	width: 270px;
+	border: 1px solid grey;
+}
