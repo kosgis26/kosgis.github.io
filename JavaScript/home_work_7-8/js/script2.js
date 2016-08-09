@@ -14,7 +14,7 @@
 });
 
 
-//$('.hastip').tooltipsy({
+//$('#help').tooltips({
 //	offset: [10, 0],
 //	css: {
 //		'padding': '10px',
