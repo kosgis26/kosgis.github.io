@@ -3,11 +3,67 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Timer</title>
+	<title>JQuery-carusel & Biography</title>
 	<link rel="stylesheet" href="css/style.css" >
+	<script src="js/jquery.min(3.1.0).js"></script>
+	<script src="js/jquery.karusel.js"></script>
+	<script src="js/template.js"></script>
+	<!--<script src="js/script2.js"></script>-->
+	<script src="js/script.js"></script>
+	
+	
 </head>
 <body>
-	
-<script src="js/script.js"></script>
+<!--http://ru.jakeroid.com/sozdaem-prostuyu-karusel-slajder-s-pomoshhyu-jquery.html-->
+<div class="carousel">
+	<div class="carousel-arrow-left"><span>Влево</span></div>
+	<div class="carousel-hide">
+		<ul class="carousel-list">
+			<li><img src="img/img_1.jpg" ><p>Картинка-1</p></li>
+			<li><img src="img/img_2.jpg" ><p>Картинка-2</p></li>
+			<li><img src="img/img_3.jpg" ><p>Картинка-3</p></li>
+			<li><img src="img/img_4.jpg" ><p>Картинка-4</p></li>
+			<li><img src="img/img_5.jpg" ><p>Картинка-5</p></li>
+			<li><img src="img/img_6.jpg" ><p>Картинка-6</p></li>
+			<li><img src="img/img_7.jpg" ><p>Картинка-7</p></li>
+			<li><img src="img/img_8.jpg" ><p>Картинка-8</p></li>
+			<li><img src="img/img_9.jpg" ><p>Картинка-9</p></li>
+		</ul>
+	</div>
+	<div class="carousel-arrow-right"><span>Вправо</span></div>
+</div>
+
+	<script type="text/template" id="test">
+		<% for (var i = 0; i < data.length; i++) { %>
+			<h3><%= data[i].title %></h3>
+			<p><%= data[i].content %></p>
+		<% }; %>
+	</script>
+
+	<script type="text/template" id="biography">
+		<div class="main">
+			<div class="header">
+				<h2><%= data.fullName %></h2>
+				<img src="img/Я.jpg" width="200" height="250" alt="Це я на фото">
+				<p><%=  data.profession %></p>
+			</div>
+			<div class="line"></div>
+			<p><%= data.goal %></p>
+			<ul>
+				<li><%= data.goalFactor_1 %></li>
+				<li><%= data.goalFactor_2 %></li>
+				<li><%= data.goalFactor_3 %></li>
+			</ul>
+			<div class="line"></div>
+			<p class="other">Мій контактний телефон:</p>
+			<a><%= data.tellNumber %></a>
+			<p class="other">Мій профіль ВКонтакті:</p>
+			<div><a href="<%= data.linkVK %>" target=""><%= data.nik %></a></div>
+			<div class="line"></div>
+				<p class="other">Мій фідбек:</p>
+			<div class="end"><%= data.feedback %></div>
+		</div>
+	</script>
+
 </body>
 </html>

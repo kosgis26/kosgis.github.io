@@ -1,1 +1,96 @@
 ﻿
+body{
+	background-color: #efefef;
+	line-height: 20px;
+	font-size: 14px;
+	margin: 0;	
+}
+.carousel {
+	margin: 20px auto;
+	width: 673px;
+	height: 380px;
+	box-sizing: border-box;
+	display: block;
+	background: #ffffff;
+	box-shadow: 0 0 5px 0 grey;
+}
+.carousel-list {
+	list-style:none;
+	width: 10000px;
+	position:relative;
+	margin: 0;
+	padding: 0;
+}
+.carousel-list li {
+	display: block;
+	float: left;
+	margin: 10px;
+	margin-bottom: 0;
+	text-align: center;
+	padding: 0;
+}
+.carousel-list li p {
+	position:relative;
+	color: #0029ff;
+	margin: 0;
+}
+.carousel-list li img {
+	width: 500px;
+	height: 320px;
+}
+.carousel-hide {
+	float: left;
+	width: 500px;
+	overflow:hidden;
+	margin: 20px 20px 0 10px;
+}
+.carousel-arrow-left, .carousel-arrow-right {
+    float: left;
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    background-color: silver;
+    padding: 5px 10px;
+    margin-top: 175px;
+    box-shadow: 0 0 5px 0 grey;
+}
+.carousel-arrow-left {
+	margin-left: 10px;
+}
+.carousel-arrow-right {
+	margin-right: 10px;
+}
+.carousel-arrow-left:hover, .carousel-arrow-right:hover {
+    cursor: pointer;
+    background-color: #8a8a8a;
+    box-shadow: 0 0 5px 0 #5f5f5f;
+}
+
+/*----------     Biography     ----------*/
+
+.main{
+	background-color: white;
+	width: 400px;
+	height: auto;
+	margin: 0 auto;
+	box-shadow: 0 0 5px 0 grey;
+	padding-left: 30px;
+	margin-bottom: 20px;
+}
+.header, .header h2 {
+	text-align: center;
+	padding-top: 5px;
+}
+.main a{
+	text-decoration: none;
+}
+.line{
+	width: 380px;
+	border-bottom: 1px solid #7b7b7b;
+}
+.end{
+	padding-bottom: 30px;
+}
+.other{
+	margin-bottom: 1px;
+}
