@@ -3,17 +3,20 @@
 	* Options:
 	* animSpeed - 
 	* elemenMoov -
+	* elemenNumber -
 	*/
 	$.fn.karusel = function (options) {
 		
 		var defaults = {
-			elemenMoov: 520,
-			animSpeed: 800
+			elemenMoov: 135,
+			animSpeed: 500,
+			elemenNumber: 5
 		};
 		options = $.extend(defaults, options);
 		
 		var elemenMoov = options.elemenMoov;
 		var animSpeed = options.animSpeed;
+		var elemenNumber = options.elemenNumber;
 		
 		var arrowLeft = $('.carousel-arrow-left');
 		var arrowRight = $('.carousel-arrow-right');
@@ -23,17 +26,17 @@
 		var liCarousel = carouselList.find('li');
 		var curentMoov = 0;
 		var elementsLi = liCarousel.length;
-		var minLength = - ((elementsLi - 1) * elemenMoov);
+		var minLength = - ((elementsLi - elemenNumber) * elemenMoov);
 		var maxLength = 0;
 		
-		arrowLeft.click(function () {
+		arrowRight.click(function () {
 			if (curentMoov != maxLength) {
 				console.log(curentMoov)
 				curentMoov += elemenMoov;
 				carouselList.animate({ left : curentMoov + "px"}, animSpeed);
 			}
 		}),
-		arrowRight.click(function () {
+		arrowLeft.click(function () {
 			if (curentMoov != minLength) {
 				curentMoov -= elemenMoov;
 				console.log(curentMoov)

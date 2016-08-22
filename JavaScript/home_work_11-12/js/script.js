@@ -1,8 +1,9 @@
 ﻿$(document).ready(function() {
 
 	$.fn.karusel({
-		elemenMoov: 520,
-		animSpeed: 800
+		elemenMoov: 135,
+		animSpeed: 600,
+		elemenNumber: 3
 	});
 	
 	$(function() {
