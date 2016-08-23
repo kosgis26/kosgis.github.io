@@ -3,11 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Timer</title>
-	<link rel="stylesheet" href="css/style.css" >
+	<title>Opros</title>
+	<link rel="stylesheet" href="css/style.css" media="all">
+	<script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+	<script type="text/javascript" src="js/template.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
+
+<script type="text/html" id="opros">
+<header class="test">
+	<div class="title"><a>Тест по программированию</a></div>
 	
-<script src="js/script.js"></script>
+	<% for (var i = 0; i < questions.length; i++) { %>
+		<div class="content"><a><%= questions[i] %></a>
+			<form name="question_<%= i %>" method="post" action="">
+				<% for (var j = 0; j < answers[i].length; j++) { %>
+					<li><label><input type="radio" id="lab_<%= j %>" name="ansver_<%= i %>" value="ansver_1"><%= answers[i][j] %></label></li>
+				<% }; %>
+			</form>
+		</div>
+	<% }; %>
+	
+	<button id="result">Проверить мои результаты</button>
+</header>
+</script>
 </body>
-</html>
