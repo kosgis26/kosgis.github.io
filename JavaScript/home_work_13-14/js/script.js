@@ -27,16 +27,19 @@ $(document).ready(function() {
 		
 		var modal = "";
 		var body=$('body');
-		var box;
-		var show;
 		
 		body.append(template);
 		
 		$("#result").on('click', function() {
 		// як вказати що вони повинні бути вибраними?
+			
 			var answer0 = $('form[name="question_0"] input[id="lab_1"]')[0];
 			var answer1 = $('form[name="question_1"] input[id="lab_2"]')[0];
 			var answer2 = $('form[name="question_2"] input[id="lab_1"]')[0];
+			
+			var box;
+			var show;
+			
 			if (answer0.checked && answer1.checked && answer2.checked) {
 				modal = "Take my congratulation , yours answers are correct!!!"
 			} else {
