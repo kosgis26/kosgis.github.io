@@ -24,9 +24,14 @@ $(document).ready(function() {
 			questions: questions,
 			answers: answers
 		});
-		$('body').append(template);
 		
 		var modal = "";
+		var body=$('body');
+		var box;
+		var show;
+		
+		body.append(template);
+		
 		$("#result").on('click', function() {
 		// як вказати що вони повинні бути вибраними?
 			var answer0 = $('form[name="question_0"] input[id="lab_1"]')[0];
@@ -39,9 +44,8 @@ $(document).ready(function() {
 			};
 			
 			function showModal()  {
-				var body=$('body');
-				var box = $('<div class="modalBox"></div>');
-				var show = $('<div class="modal"><a>"' + modal + '"</a><div class="modalButtom"><input type="submit" id="submit" name="Submit" value="Ok"></div></div>');
+				box = $('<div class="modalBox"></div>');
+				show = $('<div class="modal"><a>"' + modal + '"</a><div class="modalButtom"><input type="submit" id="submit" name="Submit" value="Ok"></div></div>');
 				body.append(box);
 				body.append(show);
 			};
