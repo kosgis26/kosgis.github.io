@@ -55,10 +55,10 @@ $(document).ready(function() {
  	newWorker.prototype = Human;
 	console.log("newWorker", newWorker)
 
-	for (var i = 1; i < n; i++) {
-		newWorker '+ i' = newWorker;
-		console.log("newWorker '+ i", newWorker '+ i); 
-	}
+	// for (var i = 1; i < n; i++) {
+	// 	newWorker '+ i' = newWorker;
+	// 	console.log("newWorker '+ i", newWorker '+ i); 
+	// }
 
  	
 	var newStudent = new Student;
