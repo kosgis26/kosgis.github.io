@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 	for (var i = 1; i < n; i++) {
 		newWorker '+ i' = newWorker;
-		console.log("newWorker '+ i", newWorker '+ i);
+		console.log("newWorker '+ i", newWorker '+ i); 
 	}
 
  	
