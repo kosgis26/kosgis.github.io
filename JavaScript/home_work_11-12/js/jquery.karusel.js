@@ -21,28 +21,43 @@
 		var arrowLeft = $('.carousel-arrow-left');
 		var arrowRight = $('.carousel-arrow-right');
 		var carouselList = $('.carousel-list');
-		carouselList.css({  })
 		
 		var liCarousel = carouselList.find('li');
 		var curentMoov = 0;
 		var elementsLi = liCarousel.length;
-		var minLength = - ((elementsLi - elemenNumber) * elemenMoov);
-		var maxLength = 0;
+		var finishMoov = -((elementsLi - elemenNumber) * elemenMoov);
+		var startMoov = 0;
 		
-		arrowRight.click(function () {
-			if (curentMoov != maxLength) {
-				console.log(curentMoov)
-				curentMoov += elemenMoov;
-				carouselList.animate({ left : curentMoov + "px"}, animSpeed);
-			}
-		}),
 		arrowLeft.click(function () {
-			if (curentMoov != minLength) {
-				curentMoov -= elemenMoov;
-				console.log(curentMoov)
+			curentMoov += elemenMoov
+			if (curentMoov <= startMoov) {
 				carouselList.animate({ left : curentMoov + "px"}, animSpeed);
-			}
-		})	
+			} else {
+				var el = carouselList[0];
+				var childList = el.children;
+				var last = childList[childList.length - 1];
+				el.removeChild(last);
+				carouselList.css({ left :  - elemenMoov + "px"});
+				carouselList.prepend(last);
+				carouselList.animate({ left :  0 + "px"}, animSpeed);
+			};
+		});
+		arrowRight.click(function () {
+			curentMoov -= elemenMoov
+			if (finishMoov <= curentMoov) {
+				carouselList.animate({ left : curentMoov + "px"}, animSpeed);
+			} else {
+				curentMoov += elemenMoov
+				var el = carouselList[0];
+				var childList = el.children;
+			//	debugger;
+				var first = childList[0];
+				el.removeChild(first);
+				carouselList.css({ left : curentMoov + elemenMoov + "px"});
+				carouselList.append(first);
+				carouselList.animate({ left : curentMoov + "px"}, animSpeed);
+			};
+		});
 		return (this);
 	}
 })(jQuery);

@@ -2,7 +2,7 @@
 
 	$.fn.karusel({
 		elemenMoov: 135,
-		animSpeed: 600,
+		animSpeed: 200,
 		elemenNumber: 3
 	});
 	

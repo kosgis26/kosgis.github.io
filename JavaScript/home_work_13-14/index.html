@@ -10,16 +10,14 @@
 	<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-
 <script type="text/html" id="opros">
 <header class="test">
 	<div class="title"><a>Тест по программированию</a></div>
-	
 	<% for (var i = 0; i < questions.length; i++) { %>
-		<div class="content"><a><%= questions[i] %></a>
+		<div class="content"><a><%= questions[i].title %></a>
 			<form name="question_<%= i %>" method="post" action="">
-				<% for (var j = 0; j < answers[i].length; j++) { %>
-					<li><label><input type="radio" id="lab_<%= j %>" name="ansver_<%= i %>" value="ansver_1"><%= answers[i][j] %></label></li>
+				<% for (var j = 0; j < questions[i].answers.length; j++) { %>
+					<li><label><input type="radio" id="questions<%= i %>_lab<%= j %>" name="questions<%= i %>" value="answer1"><%= questions[i].answers[j] %></label></li>
 				<% }; %>
 			</form>
 		</div>
