@@ -7,7 +7,7 @@
 .foto {
 	min-width: 520px; 
 	max-width: 820px;
-	margin-top: 20px;
+	margin: 20px auto;
 }
 .foto img {
 	padding: 5px 5px 0 5px;
