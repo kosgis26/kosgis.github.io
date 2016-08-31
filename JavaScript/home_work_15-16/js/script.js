@@ -35,40 +35,41 @@ $(document).ready(function() {
 	 };
 
  	function Worker () {
-		this.placeOfWork = 'office';
-		this.salary = 5000;
+		this.placeOfWork = 'in office';
+		this.salary = 500;
 		this.work = function () {
-
+			console.log("Работаю в: " + this.placeOfWork + ". Зарабатываю " + this.salary + " $ ");
 		};
  	}
 	function Student () {
 			this.plaseOfStudy = 'university'; 
 			this.scholarship = 1200;
 			this.watchSerials = function () {
-
+				console.log("Смотрю сериалы");
 			};
 	 	}
  
  	var n = 4;
- 	var newWorker = new Worker;;
 
+ 	var newWorker = new Worker();
  	newWorker.prototype = Human;
 	console.log("newWorker", newWorker)
 
-	// for (var i = 1; i < n; i++) {
-	// 	newWorker '+ i' = newWorker;
-	// 	console.log("newWorker '+ i", newWorker '+ i); 
-	// }
+	newWorker1 = newWorker;
+	console.log("newWorker1", newWorker1);
+	newWorker2 = newWorker;
+	console.log("newWorker2", newWorker2);
+ 	newWorker3 = newWorker;
+	console.log("newWorker3", newWorker3);
 
- 	
-	var newStudent = new Student;
-
+	var newStudent = new Student();
 	newStudent.prototype = Human;
-	console.log("newStudent", newStudent)
+	console.log("newStudent", newStudent);
 
-	// for (var i = 1; i < n; i++) {
-		// newStudent = new Student;
-		// console.log("newStudent", newStudent)
-	// }
-
+	newStudent1 = newStudent;
+	console.log("newStudent1", newStudent1);
+	newStudent2 = newStudent
+	console.log("newStudent2", newStudent2);
+ 	newStudent3 = newStudent;
+	console.log("newStudent3", newStudent3);
 });
