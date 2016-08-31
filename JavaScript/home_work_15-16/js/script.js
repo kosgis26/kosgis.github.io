@@ -26,6 +26,7 @@ $(document).ready(function() {
 		}
 	});
 
+<<<<<<< HEAD
 	var Human = {
 		name: 'Artur', 
 		age: 25, 
@@ -48,7 +49,7 @@ $(document).ready(function() {
 
 			};
 	 	}
-
+ 
  	var n = 4;
  	var newWorker = new Worker;;
 
@@ -71,4 +72,6 @@ $(document).ready(function() {
 		// console.log("newStudent", newStudent)
 	// }
 
+=======
+>>>>>>> 42e5660016365114fb7d2d779e1ac49272a0317a
 });
