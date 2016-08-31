@@ -18,7 +18,7 @@ $(document).ready(function() {
 		})
 	};
 
-	$("#searchButton").on("click", onclick);
+	$("#searchButton").one("click", onclick);
 	$("#searchEdit").on("keypress", function(event) {
 		if (event.keyCode == 13) {
 			event.preventDefault();
