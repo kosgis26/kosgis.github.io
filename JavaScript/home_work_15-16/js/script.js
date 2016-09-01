@@ -32,27 +32,24 @@ $(document).ready(function() {
 		paul: 'men', 
 		growth: 182, 
 		weight: 75
-	 };
-
+	};
  	function Worker () {
 		this.placeOfWork = 'in office';
 		this.salary = 500;
 		this.work = function () {
-			console.log("Работаю в: " + this.placeOfWork + ". Зарабатываю " + this.salary + " $ ");
+			console.log("I am work " + this.placeOfWork + ". My salary " + this.salary + " $ ");
 		};
  	}
 	function Student () {
-			this.plaseOfStudy = 'university'; 
-			this.scholarship = 1200;
-			this.watchSerials = function () {
-				console.log("Смотрю сериалы");
-			};
-	 	}
- 
- 	var n = 4;
+		this.plaseOfStudy = 'university'; 
+		this.scholarship = 1200;
+		this.watchSerials = function () {
+			console.log("Смотрю сериалы");
+		};
+ 	}
 
- 	var newWorker = new Worker();
- 	newWorker.prototype = Human;
+	Worker.prototype = Human;
+ 	var newWorker = new Worker;
 	console.log("newWorker", newWorker)
 
 	newWorker1 = newWorker;
@@ -62,8 +59,8 @@ $(document).ready(function() {
  	newWorker3 = newWorker;
 	console.log("newWorker3", newWorker3);
 
-	var newStudent = new Student();
-	newStudent.prototype = Human;
+	Student.prototype = Human;
+	var newStudent = new Student;
 	console.log("newStudent", newStudent);
 
 	newStudent1 = newStudent;
