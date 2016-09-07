@@ -118,22 +118,26 @@
   height: 55px;
   margin-bottom: 40px;
 }
-.menu__item {float: left;display: block;}
+.menu__main {
+  float: left;display: block;
+}
 .menu__link {
   display: inline-block;
   width: 130px;
   height: 55px;
   text-align: center;
   line-height: 55px;
-  border-right: 2px solid #151515;
+  border-right: 1px solid #151515;
+  margin-left: -4px;
 }
 .menu__link:first-child {
-  border-left: 2px solid #151515;
+  background-color: #248cec;
+  margin-left: 0px;
 }
-.menu__link:hover {
+/* .menu__link:hover {
   background-color: #248cec;
   opacity: 0.5;
-}
+} */
 .menu__link a {
   color: white;
   text-decoration: none;
@@ -182,7 +186,7 @@ input[type="text"] {
   z-index: 1;
 }
 .slider__text a {
-  color: yellow;
+  color: #f4b60d;
   font-family: "UbuntuMedium";
 }
 
@@ -277,6 +281,10 @@ input[type="text"] {
 .service__title {
   margin: 47px 0 58px 0;
 }
+.service__works {
+  margin-bottom: 70px;
+  overflow: hidden;
+}
 .service__present {
   overflow: hidden;
   float: left;
@@ -287,20 +295,47 @@ input[type="text"] {
   margin-right: 0px
 }
 .service__present p {
-  margin: 35px 0 70px 0;
+  margin: 35px 0 00;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
   color: white;
 }
-.service__present p:hover {
+.service__present:hover p {
   color: #f4b60d;
 }
-.service__present img {
-  background: url(../../img/foto-1.png);
+.service__img img {
+  position: relative;
   width: 260px;
   height: 260px;
 }
-.service__present img:hover {
-  background: url("../../img/foto-hover.png");
+.service__present:nth-child(1):hover::before {
+  visibility: visible;
 }
+.service__present:nth-child(2):hover::before {
+  visibility: visible;
+  left: 296px;
+}
+.service__present:nth-child(3):hover::before {
+  visibility: visible;
+    left: 592px;
+}
+.service__present:nth-child(4):hover::before {
+  visibility: visible;
+    left: 888px;
+}
+.service__present::before {
+  position: absolute;
+  visibility: hidden;
+  /* top: 133px; */
+  /* left: 0px; */
+  width: 260px;
+  height: 260px;
+  /* background: #248cec; */
+  background: url(../../img/foto-hover.png);
+  /* color: white; */
+  font-size: 72px;
+  /* opacity: 0.80; */
+  content: "";
+}
+
