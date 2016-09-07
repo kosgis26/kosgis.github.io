@@ -1,0 +1,1494 @@
+		<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+<link rel="shortcut icon" href="http://loftblog.ru/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="http://loftblog.ru/favicon/apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="http://loftblog.ru/favicon/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="http://loftblog.ru/favicon/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="http://loftblog.ru/favicon/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="http://loftblog.ru/favicon/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="http://loftblog.ru/favicon/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="http://loftblog.ru/favicon/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="http://loftblog.ru/favicon/apple-touch-icon-152x152.png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://loftblog.ru/cms/xmlrpc.php">
+
+
+<title>Build c помощью Grunt.js | Loftblog</title>
+
+<!-- All in One SEO Pack 2.3.5 by Michael Torbert of Semper Fi Web Design[1192,1265] -->
+<meta name="description" itemprop="description" content="В этом скринкасте, мы узнаем что такое Build и научимся автоматизировать этот интересный процесс. Рассмотрим такие вещи как: конкатенация и минификация js и css" />
+
+<meta name="keywords" itemprop="keywords" content="build,grunt.js,javascript,автоматизация" />
+
+<link rel="canonical" href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/" />
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="Loftblog &raquo; Лента" href="http://loftblog.ru/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Loftblog &raquo; Лента комментариев" href="http://loftblog.ru/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Loftblog &raquo; Лента комментариев к &laquo;Автоматизация для самых ленивых вместе с Grunt.js&raquo;" href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/loftblog.ru\/cms\/wp-includes\/js\/wp-emoji-release.min.js?ver=daa8de9f6e5232b616a6f07d6cea08f7"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56806,55356,56826),0,0),c.toDataURL().length>3e3):("simple"===a?d.fillText(String.fromCharCode(55357,56835),0,0):d.fillText(String.fromCharCode(55356,57135),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='http://loftblog.ru/cms/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-classic-css'  href='http://loftblog.ru/cms/wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='http://loftblog.ru/cms/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='maincss-css'  href='http://loftblog.ru/cms/../styles/css/main.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://loftblog.ru/cms/../scripts/_vendor/jquery-1.11.3.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/loftblog.ru\/cms\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u041d\u0430\u0436\u043c\u0438\u0442\u0435 %s \u0434\u043b\u044f \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f, %s \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u0432\u043a\u0438","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://loftblog.ru/cms/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='http://loftblog.ru/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://loftblog.ru/cms/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://loftblog.ru/cms/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Создаём продвинутые адаптивные сайты вместе с enquire.js' href='http://loftblog.ru/material/sozdayom-prodvinutye-adaptivnye-sajty-vmeste-s-enquire-js/' />
+<link rel='next' title='Изучаем matchMedia API и object MediaQueryList' href='http://loftblog.ru/material/izuchaem-matchmedia-api-i-object-mediaquerylist/' />
+
+<link rel='shortlink' href='http://loftblog.ru/?p=663' />
+<link rel="alternate" type="application/json+oembed" href="http://loftblog.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://loftblog.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F&#038;format=xml" />
+<script type="text/javascript"><!--
+function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','toolbar=0,status=0,resizable=1,width=460,height=320');	return false;}
+//-->
+</script>
+<script type="text/javascript">
+(function(url){
+	if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+	var addEvent = function(evt, handler) {
+		if (window.addEventListener) {
+			document.addEventListener(evt, handler, false);
+		} else if (window.attachEvent) {
+			document.attachEvent('on' + evt, handler);
+		}
+	};
+	var removeEvent = function(evt, handler) {
+		if (window.removeEventListener) {
+			document.removeEventListener(evt, handler, false);
+		} else if (window.detachEvent) {
+			document.detachEvent('on' + evt, handler);
+		}
+	};
+	var evts = 'contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop keydown keypress keyup mousedown mousemove mouseout mouseover mouseup mousewheel scroll'.split(' ');
+	var logHuman = function() {
+		var wfscr = document.createElement('script');
+		wfscr.type = 'text/javascript';
+		wfscr.async = true;
+		wfscr.src = url + '&r=' + Math.random();
+		(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+		for (var i = 0; i < evts.length; i++) {
+			removeEvent(evts[i], logHuman);
+		}
+	};
+	for (var i = 0; i < evts.length; i++) {
+		addEvent(evts[i], logHuman);
+	}
+})('//loftblog.ru/?wordfence_logHuman=1&hid=5D36D728FCA108627869FCA98F9A7F8C');
+</script></head>
+
+<body class="single single-material postid-663">
+  <div class="sidebar">
+  <div class="sidebar__wrap">
+    <a href="javascript:void(0)" class="sidebar__closing">
+      <svg class="close" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0" y="0" width="41.76" height="41.76" viewBox="0 0 41.76 41.76" xml:space="preserve" enable-background="new 0 0 41.756 41.756">
+        <path d="M27.95 20.88L40.29 8.54c1.95-1.95 1.95-5.12 0-7.07 -1.95-1.95-5.12-1.95-7.07 0L20.88 13.81 8.54 1.47c-1.95-1.95-5.12-1.95-7.07 0 -1.95 1.95-1.95 5.12 0 7.07l12.34 12.34L1.47 33.22c-1.95 1.95-1.95 5.12 0 7.07C2.44 41.27 3.72 41.76 5 41.76c1.28 0 2.56-0.49 3.54-1.46l12.34-12.34 12.34 12.34c0.98 0.98 2.26 1.46 3.54 1.46s2.56-0.49 3.54-1.46c1.95-1.95 1.95-5.12 0-7.07L27.95 20.88z"/>
+      </svg>
+      <svg class="open" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0" y="0" viewBox="0 0 396.67 396.67" xml:space="preserve" enable-background="new 0 0 396.667 396.667">
+        <path d="M17 87.83h362.67c9.35 0 17-7.65 17-17s-7.65-17-17-17H17c-9.35 0-17 7.65-17 17C0 80.18 7.65 87.83 17 87.83z"/>
+        <path d="M17 215.33h362.67c9.35 0 17-7.65 17-17s-7.65-17-17-17H17c-9.35 0-17 7.65-17 17S7.65 215.33 17 215.33z"/>
+        <path d="M17 342.83h362.67c9.35 0 17-7.65 17-17s-7.65-17-17-17H17c-9.35 0-17 7.65-17 17S7.65 342.83 17 342.83z"/>
+      </svg>
+    </a>
+    <div class="sidebar__block sidebar__block--with-p">
+      <form action="/" method="get" class="sidebar__form">
+        <input type="text" placeholder="Поиск по LoftBlog" name="s" class="sidebar__form-input" tabindex="1">
+        <button class="sidebar__form-btn">Найти</button>
+      </form>
+    </div>
+
+    <div class="sidebar__block">
+      <ul class="sidebar__list">
+        <li>
+            <a href="/lessons/" class="sidebar__link sidebar__link--parent">Уроки и курсы</a>
+            <a href="javascript:void(0);" class="sidebar__item-more">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0" y="0" width="612" height="612" viewBox="0 0 612 612" xml:space="preserve" enable-background="new 0 0 612 612">
+                <g>
+                  <polygon points="612 286.89 325.12 286.89 325.12 0.3 286.9 0.3 286.9 286.89 0 286.89 0 325.11 286.9 325.11 286.9 611.7 325.12 611.7 325.12 325.11 612 325.11 "/>
+                </g>
+              </svg>
+            </a>
+            <ul class="sidebar__list-children">
+                                <li class="sidebar__item-children active">
+                      <a href="http://loftblog.ru/lessons/"
+                          class="sidebar__link sidebar__link--children">
+                          Все                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/lessons/backend/"
+                          class="sidebar__link sidebar__link--children">
+                          Backend                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/lessons/frontend/"
+                          class="sidebar__link sidebar__link--children">
+                          Frontend                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/lessons/workflow/"
+                          class="sidebar__link sidebar__link--children">
+                          Workflow                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/lessons/dizajn/"
+                          class="sidebar__link sidebar__link--children">
+                          Дизайн                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/lessons/raznoe/"
+                          class="sidebar__link sidebar__link--children">
+                          Разное                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/lessons/yazyki-programmirovaniya/"
+                          class="sidebar__link sidebar__link--children">
+                          Языки программирования                      </a>
+                  </li>
+                              </ul>
+        </li>
+
+        <li>
+          <a href="/news/" class="sidebar__link sidebar__link--parent">Передачи</a>
+         <a href="javascript:void(0);" class="sidebar__item-more">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0" y="0" width="612" height="612" viewBox="0 0 612 612" xml:space="preserve" enable-background="new 0 0 612 612">
+                <g>
+                  <polygon points="612 286.89 325.12 286.89 325.12 0.3 286.9 0.3 286.9 286.89 0 286.89 0 325.11 286.9 325.11 286.9 611.7 325.12 611.7 325.12 325.11 612 325.11 "/>
+                </g>
+              </svg>
+            </a>
+            <ul class="sidebar__list-children">
+                               <li class="sidebar__item-children active">
+                      <a href="http://loftblog.ru/news/"
+                         class="sidebar__link sidebar__link--children">
+                          Все                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/videocast/loftcast/"
+                         class="sidebar__link sidebar__link--children">
+                          Loftcast                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/videocast/loftnews/"
+                         class="sidebar__link sidebar__link--children">
+                          Loftnews                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/videocast/loftvlog/"
+                         class="sidebar__link sidebar__link--children">
+                          LoftVlog                      </a>
+                  </li>
+                                    <li class="sidebar__item-children ">
+                      <a href="http://loftblog.ru/videocast/intervyu/"
+                         class="sidebar__link sidebar__link--children">
+                          Интервью                      </a>
+                  </li>
+                              </ul>
+
+        <li>
+          <a href="/vakansii/" class="sidebar__link sidebar__link--parent">Вакансии </a>
+        </li>
+          
+
+      </ul>
+    </div>
+
+    <div class="sidebar__block">
+     
+        <ul class="sidebar__list">
+          <li>
+                   <a class="header__user btn-square sidebar__login" href="/login/">Авторизация</a>
+                      </li>
+        </ul>
+    </div>
+
+  </div>
+</div>
+  <div class="wrapper">
+		<div class="maincontent">
+			<section class="header-white">
+        <div class="container">
+          <header class="header__row">
+              <a href="/" class="header__logo">
+                  <img src="/images/_logo/logo-white.png" class="header__logo-img" alt="Логотип LoftBlog">
+                  <img src="/images/_logo/logo-white-h.png" class="header__logo-img-h" alt="Логотип LoftBlog">
+              </a>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="menu-item"><a href="http://loftblog.ru/lessons/">Уроки и курсы</a></li>
+                    <li class="menu-item"><a href="http://loftblog.ru/news/">Передачи</a></li>
+                    <li class="menu-item"><a href="/vakansii/">Вакансии</a></li>
+                </ul>
+            </nav>
+              <div class="header__search-wrap">
+                                  <a class="header__user authorization__link" href="/login/">Авторизация</a>
+                                <a href="#" class="header__search-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="30.24" height="30.24" viewBox="0 0 30.24 30.24" xml:space="preserve" enable-background="new 0 0 30.239 30.239">
+                    <path d="M20.19 3.46c-4.61-4.61-12.12-4.61-16.73 0 -4.61 4.61-4.61 12.12 0 16.74 4.11 4.11 10.51 4.55 15.12 1.34 0.1 0.46 0.32 0.9 0.68 1.25l6.72 6.72c0.98 0.98 2.56 0.98 3.54 0 0.98-0.98 0.98-2.56 0-3.53l-6.72-6.72c-0.35-0.35-0.79-0.58-1.25-0.67C24.74 13.97 24.3 7.57 20.19 3.46zM18.07 18.07c-3.44 3.44-9.05 3.44-12.49 0 -3.44-3.44-3.44-9.05 0-12.49 3.44-3.44 9.05-3.44 12.49 0C21.52 9.03 21.52 14.63 18.07 18.07z"/>
+                  </svg>
+                </a>
+                <form action="/" method="get" class="header__search-form" autocomplete="off">
+                  <div class="header__search--wrap">
+                    <input type="text" placeholder="Поиск" name="s" class="header__search-input" tabindex="1">
+                    <button class="header__search-button"></button>
+                  </div>
+                  <div class="header__search-live"></div>
+                </form>
+              </div>
+            </header>
+          </div>
+          <div class="header__menus-wrap lessons__menu-head">
+  <div class="container">
+    <div class="header__lessons">
+      <div class="header__tabs--wrap">
+        <ul class="header__tabs-list">
+                            <li class="tabs__item active">
+                    <a href="http://loftblog.ru/lessons/"
+                        class="tabs__link">
+                        Все                    </a>
+                </li>
+                                <li class="tabs__item ">
+                    <a href="http://loftblog.ru/lessons/backend/"
+                        class="tabs__link">
+                        Backend                    </a>
+                </li>
+                                <li class="tabs__item ">
+                    <a href="http://loftblog.ru/lessons/frontend/"
+                        class="tabs__link">
+                        Frontend                    </a>
+                </li>
+                                <li class="tabs__item ">
+                    <a href="http://loftblog.ru/lessons/workflow/"
+                        class="tabs__link">
+                        Workflow                    </a>
+                </li>
+                                <li class="tabs__item ">
+                    <a href="http://loftblog.ru/lessons/dizajn/"
+                        class="tabs__link">
+                        Дизайн                    </a>
+                </li>
+                                <li class="tabs__item ">
+                    <a href="http://loftblog.ru/lessons/raznoe/"
+                        class="tabs__link">
+                        Разное                    </a>
+                </li>
+                                <li class="tabs__item ">
+                    <a href="http://loftblog.ru/lessons/yazyki-programmirovaniya/"
+                        class="tabs__link">
+                        Языки программирования                    </a>
+                </li>
+                        </ul>
+        <ul class="header__tabs-content">
+                        <li class="tabs__content active">
+                <ul class="header__content-list">
+                                    <li class="header__content-item " data-title="#11 - User - мужчина в очках">
+                        <a href="http://loftblog.ru/material/flat-design-11-user-muzhchina-v-ochkax/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover637-white11.png" alt="#11 - User - мужчина в очках" class="header__content-img">
+                            <div class="header__content-title">
+                                #11 - User - мужчина в очках                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#10 - Мульт персонаж">
+                        <a href="http://loftblog.ru/material/10-mult-personazh/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover637-white10.png" alt="#10 - Мульт персонаж" class="header__content-img">
+                            <div class="header__content-title">
+                                #10 - Мульт персонаж                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#1 - Коллекции. Основной обзор">
+                        <a href="http://loftblog.ru/material/1-kollekcii-osnovnoj-obzor/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover659-white1.png" alt="#1 - Коллекции. Основной обзор" class="header__content-img">
+                            <div class="header__content-title">
+                                #1 - Коллекции. Основной обзор                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#10 - Добавляем и редактируем файл robots.txt">
+                        <a href="http://loftblog.ru/material/8-dobavlyaem-i-redaktiruem-fajl-robots-txt/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover568-white10.png" alt="#10 - Добавляем и редактируем файл robots.txt" class="header__content-img">
+                            <div class="header__content-title">
+                                #10 - Добавляем и редактируем файл robots.txt                            </div>
+                        </a>
+                    </li>
+                                </ul>
+            </li>
+                        <li class="tabs__content ">
+                <ul class="header__content-list">
+                                    <li class="header__content-item " data-title="#7 - Синхронизация с удаленным сервером. Deployment.">
+                        <a href="http://loftblog.ru/material/7-sinxronizaciya-s-udalennym-serverom-deployment/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover607-white7.png" alt="#7 - Синхронизация с удаленным сервером. Deployment." class="header__content-img">
+                            <div class="header__content-title">
+                                #7 - Синхронизация с удаленным сервером. Deployment.                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#6 - Плагины">
+                        <a href="http://loftblog.ru/material/6-plaginy/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover607-white6.png" alt="#6 - Плагины" class="header__content-img">
+                            <div class="header__content-title">
+                                #6 - Плагины                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#5 - Пишем код быстрее. Горячие клавиши. Сниппеты">
+                        <a href="http://loftblog.ru/material/5-pishem-kod-bystree-goryachie-klavishi-snippety/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover607-white5.png" alt="#5 - Пишем код быстрее. Горячие клавиши. Сниппеты" class="header__content-img">
+                            <div class="header__content-title">
+                                #5 - Пишем код быстрее. Горячие клавиши. Сниппеты                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#3 - Основные модули программы.">
+                        <a href="http://loftblog.ru/material/3-osnovnye-moduli-programmy/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover607-white3.png" alt="#3 - Основные модули программы." class="header__content-img">
+                            <div class="header__content-title">
+                                #3 - Основные модули программы.                            </div>
+                        </a>
+                    </li>
+                                </ul>
+            </li>
+                        <li class="tabs__content ">
+                <ul class="header__content-list">
+                                    <li class="header__content-item " data-title="#1 - Введение">
+                        <a href="http://loftblog.ru/material/1-vvedenie-2/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover657-white1.png" alt="#1 - Введение" class="header__content-img">
+                            <div class="header__content-title">
+                                #1 - Введение                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#11 - Семантические особенности HTML5">
+                        <a href="http://loftblog.ru/material/11-semanticheskie-osobennosti-html5/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover495-white11.png" alt="#11 - Семантические особенности HTML5" class="header__content-img">
+                            <div class="header__content-title">
+                                #11 - Семантические особенности HTML5                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#3 - Объекты">
+                        <a href="http://loftblog.ru/material/3-obekty/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover602-white3.png" alt="#3 - Объекты" class="header__content-img">
+                            <div class="header__content-title">
+                                #3 - Объекты                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#10 - Формы. Часть 2">
+                        <a href="http://loftblog.ru/material/10-formy-chast-2/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover495-white10.png" alt="#10 - Формы. Часть 2" class="header__content-img">
+                            <div class="header__content-title">
+                                #10 - Формы. Часть 2                            </div>
+                        </a>
+                    </li>
+                                </ul>
+            </li>
+                        <li class="tabs__content ">
+                <ul class="header__content-list">
+                                    <li class="header__content-item " data-title="#7 - Синхронизация с удаленным сервером. Deployment.">
+                        <a href="http://loftblog.ru/material/7-sinxronizaciya-s-udalennym-serverom-deployment/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover607-white7.png" alt="#7 - Синхронизация с удаленным сервером. Deployment." class="header__content-img">
+                            <div class="header__content-title">
+                                #7 - Синхронизация с удаленным сервером. Deployment.                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#6 - Плагины">
+                        <a href="http://loftblog.ru/material/6-plaginy/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover607-white6.png" alt="#6 - Плагины" class="header__content-img">
+                            <div class="header__content-title">
+                                #6 - Плагины                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#3 - Основные модули программы.">
+                        <a href="http://loftblog.ru/material/3-osnovnye-moduli-programmy/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover607-white3.png" alt="#3 - Основные модули программы." class="header__content-img">
+                            <div class="header__content-title">
+                                #3 - Основные модули программы.                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#4 - Как ускорить работу PhpStorm?">
+                        <a href="http://loftblog.ru/material/4-kak-uskorit-rabotu-phpstorm/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover607-white4.png" alt="#4 - Как ускорить работу PhpStorm?" class="header__content-img">
+                            <div class="header__content-title">
+                                #4 - Как ускорить работу PhpStorm?                            </div>
+                        </a>
+                    </li>
+                                </ul>
+            </li>
+                        <li class="tabs__content ">
+                <ul class="header__content-list">
+                                    <li class="header__content-item " data-title="#4 - Модульные сетки в Photoshop">
+                        <a href="http://loftblog.ru/material/modulnye-setki-v-photoshop-2/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover451-white4.png" alt="#4 - Модульные сетки в Photoshop" class="header__content-img">
+                            <div class="header__content-title">
+                                #4 - Модульные сетки в Photoshop                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#5 - 5 фишек фотошопа для веб-дизайна.">
+                        <a href="http://loftblog.ru/material/osnovy-photoshop-dlya-veb-dizajnera-urok-5-5-fishek-fotoshopa-dlya-veb-dizajna/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover475-white5.png" alt="#5 - 5 фишек фотошопа для веб-дизайна." class="header__content-img">
+                            <div class="header__content-title">
+                                #5 - 5 фишек фотошопа для веб-дизайна.                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#4 - Как подобрать фотографии для сайта. Правила и сервисы.">
+                        <a href="http://loftblog.ru/material/osnovy-photoshop-dlya-veb-dizajnera-urok-4-kak-podobrat-fotografii-dlya-sajta-pravila-i-servisy/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover475-white4.png" alt="#4 - Как подобрать фотографии для сайта. Правила и сервисы." class="header__content-img">
+                            <div class="header__content-title">
+                                #4 - Как подобрать фотографии для сайта. Правила и сервисы.                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#3 - Шрифты в фотошопе.">
+                        <a href="http://loftblog.ru/material/rabota-s-tekstom-v-veb-dizajne-shrifty-v-fotoshope-urok-3/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover475-white3.png" alt="#3 - Шрифты в фотошопе." class="header__content-img">
+                            <div class="header__content-title">
+                                #3 - Шрифты в фотошопе.                            </div>
+                        </a>
+                    </li>
+                                </ul>
+            </li>
+                        <li class="tabs__content ">
+                <ul class="header__content-list">
+                                    <li class="header__content-item " data-title="#10 - Добавляем и редактируем файл robots.txt">
+                        <a href="http://loftblog.ru/material/8-dobavlyaem-i-redaktiruem-fajl-robots-txt/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover568-white10.png" alt="#10 - Добавляем и редактируем файл robots.txt" class="header__content-img">
+                            <div class="header__content-title">
+                                #10 - Добавляем и редактируем файл robots.txt                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#5 – Создание игры “Космические рейнджеры” (anonymous function)">
+                        <a href="http://loftblog.ru/material/5-sozdanie-igry-kosmicheskie-rejndzhery-anonymous-function/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover604-white5.png" alt="#5 – Создание игры “Космические рейнджеры” (anonymous function)" class="header__content-img">
+                            <div class="header__content-title">
+                                #5 – Создание игры “Космические рейнджеры” (anonymous function)                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#4 – Создание игры “Космические рейнджеры” (Controller)">
+                        <a href="http://loftblog.ru/material/4-sozdanie-igry-kosmicheskie-rejndzhery-controller/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover604-white4.png" alt="#4 – Создание игры “Космические рейнджеры” (Controller)" class="header__content-img">
+                            <div class="header__content-title">
+                                #4 – Создание игры “Космические рейнджеры” (Controller)                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="СОВРЕМЕННЫЕ ТРЕНДЫ ИНТЕРНЕТ-МАРКЕТИНГА">
+                        <a href="http://loftblog.ru/material/sovremennye-trendy-internet-marketinga/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/07/34екпавчс-vcvnkitrer-d.jpg" alt="СОВРЕМЕННЫЕ ТРЕНДЫ ИНТЕРНЕТ-МАРКЕТИНГА" class="header__content-img">
+                            <div class="header__content-title">
+                                СОВРЕМЕННЫЕ ТРЕНДЫ ИНТЕРНЕТ-МАРКЕТИНГА                            </div>
+                        </a>
+                    </li>
+                                </ul>
+            </li>
+                        <li class="tabs__content ">
+                <ul class="header__content-list">
+                                    <li class="header__content-item " data-title="#1 - Коллекции. Основной обзор">
+                        <a href="http://loftblog.ru/material/1-kollekcii-osnovnoj-obzor/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover659-white1.png" alt="#1 - Коллекции. Основной обзор" class="header__content-img">
+                            <div class="header__content-title">
+                                #1 - Коллекции. Основной обзор                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#1 - Введение">
+                        <a href="http://loftblog.ru/material/1-vvedenie-2/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover657-white1.png" alt="#1 - Введение" class="header__content-img">
+                            <div class="header__content-title">
+                                #1 - Введение                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#7 - Синхронизация с удаленным сервером. Deployment.">
+                        <a href="http://loftblog.ru/material/7-sinxronizaciya-s-udalennym-serverom-deployment/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover607-white7.png" alt="#7 - Синхронизация с удаленным сервером. Deployment." class="header__content-img">
+                            <div class="header__content-title">
+                                #7 - Синхронизация с удаленным сервером. Deployment.                            </div>
+                        </a>
+                    </li>
+                                    <li class="header__content-item " data-title="#3 - Объекты">
+                        <a href="http://loftblog.ru/material/3-obekty/" class="header__content-link">
+                            <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover602-white3.png" alt="#3 - Объекты" class="header__content-img">
+                            <div class="header__content-title">
+                                #3 - Объекты                            </div>
+                        </a>
+                    </li>
+                                </ul>
+            </li>
+            
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>          <div class="header__menus-wrap news__menu-head" >
+  <div class="container">
+    <div class="header__lessons">
+      <div class="header__tabs--wrap">
+          <ul class="header__tabs-list">
+                                <li class="tabs__item active">
+                      <a href="http://loftblog.ru/news/"
+                         class="tabs__link">
+                          Все                      </a>
+                  </li>
+                                    <li class="tabs__item ">
+                      <a href="http://loftblog.ru/videocast/loftcast/"
+                         class="tabs__link">
+                          Loftcast                      </a>
+                  </li>
+                                    <li class="tabs__item ">
+                      <a href="http://loftblog.ru/videocast/loftnews/"
+                         class="tabs__link">
+                          Loftnews                      </a>
+                  </li>
+                                    <li class="tabs__item ">
+                      <a href="http://loftblog.ru/videocast/loftvlog/"
+                         class="tabs__link">
+                          LoftVlog                      </a>
+                  </li>
+                                    <li class="tabs__item ">
+                      <a href="http://loftblog.ru/videocast/intervyu/"
+                         class="tabs__link">
+                          Интервью                      </a>
+                  </li>
+                            </ul>
+          <ul class="header__tabs-content">
+                                <li class="tabs__content active">
+                      <ul class="header__content-list">
+                                                        <li class="header__content-item " data-title="Новые тренды интернет-маркетинга">
+                                  <a href="http://loftblog.ru/broadcast/novye-trendy-internet-marketinga/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/08/newtren.jpg" alt="Новые тренды интернет-маркетинга" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Новые тренды интернет-маркетинга                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="Секреты 2GIS! Очки виртуальной реальности!">
+                                  <a href="http://loftblog.ru/broadcast/sekrety-2gis-ochki-virtualnoj-realnosti/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/08/5лофт.jpg" alt="Секреты 2GIS! Очки виртуальной реальности!" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Секреты 2GIS! Очки виртуальной реальности!                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="Level up - система прокачки человека">
+                                  <a href="http://loftblog.ru/broadcast/level-up-sistema-prokachki-cheloveka/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/08/Loftblog-int.jpg" alt="Level up - система прокачки человека" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Level up - система прокачки человека                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="Что такое SMM?">
+                                  <a href="http://loftblog.ru/broadcast/chto-takoe-smm/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/08/smmv-v.jpg" alt="Что такое SMM?" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Что такое SMM?                                      </div>
+                                  </a>
+                              </li>
+                                                </ul>
+                  </li>
+                                    <li class="tabs__content ">
+                      <ul class="header__content-list">
+                                                        <li class="header__content-item " data-title="Loftcast #3 - browsersync, marksheet, sublime text vs atom vs brackets">
+                                  <a href="http://loftblog.ru/broadcast/loftcast-3-browsersync-marksheet-sublime-text-vs-atom-vs-brackets/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover455-white3.png" alt="Loftcast #3 - browsersync, marksheet, sublime text vs atom vs brackets" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Loftcast #3 - browsersync, marksheet, sublime text vs atom vs brackets                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="Loftcast #2 - Responsive Patterns, Atom, PostCssков">
+                                  <a href="http://loftblog.ru/broadcast/loftcast-2-responsive-patterns-atom-postcsskov/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover455-white2.png" alt="Loftcast #2 - Responsive Patterns, Atom, PostCssков" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Loftcast #2 - Responsive Patterns, Atom, PostCssков                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="Loftcast #1 - dotdotdot.js. webpack, plainjs.com">
+                                  <a href="http://loftblog.ru/broadcast/loftcast-1-dotdotdot-js-webpack-plainjs-com/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover455-white1.png" alt="Loftcast #1 - dotdotdot.js. webpack, plainjs.com" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Loftcast #1 - dotdotdot.js. webpack, plainjs.com                                      </div>
+                                  </a>
+                              </li>
+                                                </ul>
+                  </li>
+                                    <li class="tabs__content ">
+                      <ul class="header__content-list">
+                                                        <li class="header__content-item " data-title="LoftNews #30 - Fiat 124 Spider Sport, auto.ru, Google Maps">
+                                  <a href="http://loftblog.ru/broadcast/loftnews-30-fiat-124-spider-sport-auto-ru-google-maps/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover418-white33.png" alt="LoftNews #30 - Fiat 124 Spider Sport, auto.ru, Google Maps" class="header__content-img">
+                                      <div class="header__content-title">
+                                          LoftNews #30 - Fiat 124 Spider Sport, auto.ru, Google Maps                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="LoftNews #29 - Prisma, ICQ, WWDC 16, ES7">
+                                  <a href="http://loftblog.ru/broadcast/loftnews-29-prisma-icq-wwdc-16-es7/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover418-white32.png" alt="LoftNews #29 - Prisma, ICQ, WWDC 16, ES7" class="header__content-img">
+                                      <div class="header__content-title">
+                                          LoftNews #29 - Prisma, ICQ, WWDC 16, ES7                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="LoftNews #28 - Happy New Year 2016">
+                                  <a href="http://loftblog.ru/broadcast/loftnews-28-happy-new-year-2016/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover418-white31.png" alt="LoftNews #28 - Happy New Year 2016" class="header__content-img">
+                                      <div class="header__content-title">
+                                          LoftNews #28 - Happy New Year 2016                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="LoftNews #23 - WWDC 15, YAC/M and Google I/O 2015">
+                                  <a href="http://loftblog.ru/broadcast/loftnews-23-wwdc-15-yacm-and-google-io-2015/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/covers/cover418-white26.png" alt="LoftNews #23 - WWDC 15, YAC/M and Google I/O 2015" class="header__content-img">
+                                      <div class="header__content-title">
+                                          LoftNews #23 - WWDC 15, YAC/M and Google I/O 2015                                      </div>
+                                  </a>
+                              </li>
+                                                </ul>
+                  </li>
+                                    <li class="tabs__content ">
+                      <ul class="header__content-list">
+                                                        <li class="header__content-item " data-title="Секреты 2GIS! Очки виртуальной реальности!">
+                                  <a href="http://loftblog.ru/broadcast/sekrety-2gis-ochki-virtualnoj-realnosti/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/08/5лофт.jpg" alt="Секреты 2GIS! Очки виртуальной реальности!" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Секреты 2GIS! Очки виртуальной реальности!                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="В гостях у Зара, митап в mail.ru и обзор аппаратуры для съемок">
+                                  <a href="http://loftblog.ru/broadcast/v-gostyax-u-zara-mitap-v-mail-ru-i-obzor-apparatury-dlya-semok/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/08/4.jpg" alt="В гостях у Зара, митап в mail.ru и обзор аппаратуры для съемок" class="header__content-img">
+                                      <div class="header__content-title">
+                                          В гостях у Зара, митап в mail.ru и обзор аппаратуры для съемок                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="Почему рынок IT достигнет пика через 57 лет?">
+                                  <a href="http://loftblog.ru/broadcast/pochemu-rynok-it-dostignet-pika-cherez-57-let/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/07/vlog3.jpg" alt="Почему рынок IT достигнет пика через 57 лет?" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Почему рынок IT достигнет пика через 57 лет?                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="О том как снимается LoftNews">
+                                  <a href="http://loftblog.ru/broadcast/o-tom-kak-snimaetsya-loftnews/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/07/loftodod.jpg" alt="О том как снимается LoftNews" class="header__content-img">
+                                      <div class="header__content-title">
+                                          О том как снимается LoftNews                                      </div>
+                                  </a>
+                              </li>
+                                                </ul>
+                  </li>
+                                    <li class="tabs__content ">
+                      <ul class="header__content-list">
+                                                        <li class="header__content-item " data-title="Интервью с Егором Яценко и Юлией Раковой из компании GetResponse Россия">
+                                  <a href="http://loftblog.ru/broadcast/intervyu-s-egorom-yacenko-i-yuliej-rakovoj-iz-kompanii-getresponse-rossiya/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/08/гетрес.jpg" alt="Интервью с Егором Яценко и Юлией Раковой из компании GetResponse Россия" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Интервью с Егором Яценко и Юлией Раковой из компании GetResponse Россия                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="Что такое Яндекс.Маркет и как он развивается?">
+                                  <a href="http://loftblog.ru/broadcast/chto-takoe-yandeks-market-i-kak-on-razvivaetsya/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/07/волынский-сайт.jpg" alt="Что такое Яндекс.Маркет и как он развивается?" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Что такое Яндекс.Маркет и как он развивается?                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="Как проанализировать все отзывы о вашей компании?">
+                                  <a href="http://loftblog.ru/broadcast/kak-proanalizirovat-vse-otzyvy-o-vashej-kompanii/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/07/черный-сайт.jpg" alt="Как проанализировать все отзывы о вашей компании?" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Как проанализировать все отзывы о вашей компании?                                      </div>
+                                  </a>
+                              </li>
+                                                        <li class="header__content-item " data-title="Что такое RTB-реклама и как она развивается?">
+                                  <a href="http://loftblog.ru/broadcast/chto-takoe-rtb-reklama-i-kak-ona-razvivaetsya/" class="header__content-link">
+                                      <img src="/images/1px.png" data-src="http://loftblog.ru/cms/wp-content/uploads/2016/07/риалвеб-сайт.jpg" alt="Что такое RTB-реклама и как она развивается?" class="header__content-img">
+                                      <div class="header__content-title">
+                                          Что такое RTB-реклама и как она развивается?                                      </div>
+                                  </a>
+                              </li>
+                                                </ul>
+                  </li>
+                  
+
+          </ul>
+      </div>
+    </div>
+  </div>
+</div> 
+      </section>
+					 <section class="lesson-head">
+  <div class="container">
+    <div class="lesson-head__parent">Javascript</div>	
+     <div class="lesson-head__title">Автоматизация для самых ленивых вместе с Grunt.js</div>    <div class="lesson-head__inforow">
+      <div class="lesson-head__date lesson-head__column">
+        <div class="lesson__date__day">21</div>
+        <div class="lesson__date-wrap">
+          <div class="lesson__date__month">Мая</div>
+          <div class="lesson__date__year">2013</div>
+        </div>
+      </div>
+      <a href="http://loftblog.ru/author/nick-chernobaev/" class="lesson-head__author lesson-head__column">
+        <div class="lesson__author__img">
+          <img src="http://loftblog.ru/cms/wp-content/uploads/2015/12/nick-150x150.jpg" alt="Николай Чернобаев аватар"></div>
+        <div class="lesson__author-wrap">
+          <div class="lesson__author__text">Автор урока:</div>
+          <div class="lesson__author__name">Николай Чернобаев</div>
+        </div>
+      </a>
+      <div class="lesson-head__discuss lesson-head__column">
+        <a href="#" class="lesson-head__comments">
+          <span class="lesson__comments__number">10</span>
+          <div class="lesson__comments__text">комментариев</div>
+        </a>
+        <div class="lesson-head__likes in_c">
+        <span class="lesson__comments__number">0</span>
+          <div class="lesson__comments__text">лайков</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="lesson-main">
+  <div class="container">
+    <div class="lesson-main__wrap">
+		<p>
+В этом скринкасте, мы узнаем что такое Build и научимся автоматизировать этот интересный процесс. Рассмотрим такие вещи как: конкатенация и минификация js и css файлов, проверка на ошибки, слежка за изменениями файлов и удаление логов. И после нашей работы в этом уроке, все это процессы будут выполняться всего лишь одной командой в консоли.
+</p>
+<p><span id="more-663"></span></p>
+<div class="tutorial-media">
+<div class="vdo__container"><iframe width="640" height="420" src="https://www.youtube.com/embed/6mYgrJK768M" frameborder="0" allowfullscreen></iframe></div>
+</div>
+<p>
+Начнем с того, что такое Build. Простыми словами, Build &#8212; это сборка вашего проекта. Обычно вы пишете код приложения модульно, в раздельных файлах и с множеством комментариев (искренне надеюсь на это, что вы дорогой посетитель loft blog, именно так и поступаете). Все это делается для того, чтобы код было легче поддерживать. Но ни для кого не секрет, что чем больше файлов и чем шире комментарии, тем больше времени сервер потратит, на загрузку таких файлов. Именно поэтому на production (боевой сервер в интернете), выливается оптимизированная версия проекта, в которой все статичные файлы конкатенированы (соединены в один) и минифицированы в одну строку (удалены все пробелы, комментарии, укорочены названия переменных). Такая сжатая версия и называется Build&#8217;ом. О процессе создания такой версии проекта, сегодня речь и пойдет.
+</p>
+<p>
+Инструмент который поможет нам с билдом, будет Grunt.js. Но минификация и конкатенация, это далеко не все, что умеет Грант. Приступим к делу и изучим этот замечательный инструмент. Для начала надо знать, что в каждом проекте где используется Grunt.js, должно быть 2 файла: package.json и Gruntfile.js. Оба должны лежать в корневой директории проекта. Но сначала установим сам Grunt, который является модулем npm (пакетного менеджера Node.js). Вводим следующие команды в консоли:
+</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b1e6982702943" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+npm uninstall -g grunt //Эта строка нужна если у вас уже была установлена старая версия Гранта.</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b1e6982702943-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b1e6982702943-1"><span class="crayon-e">npm </span><span class="crayon-v">uninstall</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">g</span><span class="crayon-h"> </span><span class="crayon-v">grunt</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-o">/</span>Эта<span class="crayon-h"> </span>строка<span class="crayon-h"> </span>нужна<span class="crayon-h"> </span>если<span class="crayon-h"> </span>у<span class="crayon-h"> </span>вас<span class="crayon-h"> </span>уже<span class="crayon-h"> </span>была<span class="crayon-h"> </span>установлена<span class="crayon-h"> </span>старая<span class="crayon-h"> </span>версия<span class="crayon-h"> </span>Гранта<span class="crayon-sy">.</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0021 seconds] -->
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b1f1326368110" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+npm install -g grunt-cli</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b1f1326368110-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b1f1326368110-1"><span class="crayon-e">npm </span><span class="crayon-v">install</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">g</span><span class="crayon-h"> </span><span class="crayon-v">grunt</span><span class="crayon-o">-</span><span class="crayon-v">cli</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0005 seconds] -->
+<p></p>
+<p>После установки создадим папку с проектом, а в нем первый файл package.json.<br />
+package.json: используется npm для хранения метаданных для проектов опубликованных как npm модули.<br />
+в нем хранятся все зависимости на дополнительные модули гранта, а также название проекта и его версия.
+</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b1f4803625865" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">JavaScript</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+{
+	"name" : "test-grunt-project",
+	"version" : "0.0.1",
+	"devDependencies" : {
+		"grunt" : "latest",
+		"grunt-contrib-jshint" : "latest", //плагин jsHint, для проверки кода на ошибки
+		"grunt-contrib-concat" : "latest", // плагин конкатенации js файлов
+		"grunt-contrib-uglify" : "latest", //плагин минификации js
+		"grunt-contrib-cssmin" : "latest", // плагин минификации и конкатенации css
+		"grunt-contrib-watch"  : "latest", // плагин для отслеживания изменений файлов
+		"grunt-remove-logging" : "latest" // плагин для удаления логов.
+	}
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b1f4803625865-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1f4803625865-2">2</div><div class="crayon-num" data-line="crayon-57cbfddf3b1f4803625865-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1f4803625865-4">4</div><div class="crayon-num" data-line="crayon-57cbfddf3b1f4803625865-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1f4803625865-6">6</div><div class="crayon-num" data-line="crayon-57cbfddf3b1f4803625865-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1f4803625865-8">8</div><div class="crayon-num" data-line="crayon-57cbfddf3b1f4803625865-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1f4803625865-10">10</div><div class="crayon-num" data-line="crayon-57cbfddf3b1f4803625865-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1f4803625865-12">12</div><div class="crayon-num" data-line="crayon-57cbfddf3b1f4803625865-13">13</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b1f4803625865-1"><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1f4803625865-2"><span class="crayon-h">	</span><span class="crayon-s">"name"</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"test-grunt-project"</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b1f4803625865-3"><span class="crayon-h">	</span><span class="crayon-s">"version"</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"0.0.1"</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1f4803625865-4"><span class="crayon-h">	</span><span class="crayon-s">"devDependencies"</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-57cbfddf3b1f4803625865-5"><span class="crayon-h">		</span><span class="crayon-s">"grunt"</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"latest"</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1f4803625865-6"><span class="crayon-h">		</span><span class="crayon-s">"grunt-contrib-jshint"</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"latest"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">//плагин jsHint, для проверки кода на ошибки</span></div><div class="crayon-line" id="crayon-57cbfddf3b1f4803625865-7"><span class="crayon-h">		</span><span class="crayon-s">"grunt-contrib-concat"</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"latest"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">// плагин конкатенации js файлов</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1f4803625865-8"><span class="crayon-h">		</span><span class="crayon-s">"grunt-contrib-uglify"</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"latest"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">//плагин минификации js</span></div><div class="crayon-line" id="crayon-57cbfddf3b1f4803625865-9"><span class="crayon-h">		</span><span class="crayon-s">"grunt-contrib-cssmin"</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"latest"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">// плагин минификации и конкатенации css</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1f4803625865-10"><span class="crayon-h">		</span><span class="crayon-s">"grunt-contrib-watch"</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"latest"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">// плагин для отслеживания изменений файлов</span></div><div class="crayon-line" id="crayon-57cbfddf3b1f4803625865-11"><span class="crayon-h">		</span><span class="crayon-s">"grunt-remove-logging"</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"latest"</span><span class="crayon-h"> </span><span class="crayon-c">// плагин для удаления логов.</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1f4803625865-12"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-57cbfddf3b1f4803625865-13"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0028 seconds] -->
+<p></p>
+<p>После того как мы заполнили package.json и выбрали какие плагины для гранта будем использовать, надо их установить двумя простыми командами в консоли.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b1f7029425518" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+npm install grunt --save-dev</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b1f7029425518-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b1f7029425518-1"><span class="crayon-e">npm </span><span class="crayon-e">install </span><span class="crayon-v">grunt</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">save</span><span class="crayon-o">-</span><span class="crayon-v">dev</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0005 seconds] -->
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b1fa801007679" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+npm install</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b1fa801007679-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b1fa801007679-1"><span class="crayon-e">npm </span><span class="crayon-v">install</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0003 seconds] -->
+<p> </p>
+<p>Следующим шагом в нашем уроке, будет создание js и сss файлов нашего тестового проекта. Все они будут лежать в папке src. В подпапке js &#8212; 2 файла file1.js и file2.js. И в подпапке css &#8212; style1.css и style2.css.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b1fd662795592" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">JavaScript</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+//file1.js
+(function() {
+	var tree = 'oak';
+
+	var funcOne = function () {};
+
+	console.log( tree );
+})();		</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b1fd662795592-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1fd662795592-2">2</div><div class="crayon-num" data-line="crayon-57cbfddf3b1fd662795592-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1fd662795592-4">4</div><div class="crayon-num" data-line="crayon-57cbfddf3b1fd662795592-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1fd662795592-6">6</div><div class="crayon-num" data-line="crayon-57cbfddf3b1fd662795592-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1fd662795592-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b1fd662795592-1"><span class="crayon-c">//file1.js</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1fd662795592-2"><span class="crayon-sy">(</span><span class="crayon-t">function</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-57cbfddf3b1fd662795592-3"><span class="crayon-h">	</span><span class="crayon-t">var</span><span class="crayon-h"> </span><span class="crayon-e ">tree</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">'oak'</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1fd662795592-4">&nbsp;</div><div class="crayon-line" id="crayon-57cbfddf3b1fd662795592-5"><span class="crayon-h">	</span><span class="crayon-t">var</span><span class="crayon-h"> </span><span class="crayon-v">funcOne</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1fd662795592-6">&nbsp;</div><div class="crayon-line" id="crayon-57cbfddf3b1fd662795592-7"><span class="crayon-h">	</span><span class="crayon-v">console</span><span class="crayon-sy">.</span><span class="crayon-e">log</span><span class="crayon-sy">(</span><span class="crayon-h"> </span><span class="crayon-i">tree</span><span class="crayon-h"> </span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1fd662795592-8"><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h">		</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0013 seconds] -->
+<p></p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b1ff531929708" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">JavaScript</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+//file2.js
+(function() {
+	var two = 2;
+	var funcTwo = function () {
+	};
+
+	console.log( two );
+})();			</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b1ff531929708-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1ff531929708-2">2</div><div class="crayon-num" data-line="crayon-57cbfddf3b1ff531929708-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1ff531929708-4">4</div><div class="crayon-num" data-line="crayon-57cbfddf3b1ff531929708-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1ff531929708-6">6</div><div class="crayon-num" data-line="crayon-57cbfddf3b1ff531929708-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b1ff531929708-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b1ff531929708-1"><span class="crayon-c">//file2.js</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1ff531929708-2"><span class="crayon-sy">(</span><span class="crayon-t">function</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-57cbfddf3b1ff531929708-3"><span class="crayon-h">	</span><span class="crayon-t">var</span><span class="crayon-h"> </span><span class="crayon-v">two</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1ff531929708-4"><span class="crayon-h">	</span><span class="crayon-t">var</span><span class="crayon-h"> </span><span class="crayon-v">funcTwo</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-57cbfddf3b1ff531929708-5"><span class="crayon-h">	</span><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1ff531929708-6">&nbsp;</div><div class="crayon-line" id="crayon-57cbfddf3b1ff531929708-7"><span class="crayon-h">	</span><span class="crayon-v">console</span><span class="crayon-sy">.</span><span class="crayon-e">log</span><span class="crayon-sy">(</span><span class="crayon-h"> </span><span class="crayon-i">two</span><span class="crayon-h"> </span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b1ff531929708-8"><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h">			</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0016 seconds] -->
+<p></p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b202777499749" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+* {
+	font-size: 16px;
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b202777499749-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b202777499749-2">2</div><div class="crayon-num" data-line="crayon-57cbfddf3b202777499749-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b202777499749-1"><span class="crayon-k ">* </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b202777499749-2"><span class="crayon-h">	</span><span class="crayon-e ">font-size</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">16px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-57cbfddf3b202777499749-3"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0004 seconds] -->
+<p></p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b204032954203" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+p {
+	color: red;
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b204032954203-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b204032954203-2">2</div><div class="crayon-num" data-line="crayon-57cbfddf3b204032954203-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b204032954203-1"><span class="crayon-k ">p </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b204032954203-2"><span class="crayon-h">	</span><span class="crayon-e ">color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">red</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-57cbfddf3b204032954203-3"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0003 seconds] -->
+<p></p>
+<p>
+Теперь мы можем приступить к самому интересному. К Gruntfile.js (кстати его можно назвать и Gruntfile.coffee &#8212; если вы пишите на CoffeScript&#8217;е) , где будет описана конфигурация плагинов, определение задач, которые будут автоматизировать наши процессы и загрузка грант плагинов.
+</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57cbfddf3b207882663668" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-mixed-highlight" title="Содержит коды на разных языках"></span><div class="crayon-button crayon-nums-button" title="Включить/Отключить нумерацию строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Включить/Отключить подсветку кода"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Включить/Отключить перенос строк"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">JavaScript</span></div></div>
+			<div class="crayon-info" style="min-height: 16,8px !important; line-height: 16,8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+module.exports = function (grunt) {
+	//описываем конфигурацию 
+	grunt.initConfig({
+	    pkg: grunt.file.readJSON('package.json'), //подгружаем package.json, чтобы использовать его данные
+
+	    jshint: {     // описываем как будет проверять наш код - jsHint
+	      options: {
+	        curly: true,
+	        eqeqeq: true,
+	        immed: true,
+	        latedef: true,
+	        newcap: true,
+	        noarg: true,
+	        sub: true,
+	        undef: true,
+	        eqnull: true,
+	        browser: true,
+	        globals: {
+	          jQuery: true,
+	          $: true,
+	          console: true
+	        }
+	      },
+	      '&lt;%= pkg.name %&gt;': {  //вставляем название проекта из package.json
+	        src: [ 'src/js/**/*.js' ]  //какие файлы надо проверять
+	      }
+	    },
+
+	    concat: {  //описываем работу плагина конкатенации
+	    	dist: {
+	    		src: ['src/js/file1.js', 'src/js/file2.js'],  // какие файлы конкатенировать
+	    		dest: 'dest/build.js'  // куда класть файл, который получиться после процесса конкатенации 
+	    	}
+	    },
+
+	    uglify: {  //описываем работу плагина минификации js - uglify.
+	    	options: {
+	    		stripBanners: true,
+	    		banner: '/* &lt;%= pkg.name %&gt; - v&lt;%= pkg.version %&gt; - &lt;%= grunt.template.today("yyyy-mm-dd") %&gt; */\n' //комментарий который будет в минифицированном файле.
+	    	},
+
+	    	build: {
+	    		src: 'dest/build.js',  // какой файл минифицировать
+	    		dest: 'dest/build.min.js' // куда класть файл, который получиться после процесса минификации
+	    	}
+	    },
+
+	    cssmin: { //описываем работу плагина минификации и конкатенации css.
+	    	with_banner: {
+	    		options: {
+	    			banner: '/* My minified CSS */'  //комментарий который будет в output файле.
+	    		},
+
+	    		files: {
+	    			'dest/style.min.css' : ['src/css/style1.css', 'src/css/style2.css']   // первая строка - output файл. массив из строк, какие файлы конкатенировать и минифицировать.
+	    		}
+	    	}
+	    },
+
+	    watch: { //описываем работу плагина слежки за файлами.
+	    	scripts: {
+		    	files: ['src/js/*.js'],  //следить за всеми js файлами в папке src
+		    	tasks: ['jshint', 'concat', 'uglify', 'removelogging']  //при их изменении запускать следующие задачи
+	    	},
+	    	css: {
+		    	files: ['src/css/*.css'], //следить за всеми css файлами в папке src
+		    	tasks: ['cssmin'] //при их изменении запускать следующую задачу
+	    	}
+	    },
+
+
+	    removelogging: { //описываем работу плагина удаления логов
+	    	dist: {
+     		  src: "dest/build.min.js", // файл который надо отчистить от console.log
+		  dest: "dest/build.clean.js" // выходной файл, который получим после очистки
+	    	}
+	    }
+
+
+	});
+
+	//подгружаем необходимые плагины
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-remove-logging');
+
+
+	//регистрируем задачу 
+	grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'cssmin', 'removelogging', 'watch']); //задача по умолчанию, просто grunt
+	grunt.registerTask('test', ['']); //пока пусто, но кто знает, возможно в следующих уроках мы этим воспользуемся :)
+};</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-2">2</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-4">4</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-6">6</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-8">8</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-10">10</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-12">12</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-14">14</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-16">16</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-18">18</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-20">20</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-22">22</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-24">24</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-26">26</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-28">28</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-30">30</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-32">32</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-34">34</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-36">36</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-38">38</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-40">40</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-42">42</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-44">44</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-46">46</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-48">48</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-49">49</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-50">50</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-51">51</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-52">52</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-53">53</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-54">54</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-55">55</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-56">56</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-57">57</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-58">58</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-59">59</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-60">60</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-61">61</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-62">62</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-63">63</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-64">64</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-65">65</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-66">66</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-67">67</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-68">68</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-69">69</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-70">70</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-71">71</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-72">72</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-73">73</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-74">74</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-75">75</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-76">76</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-77">77</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-78">78</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-79">79</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-80">80</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-81">81</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-82">82</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-83">83</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-84">84</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-85">85</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-86">86</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-87">87</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-88">88</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-89">89</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-90">90</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-91">91</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-92">92</div><div class="crayon-num" data-line="crayon-57cbfddf3b207882663668-93">93</div><div class="crayon-num crayon-striped-num" data-line="crayon-57cbfddf3b207882663668-94">94</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-57cbfddf3b207882663668-1"><span class="crayon-v">module</span><span class="crayon-sy">.</span><span class="crayon-v">exports</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">grunt</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-2"><span class="crayon-h">	</span><span class="crayon-c">//описываем конфигурацию </span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-3"><span class="crayon-h">	</span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-e">initConfig</span><span class="crayon-sy">(</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-4"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">pkg</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-v">file</span><span class="crayon-sy">.</span><span class="crayon-e">readJSON</span><span class="crayon-sy">(</span><span class="crayon-s">'package.json'</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">//подгружаем package.json, чтобы использовать его данные</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-5">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-6"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">jshint</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-c">// описываем как будет проверять наш код - jsHint</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-7"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">options</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-8"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">curly</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-9"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">eqeqeq</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-10"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">immed</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-11"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">latedef</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-12"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">newcap</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-13"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">noarg</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-14"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">sub</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-15"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">undef</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-16"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">eqnull</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-17"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">browser</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-18"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">globals</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-19"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">jQuery</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-20"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">$</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-21"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">console</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-22"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-23"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-24"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s">'<span class="crayon-ta">&lt;%=</span><span class="crayon-h"> </span><span class="crayon-v">pkg</span><span class="crayon-sy">.</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-ta">%&gt;</span>'</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">//вставляем название проекта из package.json</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-25"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">src</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-h"> </span><span class="crayon-s">'src/js/**/*.js'</span><span class="crayon-h"> </span><span class="crayon-sy">]</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">//какие файлы надо проверять</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-26"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-27"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-28">&nbsp;</div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-29"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">concat</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">//описываем работу плагина конкатенации</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-30"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">dist</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-31"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-v">src</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">'src/js/file1.js'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'src/js/file2.js'</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">// какие файлы конкатенировать</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-32"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-v">dest</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'dest/build.js'</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">// куда класть файл, который получиться после процесса конкатенации </span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-33"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-34"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-35">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-36"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">uglify</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">//описываем работу плагина минификации js - uglify.</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-37"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">options</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-38"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-v">stripBanners</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-t">true</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-39"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-v">banner</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'/* <span class="crayon-ta">&lt;%=</span><span class="crayon-h"> </span><span class="crayon-v">pkg</span><span class="crayon-sy">.</span><span class="crayon-v">name</span><span class="crayon-h"> </span><span class="crayon-ta">%&gt;</span> - v<span class="crayon-ta">&lt;%=</span><span class="crayon-h"> </span><span class="crayon-v">pkg</span><span class="crayon-sy">.</span><span class="crayon-v">version</span><span class="crayon-h"> </span><span class="crayon-ta">%&gt;</span> - <span class="crayon-ta">&lt;%=</span><span class="crayon-h"> </span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-v">template</span><span class="crayon-sy">.</span><span class="crayon-e">today</span><span class="crayon-sy">(</span><span class="crayon-s">"yyyy-mm-dd"</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-ta">%&gt;</span> */\n'</span><span class="crayon-h"> </span><span class="crayon-c">//комментарий который будет в минифицированном файле.</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-40"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-41">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-42"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">build</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-43"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-v">src</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'dest/build.js'</span><span class="crayon-sy">,</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">// какой файл минифицировать</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-44"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-v">dest</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'dest/build.min.js'</span><span class="crayon-h"> </span><span class="crayon-c">// куда класть файл, который получиться после процесса минификации</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-45"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-46"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-47">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-48"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">cssmin</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-c">//описываем работу плагина минификации и конкатенации css.</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-49"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">with_banner</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-50"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-v">options</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-51"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;			</span><span class="crayon-v">banner</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'/* My minified CSS */'</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">//комментарий который будет в output файле.</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-52"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-53">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-54"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-v">files</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-55"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;			</span><span class="crayon-s">'dest/style.min.css'</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">'src/css/style1.css'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'src/css/style2.css'</span><span class="crayon-sy">]</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-c">// первая строка - output файл. массив из строк, какие файлы конкатенировать и минифицировать.</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-56"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;		</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-57"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-58"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-59">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-60"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">watch</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-c">//описываем работу плагина слежки за файлами.</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-61"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">scripts</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-62"><span class="crayon-h">		&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">files</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">'src/js/*.js'</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">//следить за всеми js файлами в папке src</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-63"><span class="crayon-h">		&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">tasks</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">'jshint'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'concat'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'uglify'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'removelogging'</span><span class="crayon-sy">]</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">//при их изменении запускать следующие задачи</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-64"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-65"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">css</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-66"><span class="crayon-h">		&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">files</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">'src/css/*.css'</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">//следить за всеми css файлами в папке src</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-67"><span class="crayon-h">		&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">tasks</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">'cssmin'</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-c">//при их изменении запускать следующую задачу</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-68"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-69"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-70">&nbsp;</div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-71">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-72"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">removelogging</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-c">//описываем работу плагина удаления логов</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-73"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-v">dist</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-74"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; 		&nbsp;&nbsp;</span><span class="crayon-v">src</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"dest/build.min.js"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-c">// файл который надо отчистить от console.log</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-75"><span class="crayon-h">		&nbsp;&nbsp;</span><span class="crayon-v">dest</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"dest/build.clean.js"</span><span class="crayon-h"> </span><span class="crayon-c">// выходной файл, который получим после очистки</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-76"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;	</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-77"><span class="crayon-h">	&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-78">&nbsp;</div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-79">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-80"><span class="crayon-h">	</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-81">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-82"><span class="crayon-h">	</span><span class="crayon-c">//подгружаем необходимые плагины</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-83"><span class="crayon-h">	</span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-e">loadNpmTasks</span><span class="crayon-sy">(</span><span class="crayon-s">'grunt-contrib-jshint'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-84"><span class="crayon-h">	</span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-e">loadNpmTasks</span><span class="crayon-sy">(</span><span class="crayon-s">'grunt-contrib-concat'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-85"><span class="crayon-h">	</span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-e">loadNpmTasks</span><span class="crayon-sy">(</span><span class="crayon-s">'grunt-contrib-uglify'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-86"><span class="crayon-h">	</span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-e">loadNpmTasks</span><span class="crayon-sy">(</span><span class="crayon-s">'grunt-contrib-cssmin'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-87"><span class="crayon-h">	</span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-e">loadNpmTasks</span><span class="crayon-sy">(</span><span class="crayon-s">'grunt-contrib-watch'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-88"><span class="crayon-h">	</span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-e">loadNpmTasks</span><span class="crayon-sy">(</span><span class="crayon-s">'grunt-remove-logging'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-89">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-90">&nbsp;</div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-91"><span class="crayon-h">	</span><span class="crayon-c">//регистрируем задачу </span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-92"><span class="crayon-h">	</span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-e">registerTask</span><span class="crayon-sy">(</span><span class="crayon-s">'default'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">'jshint'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'concat'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'uglify'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'cssmin'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'removelogging'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'watch'</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-c">//задача по умолчанию, просто grunt</span></div><div class="crayon-line" id="crayon-57cbfddf3b207882663668-93"><span class="crayon-h">	</span><span class="crayon-v">grunt</span><span class="crayon-sy">.</span><span class="crayon-e">registerTask</span><span class="crayon-sy">(</span><span class="crayon-s">'test'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">''</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-c">//пока пусто, но кто знает, возможно в следующих уроках мы этим воспользуемся :)</span></div><div class="crayon-line crayon-striped-line" id="crayon-57cbfddf3b207882663668-94"><span class="crayon-sy">}</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0,0179 seconds] -->
+<p></p>
+<p>
+После тщательного составления нашей конфигурации, опробуем на деле наш процесс автоматизации. Введем в консоли всего одно слово <code>grunt</code>. После чего восторженно наслаждаемся результатами проделанной работы. Ведь теперь у нас есть build версия нашего проекта, полностью готовая к выливанию на production. При любых изменениях файлов, build создается заново и нам не надо делать никаких лишних действий. Автоматизация процессов во всей красе.</p>
+    </div>
+
+  </div>
+</section>
+<section class="lesson-material">
+  <div class="container">
+  <div class="lesson-main__tags"><a href='http://loftblog.ru/tag/build/' title='Посмотреть все записи с build' class='lesson__tag'>build</a><a href='http://loftblog.ru/tag/grunt-js/' title='Посмотреть все записи с grunt.js' class='lesson__tag'>grunt.js</a><a href='http://loftblog.ru/tag/javascript/' title='Посмотреть все записи с JavaScript' class='lesson__tag'>JavaScript</a><a href='http://loftblog.ru/tag/avtomatizaciya/' title='Посмотреть все записи с автоматизация' class='lesson__tag'>автоматизация</a></div>
+    <div class="lesson-material__socials">
+      <div class="material__socials__text">Делись:</div>
+      <ul class="social-likes social-likes_notext">
+        <li class="facebook"></li>
+        <li class="vkontakte"></li>
+        <li class="twitter"></li>
+        <li class="plusone"></li>
+      </ul>
+          </div>
+  </div>
+</section>
+
+<section class="courses popular recommend">
+  <div class="container">
+    <div class="section__title">Рекомендуемые уроки</div>
+    <div class="courses-wrap">
+      <ul class="section__list">
+                <li class="section__item">
+          <a href="http://loftblog.ru/material/cms-dlya-nachinayushhix-joomla-wordpress-drupal-modx-typo3-1-obzor-2/" class="section__item-link">
+            <div class="section__item-img">
+              <img src="http://loftblog.ru/cms/wp-content/uploads/covers/cover446-white1.png" alt="">
+            </div>
+            <div class="section__item-description">
+              <div class="section__item-text-wrap">
+                <div class="section__item-title">#1 - Обзор. </div>
+              </div>
+            </div>
+          </a>
+        </li>
+                <li class="section__item">
+          <a href="http://loftblog.ru/material/bazovye-elementy-stranicy-ch-2-akkordeon/" class="section__item-link">
+            <div class="section__item-img">
+              <img src="http://loftblog.ru/cms/wp-content/uploads/covers/cover441-white2.png" alt="">
+            </div>
+            <div class="section__item-description">
+              <div class="section__item-text-wrap">
+                <div class="section__item-title">#2 - Аккордеон. </div>
+              </div>
+            </div>
+          </a>
+        </li>
+                <li class="section__item">
+          <a href="http://loftblog.ru/material/2-normalizaciya/" class="section__item-link">
+            <div class="section__item-img">
+              <img src="http://loftblog.ru/cms/wp-content/uploads/covers/cover580-white2.png" alt="">
+            </div>
+            <div class="section__item-description">
+              <div class="section__item-text-wrap">
+                <div class="section__item-title">#2 – Нормализация </div>
+              </div>
+            </div>
+          </a>
+        </li>
+                <li class="section__item">
+          <a href="http://loftblog.ru/material/osnovy-php-funkcii/" class="section__item-link">
+            <div class="section__item-img">
+              <img src="http://loftblog.ru/cms/wp-content/uploads/covers/cover466-white8.png" alt="">
+            </div>
+            <div class="section__item-description">
+              <div class="section__item-text-wrap">
+                <div class="section__item-title">#8 - Функции. </div>
+              </div>
+            </div>
+          </a>
+        </li>
+                      </ul>
+    </div>
+  </div>
+</section>
+<section class="section-more">
+    <div class="container">
+    <a href="http://loftblog.ru/material/sozdayom-prodvinutye-adaptivnye-sajty-vmeste-s-enquire-js/" class="section-more__prev">
+      <div class="section_more__title">Создаём продвинутые адаптивные сайты вместе с enquire.js</div></a>
+    <a href="http://loftblog.ru/material/izuchaem-matchmedia-api-i-object-mediaquerylist/" class="section-more__next">
+      <div class="section_more__title">Изучаем matchMedia API и object MediaQueryList</div></a></div>
+</section>
+<section>
+  <div class="container">
+      
+<div id="comments" class="comments-area">
+	<h3 class="comment-reply-title">Оставь комментарий!</h3>
+
+	
+			<h2 class="comments-title">
+			10 thoughts on &ldquo;<span>Автоматизация для самых ленивых вместе с Grunt.js</span>&rdquo;		</h2>
+
+		
+		<ol class="comment-list">
+					<li class="comment even thread-even depth-1 parent" id="comment-271">
+				<div id="div-comment-271" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">Artur Edamov</cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-271">
+			08.08.2013 в 20:58</a>		</div>
+
+		<p>На последнем этапе (после ввода grunt в консоли) появляется ошибка:<br />
+node.js:201<br />
+throw e; // process.nextTick error, or &#8216;error&#8217; event on first tick</p>
+<p>Не подскажите в чем может быть причина?</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment odd alt depth-2" id="comment-278">
+				<div id="div-comment-278" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">NickyMeloman</cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-278">
+			12.08.2013 в 08:07</a>		</div>
+
+		<p>Без кода ничего не понять. Так можно предположить, что пропустили что то или ошиблись. Попробуйте скопировать код из урока и проверить еще раз</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-483">
+				<div id="div-comment-483" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">kuzroman</cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-483">
+			22.12.2013 в 14:17</a>		</div>
+
+		<p>removelogging &#8212; удаляет console.log() построчно, с того места где он встретил запись.<br />
+Поэтому в конце у вас обфусцированный файл и обрезается до конца.</p>
+<p>Чтобы корректно работал плагин removelogging его необходимо запускать после конкатенации, а потом уже обфусцировать.</p>
+<p>grunt.registerTask(&#8216;default&#8217;, [&#8216;jshint&#8217;, &#8216;concat&#8217;, &#8216;removelogging&#8217;, &#8216;uglify&#8217;, &#8216;cssmin&#8217;, &#8216;watch&#8217;]);</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment odd alt depth-2" id="comment-510">
+				<div id="div-comment-510" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">Viktor Lubchuk</cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-510">
+			11.01.2014 в 00:57</a>		</div>
+
+		<p>странно поставил как  ты и написал но не помогает. grunt.registerTask(&#8216;default&#8217;, [&#8216;jshint&#8217;,&#8217;concat&#8217;, &#8216;removelogging&#8217;, &#8216;uglify&#8217;, &#8216;cssmin&#8217;, &#8216;watch&#8217;]);</p>
+<p>removelogging несрабатывает почемуто с первого раза, только со второго создается клеан файл</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-509">
+				<div id="div-comment-509" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">Viktor Lubchuk</cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-509">
+			11.01.2014 в 00:49</a>		</div>
+
+		<p>доброго времени суток . посмотрел видео. очень поучительно и интересно.</p>
+<p>даже не знал что такое существует)</p>
+<p>у меня происходит глюк когда я делаю uglify файлам js то получаю такую строку :<br />
+!function(){var a=&#187;viktor&#187;;console.log(a)}(),function(){var a=2;console.log(a)}();</p>
+<p>в начале строки стоит восклецательный знак , в чем причина я не понимаю.<br />
+делаю вточеости все по уроку на видео и там смотрю все чисто а у меня с воскл знаком. кто вкурсе в чем может быть проблема??</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-562">
+				<div id="div-comment-562" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">Kuznetsov Kirill</cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-562">
+			23.02.2014 в 20:14</a>		</div>
+
+		<p>вместо того что бы вручную писать package.json, лучше использовать команду npm init</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		<ol class="children">
+		<li class="comment even depth-2" id="comment-611">
+				<div id="div-comment-611" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">Parag0n</cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-611">
+			05.04.2014 в 08:19</a>		</div>
+
+		<p>Ага, а если скопировать package.json отсюда, то npm install будет ругаться на //</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-577">
+				<div id="div-comment-577" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href='http://korobochkin.com/' rel='external nofollow' class='url'>Kolya Korobochkin</a></cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-577">
+			16.03.2014 в 16:35</a>		</div>
+
+		<p>Документация ко всем этим свистелкам просто ужасная. Поразительно.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-716">
+				<div id="div-comment-716" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">Dmitry Karyakin</cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-716">
+			15.06.2014 в 13:23</a>		</div>
+
+		<p>У меня заработало при таком порядке подключения (хотя как я понимаю это не должно быть решающим фактором удачного запуска)</p>
+<p>grunt.registerTask(&#8216;default&#8217;, [&#8216;jshint&#8217;, &#8216;concat&#8217;,&#8217;removelogging&#8217;, &#8216;uglify&#8217;,&#8217;cssmin&#8217;,&#8217;watch&#8217;]);</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-775">
+				<div id="div-comment-775" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn">madhast</cite><span class="says">:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://loftblog.ru/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#comment-775">
+			21.08.2014 в 15:16</a>		</div>
+
+		<p>Вопрос: есть ли возможность изменить директорию node_modules, скажем чтобы она после npm install появлялась не в корне проекта, а в любой другой указанной директории?</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">Войдите, чтобы ответить</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Добавить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="/material/avtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js/#respond" style="display:none;">Отменить ответ</a></small></h3><p class="must-log-in">Для отправки комментария вам необходимо <a href="http://loftblog.ru/login/?redirect_to=http%3A%2F%2Floftblog.ru%2Fmaterial%2Favtomatizaciya-dlya-samyx-lenivyx-vmeste-s-grunt-js%2F">авторизоваться</a>.</p>		</div><!-- #respond -->
+		
+</div><!-- #comments -->
+  </div>
+</section>
+			    </div><!-- maincontent -->
+    </div><!-- wrapper -->
+<footer class="site-footer">
+      <div class="container">
+        <div class="footer__row">
+
+          <div class="footer__column footer__column_loftblog"><span class="footer__column-white">Loftblog —</span><span class="footer__column-default"> делимся знаниями</span></div>
+          <div class="footer__column footer__column_heads"><span class="footer__column-white">88598</span><span class="footer__column-default"> подписчиков</span></div>
+          <div class="footer__column footer__column_lessons"><span class="footer__column-white">690</span><span class="footer__column-default"> уроков и статей</span> </div>
+        </div>
+        <div class="footer__row footer__subscription-wrap">
+          <p class="footer__column"> Подпишись и питайся только свежими уроками</p>
+          <form class="subscription__form" action="//loftblog.us7.list-manage.com/subscribe/post?u=c7048c0037f775a520afafbe0&amp;id=1f5e710fbe" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate onsubmit="yaCounter20888506.reachGoal('SUBSCRIBE'); return true;">
+            <div class="subscription__form-inner">
+            <input id="mce-EMAIL" type="email" name="email" placeholder="Введите ваш E-mail" class="subscription__input" value="">
+            <div style="position: absolute; left: -5000px;"><input type="text" name="b_c7048c0037f775a520afafbe0_1f5e710fbe" tabindex="-1" value=""></div>
+            <button type="submit" class="subscription__button" name="subscribe">
+              <div class="subscription__button-img"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0" y="0" viewBox="0 0 139.5 150" enable-background="new 0 0 139.5 150" xml:space="preserve"><path d="M0 82.4c15.4 15.5 37.4 44.8 48.8 67.6 18.8-41.4 48.3-91.7 90.7-140.6L131.2 0c-24.8 24.5-63.3 71-83.3 108.4C42 98.6 31.9 83.3 14.8 65.7L0 82.4z"/></svg></div>
+            </button>
+            </div>
+          </form>
+        </div>
+        <div class="footer__menu">
+        <div class="footer__lists">
+            <div class="footer__list-wrap">
+              <div class="footer__title">Информация</div>
+              <ul id="menu-informaciya-v-futere" class="footer__list"><li id="menu-item-4090" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4090"><a href="http://loftblog.ru/prisoedinitsya-k-soobshhestvu/">Присоединиться</a></li><li id="menu-item-9819" class="super-slack menu-item menu-item-type-custom menu-item-object-custom menu-item-9819"><a target="_blank" href="http://slack.loftblog.ru">Slack-чат</a></li><li id="menu-item-9988" class="super-telegram menu-item menu-item-type-custom menu-item-object-custom menu-item-9988"><a href="http://telegram.me/loftblog">Telegram чат</a></li></ul>            </div>
+            <div class="footer__list-wrap">
+              <div class="footer__title">Компания</div>
+              <ul id="menu-kompaniya-v-futere" class="footer__list"><li id="menu-item-4093" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4093"><a href="http://loftblog.ru/o-kompanii/">О компании</a></li></ul>            </div>
+            <div class="footer__list-wrap">
+              <div class="footer__title">Сообщество</div>
+                <ul id="menu-soobshhestvo-v-futere" class="footer__list">
+                    <li class="menu-item"><a href="http://loftblog.ru/lessons/">Уроки и курсы</a></li>
+                    <li class="menu-item"><a href="/vakansii/">Вакансии</a></li>
+                    <li class="menu-item"><a href="http://loftblog.ru/news/">Передачи</a></li>
+                </ul>
+          </div>
+        </div>
+        <div class="footer__info-wrap">
+          <div class="footer__copyright">© LoftBlog 2016<span class="footer__copyright-bottom">Портал уроков</span></div>
+          <div class="footer__socials">
+            <ul class="socils__list">
+              <li class="socials__item"><a href="https://facebook.com/loftblog" class="socials__link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0" y="0" viewBox="0 90 612 612" enable-background="new 0 90 612 612" xml:space="preserve"><circle fill="#FFFFFF" cx="306" cy="394.5" r="294.5"/><path fill="#010002" d="M306 90C137 90 0 227 0 396s137 306 306 306 306-137 306-306C612 227 475 90 306 90zM385.1 396l-50.1 0 0 183.6h-68.8V396h-45.9v-63.3l45.9 0 -0.1-37.3c0-51.6 14-83 74.8-83h50.6v63.3h-31.7c-23.7 0-24.8 8.8-24.8 25.3l-0.1 31.7h56.9L385.1 396z"/></svg></a></li>
+              <li class="socials__item"><a href="https://vk.com/loftblog" class="socials__link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0" y="0" viewBox="0 0 97.8 97.8" enable-background="new 0 0 97.8 97.8" xml:space="preserve"><circle fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="49.5" cy="48.8" r="44.8"/><path d="M48.9 0C21.9 0 0 21.9 0 48.9s21.9 48.9 48.9 48.9 48.9-21.9 48.9-48.9S75.9 0 48.9 0zM73.7 54.2c2.3 2.2 4.7 4.3 6.7 6.8 0.9 1.1 1.8 2.2 2.4 3.5 0.9 1.8 0.1 3.8-1.5 3.9l-10 0c-2.6 0.2-4.6-0.8-6.4-2.6 -1.4-1.4-2.7-2.9-4-4.4 -0.5-0.6-1.1-1.2-1.8-1.6 -1.4-0.9-2.6-0.6-3.3 0.8 -0.8 1.5-1 3.1-1.1 4.7 -0.1 2.4-0.8 3-3.2 3.1 -5.1 0.2-9.9-0.5-14.3-3.1 -3.9-2.3-7-5.4-9.6-9 -5.2-7-9.1-14.7-12.7-22.6 -0.8-1.8-0.2-2.7 1.8-2.8 3.3-0.1 6.5-0.1 9.8 0 1.3 0 2.2 0.8 2.7 2 1.8 4.3 3.9 8.5 6.6 12.3 0.7 1 1.5 2 2.5 2.8 1.2 0.8 2 0.5 2.6-0.8 0.3-0.8 0.5-1.7 0.6-2.6 0.3-3 0.3-6-0.2-9C41 33.6 40 32.4 38.1 32c-1-0.2-0.8-0.5-0.4-1.1 0.8-0.9 1.6-1.5 3.1-1.5l11.3 0c1.8 0.4 2.2 1.1 2.4 2.9l0 12.6c0 0.7 0.3 2.8 1.6 3.2 1 0.3 1.7-0.5 2.3-1.1 2.7-2.9 4.6-6.3 6.4-9.8 0.8-1.6 1.4-3.2 2.1-4.8 0.5-1.2 1.2-1.8 2.6-1.8l10.9 0c0.3 0 0.6 0 1 0.1 1.8 0.3 2.3 1.1 1.8 2.9 -0.9 2.8-2.6 5.2-4.3 7.5 -1.8 2.5-3.8 4.9-5.6 7.5C71.5 51 71.6 52.2 73.7 54.2z"/></svg></a></li>
+              <li class="socials__item"><a href="https://instagram.com/loftblog/" class="socials__link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0" y="0" viewBox="0 0 49.7 49.7" enable-background="new 0 0 49.7 49.7" xml:space="preserve"><circle fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="25.1" cy="24.8" r="23.8"/><path d="M24.8 29.8c2.7 0 5-2.2 5-5 0-1.1-0.4-2.1-0.9-2.9 -0.9-1.3-2.4-2.1-4-2.1 -1.7 0-3.1 0.8-4 2.1 -0.6 0.8-0.9 1.8-0.9 2.9C19.9 27.6 22.1 29.8 24.8 29.8z"/><polygon points="35.7 18.7 35.7 14.6 35.7 14 35.1 14 30.9 14 30.9 18.8 "/><path d="M24.8 0C11.1 0 0 11.1 0 24.8c0 13.7 11.1 24.8 24.8 24.8 13.7 0 24.8-11.1 24.8-24.8C49.7 11.1 38.5 0 24.8 0zM38.9 21.9v11.6c0 3-2.4 5.5-5.5 5.5H16.2c-3 0-5.5-2.4-5.5-5.5V21.9v-5.8c0-3 2.4-5.5 5.5-5.5h17.3c3 0 5.5 2.4 5.5 5.5V21.9z"/><path d="M32.5 24.8c0 4.3-3.5 7.7-7.7 7.7s-7.7-3.5-7.7-7.7c0-1 0.2-2 0.6-2.9h-4.2v11.6c0 1.5 1.2 2.7 2.7 2.7h17.3c1.5 0 2.7-1.2 2.7-2.7V21.9H32C32.3 22.8 32.5 23.8 32.5 24.8z"/></svg></a></li>
+              <li class="socials__item"><a href="https://twitter.com/loft_blog" class="socials__link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0" y="0" viewBox="0 0 49.7 49.7" enable-background="new 0 0 49.7 49.7" xml:space="preserve"><circle fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="24.6" cy="25.1" r="23.6"/><path d="M24.8 0C11.1 0 0 11.1 0 24.8c0 13.7 11.1 24.8 24.8 24.8 13.7 0 24.8-11.1 24.8-24.8C49.7 11.1 38.5 0 24.8 0zM35.9 19.1c0 0.2 0 0.5 0 0.7 0 7.6-5.7 16.3-16.3 16.3 -3.2 0-6.2-0.9-8.8-2.6 0.4 0.1 0.9 0.1 1.4 0.1 2.7 0 5.1-0.9 7.1-2.4 -2.5 0-4.6-1.7-5.3-4 0.3 0.1 0.7 0.1 1.1 0.1 0.5 0 1-0.1 1.5-0.2C14 26.6 12 24.3 12 21.5c0 0 0 0 0-0.1 0.8 0.4 1.7 0.7 2.6 0.7 -1.5-1-2.5-2.8-2.5-4.8 0-1 0.3-2 0.8-2.9 2.8 3.5 7 5.7 11.8 6 -0.1-0.4-0.1-0.9-0.1-1.3 0-3.2 2.6-5.7 5.7-5.7 1.6 0 3.1 0.7 4.2 1.8 1.3-0.3 2.5-0.7 3.6-1.4 -0.4 1.3-1.3 2.5-2.5 3.2 1.2-0.1 2.3-0.4 3.3-0.9C38 17.3 37 18.3 35.9 19.1z"/></svg></a></li>
+              <li class="socials__item"><a href="https://plus.google.com/+loftblog" class="socials__link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0" y="0" viewBox="0 0 49.7 49.7" enable-background="new 0 0 49.7 49.7" xml:space="preserve"><circle fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="25.1" cy="24.8" r="23.8"/><path d="M21.5 28.9c-0.2-0.1-0.3-0.2-0.5-0.3 -0.5-0.2-1-0.2-1.6-0.2h-0.1c-2.5 0-4.7 1.5-4.7 3.3 0 1.9 1.9 3.4 4.3 3.4 3.2 0 4.8-1.1 4.8-3.3 0-0.2 0-0.4-0.1-0.6C23.4 30.3 22.7 29.7 21.5 28.9z"/><path d="M19.7 22.4C19.7 22.4 19.7 22.4 19.7 22.4c0.6 0 1.1-0.2 1.5-0.7 0.6-0.7 0.9-1.9 0.7-3.1 -0.3-2.2-1.8-4-3.5-4.1l-0.1 0c-0.6 0-1.1 0.2-1.5 0.7 -0.6 0.7-0.9 1.8-0.7 3C16.5 20.4 18.1 22.3 19.7 22.4L19.7 22.4 19.7 22.4z"/><path d="M24.8 0C11.1 0 0 11.1 0 24.8c0 13.7 11.1 24.8 24.8 24.8 13.7 0 24.8-11.1 24.8-24.8C49.7 11.1 38.5 0 24.8 0zM22 36.9c-0.9 0.3-2 0.4-3 0.4 -1.2 0-2.3-0.1-3.4-0.4 -2.1-0.5-3.6-1.5-4.3-2.8 -0.3-0.5-0.5-1.1-0.5-1.7 0-0.6 0.1-1.3 0.4-1.9 1.1-2.4 4.1-4 7.4-4 0 0 0.1 0 0.1 0 -0.3-0.5-0.4-1-0.4-1.5 0-0.3 0-0.5 0.1-0.8 -3.5-0.1-6-2.6-6-5.9 0-2.4 1.9-4.6 4.6-5.6 0.8-0.3 1.6-0.4 2.4-0.4h7.4c0.3 0 0.5 0.2 0.6 0.4 0.1 0.2 0 0.5-0.2 0.6l-1.7 1.2c-0.1 0.1-0.2 0.1-0.3 0.1h-0.6c0.8 0.9 1.2 2.2 1.2 3.7 0 1.6-0.8 3.1-2.3 4.3 -1.1 0.9-1.2 1.1-1.2 1.7 0 0.3 0.8 1.2 1.7 1.8 2.1 1.5 2.8 2.9 2.8 5.3C26.8 33.9 24.9 36.1 22 36.9zM38.6 24.3c0 0.3-0.3 0.6-0.6 0.6h-4.2V29c0 0.3-0.3 0.6-0.6 0.6h-1.2c-0.3 0-0.6-0.3-0.6-0.6v-4.2h-4.2c-0.3 0-0.6-0.3-0.6-0.6v-1.2c0-0.3 0.3-0.6 0.6-0.6h4.2v-4.2c0-0.3 0.3-0.6 0.6-0.6h1.2c0.3 0 0.6 0.3 0.6 0.6v4.2h4.2c0.3 0 0.6 0.3 0.6 0.6L38.6 24.3 38.6 24.3z"/></svg></a></li>
+              <li class="socials__item"><a href="https://youtube.com/user/loftblog" class="socials__link" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0" y="0" viewBox="0 0 97.8 97.8" enable-background="new 0 0 97.8 97.8" xml:space="preserve"><circle fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="48.6" cy="48.8" r="46.8"/><polygon points="25.7 52.5 29.6 52.5 29.6 73.5 33.2 73.5 33.2 52.5 37.2 52.5 37.2 49 25.7 49 "/><path d="M56.7 55c-1.2 0-2.3 0.7-3.4 2v-8H50v24.4h3.3v-1.8c1.1 1.4 2.2 2 3.4 2 1.3 0 2.2-0.7 2.6-2 0.2-0.8 0.3-2 0.3-3.7v-7.2c0-1.7-0.1-2.9-0.3-3.7C58.9 55.7 58 55 56.7 55zM56.3 68.3c0 1.6-0.5 2.5-1.4 2.5 -0.5 0-1.1-0.3-1.6-0.8V58.8c0.6-0.5 1.1-0.8 1.6-0.8 1 0 1.4 0.8 1.4 2.5V68.3z"/><path d="M43.8 69.2c-0.7 1-1.4 1.5-2.1 1.5 -0.4 0-0.7-0.3-0.8-0.8 0-0.1 0-0.5 0-1.3V55.3h-3.3v14.4c0 1.3 0.1 2.2 0.3 2.7 0.3 0.9 1.1 1.4 2.1 1.4 1.2 0 2.5-0.7 3.8-2.2v2h3.3V55.3h-3.3V69.2z"/><path d="M46.7 38.5c1.1 0 1.6-0.9 1.6-2.6v-7.7c0-1.7-0.5-2.5-1.6-2.5 -1.1 0-1.6 0.8-1.6 2.5v7.7C45.1 37.6 45.6 38.5 46.7 38.5z"/><path d="M48.9 0C21.9 0 0 21.9 0 48.9s21.9 48.9 48.9 48.9 48.9-21.9 48.9-48.9S75.9 0 48.9 0zM54.3 22.9h3.3v13.5c0 0.8 0 1.2 0 1.3 0.1 0.5 0.3 0.8 0.8 0.8 0.7 0 1.4-0.5 2.1-1.6v-14h3.3v18.4h-3.3v-2c-1.3 1.5-2.6 2.3-3.8 2.3 -1.1 0-1.8-0.4-2.1-1.4 -0.2-0.6-0.3-1.4-0.3-2.7V22.9L54.3 22.9zM41.7 28.9c0-2 0.3-3.4 1-4.3 0.9-1.3 2.2-1.9 3.9-1.9 1.7 0 3 0.6 3.9 1.9 0.7 0.9 1 2.4 1 4.3v6.4c0 2-0.3 3.4-1 4.3 -0.9 1.3-2.2 1.9-3.9 1.9 -1.7 0-3-0.6-3.9-1.9 -0.7-0.9-1-2.4-1-4.3V28.9zM32.8 16.6l2.6 9.7 2.5-9.7h3.7l-4.4 14.7v10h-3.7v-10c-0.3-1.8-1.1-4.4-2.3-7.8 -0.8-2.3-1.6-4.6-2.4-6.9C28.9 16.6 32.8 16.6 32.8 16.6zM75.2 75.1c-0.7 2.9-3 5-5.9 5.4 -6.8 0.8-13.6 0.8-20.4 0.8 -6.8 0-13.7 0-20.4-0.8 -2.9-0.3-5.2-2.5-5.9-5.4 -1-4.1-1-8.6-1-12.9s0-8.8 1-12.9c0.7-2.9 3-5 5.9-5.4 6.8-0.8 13.6-0.8 20.4-0.8 6.8 0 13.7 0 20.4 0.8 2.9 0.3 5.2 2.5 5.9 5.4 0.9 4.1 0.9 8.6 0.9 12.9S76.1 70.9 75.2 75.1z"/><path d="M67.2 55c-1.7 0-3 0.6-3.9 1.9 -0.7 0.9-1 2.3-1 4.3v6.4c0 1.9 0.4 3.4 1.1 4.3 1 1.2 2.3 1.9 4 1.9 1.7 0 3.1-0.7 4-2 0.4-0.6 0.7-1.2 0.8-2 0-0.3 0.1-1.1 0.1-2.1v-0.5h-3.4c0 1.3 0 2.1-0.1 2.2 -0.2 0.9-0.7 1.3-1.5 1.3 -1.1 0-1.7-0.8-1.7-2.5V65h6.6v-3.8c0-1.9-0.3-3.4-1-4.3C70.1 55.7 68.8 55 67.2 55zM68.8 62.2h-3.3v-1.7c0-1.7 0.6-2.5 1.7-2.5 1.1 0 1.6 0.8 1.6 2.5V62.2z"/></svg></a></li>
+            </ul>
+          </div>
+        </div>
+      
+      </div>
+       <div class="footer__list-wrap projects">
+            <ul class="footer__list">
+              <li><a href="http://loftschool.com/?from=loftblog" target="_blank">LoftSchool<img src="/images/1px.png" data-src="/images/_logo/loftschool.svg" alt="LoftSchool"></a></li>
+              <li><a href="http://itloft.ru/?from=loftblog" target="_blank">Itloft<img src="/images/1px.png" data-src="/images/_logo/itloft.svg" alt="ItLoft"></a></li>
+              <li><a href="http://landingsloft.ru/?from=loftblog" target="_blank">Itloft Landings<img src="/images/1px.png" data-src="/images/_logo/landings.png" alt="Itloft Landings"></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter20888506 = new Ya.Metrika({id:20888506, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/20888506" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-59403608-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- VK retarget -->
+<script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=cTP/zO0VSXa5LZMM0yl39MJcFz5DVYra*JQ3SMu7RpeExCed6T0PL8GtAFpP/3lbraDf8cYm0HTJQsvGsKTQd3EwIOQoo*DEDqMG99dX4MCrrTZySIY9euuj/koyZYnm6teRNaGybJZntMtGJlL5J2zloiH2h2fiMjFJqkA9uHQ-';</script>
+    <script type='text/javascript' src='http://loftblog.ru/cms/wp-content/themes/loftblog/js/skip-link-focus-fix.js?ver=20130115'></script>
+<script type='text/javascript' src='http://loftblog.ru/cms/../scripts/_vendor/select2.full.min.js'></script>
+<script type='text/javascript' src='http://loftblog.ru/cms/../scripts/_vendor/ru.js'></script>
+<script type='text/javascript' src='http://loftblog.ru/cms/../scripts/main.js'></script>
+<script type='text/javascript' src='http://loftblog.ru/cms/wp-includes/js/wp-embed.min.js?ver=daa8de9f6e5232b616a6f07d6cea08f7'></script>
+    <script type="text/javascript">
+        var reformalOptions = {
+            project_id: 968945,
+            project_host: "newloftblog.reformal.ru",
+            tab_orientation: "left",
+            tab_indent: "50%",
+            tab_bg_color: "#fad028",
+            tab_border_color: "#FFFFFF",
+            tab_image_url: "http://tab.reformal.ru/T9GC0LfRi9Cy0Ysg0Lgg0L%252FRgNC10LTQu9C%252B0LbQtdC90LjRjw==/FFFFFF/4bfb34d91c8d7fb481972ca3c84aec38/left/0/tab.png",
+            tab_border_width: 0
+        };
+
+        (function() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript'; script.async = true;
+            script.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'media.reformal.ru/widgets/v3/reformal.js';
+            document.getElementsByTagName('head')[0].appendChild(script);
+        })();
+    </script>
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?127"></script>
+
+    <div id="vk_community_messages"></div>
+    <script type="text/javascript">
+        VK.Widgets.CommunityMessages("vk_community_messages", 37413577, {shown: "1"});
+    </script>
+
+    <noscript><a href="http://reformal.ru"><img src="http://media.reformal.ru/reformal.png" /></a><a href="http://newloftblog.reformal.ru">Oтзывы и предложения для loftblog</a></noscript>
+  </body>
+</html>

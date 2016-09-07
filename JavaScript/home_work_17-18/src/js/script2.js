@@ -1,4 +1,4 @@
-﻿// https://pixabay.com/api/docs/#default_image_search_response
+﻿
 $(document).ready(function() {
 
 	var onclick = function() {

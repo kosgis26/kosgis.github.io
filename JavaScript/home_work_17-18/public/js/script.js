@@ -1,4 +1,4 @@
-﻿// https://pixabay.com/api/docs/#default_image_search_response
+console.log("This is java script1");
 $(document).ready(function() {
 
 	var onclick = function() {
