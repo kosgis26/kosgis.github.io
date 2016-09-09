@@ -446,6 +446,9 @@ figure.figure {}
   border-right: 1px solid rgba(255,255,255,0.2);
   text-align: center;
 }
+.banners__main--add:before {
+  content: '+';
+}
 .banners__main--add, .banners__main--title {
   float: left;
   line-height: 38px;
@@ -461,8 +464,11 @@ figure.figure {}
 .banners__main:hover {
   background: #f4b60d;
 }
-.banners__main:hover .banners__main--add {
+.banners__main:hover > .banners__main--add {
   border-right: 1px solid rgba(255,255,255,0.2);
+}
+.banners__main:hover .banners__main--add:before {
+  content: '-';
 }
 .banners__text {
   display: none;
