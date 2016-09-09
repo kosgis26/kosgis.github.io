@@ -1,7 +1,6 @@
-﻿$(document).read(finction() {
+﻿$(document).ready(function() {
 	var data = getData();
-	console.clear();
-	console.log(data)
+	// console.clear();
 
 	var skills = [];
 	$.each(data, function(i, item) {  

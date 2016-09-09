@@ -1,13 +1,4 @@
 @font-face {
-    font-family: "TimesNewRomanRegular";
-    src: url("../fonts/TimesNewRomanRegular/TimesNewRomanRegular.eot");
-    src: url("../fonts/TimesNewRomanRegular/TimesNewRomanRegular.eot?#iefix")format("embedded-opentype"),
-    url("../fonts/TimesNewRomanRegular/TimesNewRomanRegular.woff") format("woff"),
-    url("../fonts/TimesNewRomanRegular/TimesNewRomanRegular.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face {
     font-family: "UbuntuLight";
     src: url("../fonts/UbuntuLight/UbuntuLight.eot");
     src: url("../fonts/UbuntuLight/UbuntuLight.eot?#iefix")format("embedded-opentype"),
@@ -37,18 +28,14 @@
 * {
   margin: 0;
   padding: 0;
-  cursor: default;
-}
-body {
-  max-width: 1920px;
-  margin: 0 auto;
 }
 .wrapper {
+ /* margin: 0 380px; */
  margin: 0 auto;
- width: 1160px;
+ width: 1150px;
  /* background-color: #f7f7f7; */
  position: relative;
- /* overflow: hidden; */
+ overflow: hidden;
 }
 .header {
   margin: 37px 0px;
@@ -132,9 +119,7 @@ body {
   margin-bottom: 40px;
 }
 .menu__main {
-  float: left;
-  display: block;
-  margin-left: -47px;
+  float: left;display: block;
 }
 .menu__link {
   display: inline-block;
@@ -143,8 +128,7 @@ body {
   text-align: center;
   line-height: 55px;
   border-right: 1px solid #151515;
-  margin-left: -5px;
-  cursor: pointer;
+  margin-left: -4px;
 }
 .menu__link:first-child {
   background-color: #248cec;
@@ -293,9 +277,6 @@ input[type="text"] {
   font-family: "UbuntuMedium";
   font-size: 24px;
   color: white;
-  min-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
 }
 .service__title {
   margin: 47px 0 58px 0;
@@ -307,9 +288,8 @@ input[type="text"] {
 .service__present {
   overflow: hidden;
   float: left;
-  width: 263px;
+  width: 260px;
   margin-right: 36px;
-  cursor: pointer;
 }
 .service__present:last-child {
   margin-right: 0px
@@ -334,15 +314,15 @@ input[type="text"] {
 }
 .service__present:nth-child(2):hover::before {
   visibility: visible;
-  /* left: 296px; */
+  left: 296px;
 }
 .service__present:nth-child(3):hover::before {
   visibility: visible;
-  /* left: 592px; */
+    left: 592px;
 }
 .service__present:nth-child(4):hover::before {
   visibility: visible;
-  /* left: 888px; */
+    left: 888px;
 }
 .service__present::before {
   position: absolute;
@@ -359,31 +339,21 @@ input[type="text"] {
   content: "";
 }
 
-/*figure*/
+/*news*/
 
-.figure {
-  background: #f7f7f7;
-  overflow: hidden;
-}
-
-figure.figure {}
-.news {
-  float:left;
-  width: 50%;
-  margin-top: 50px;
-}
 .news__title {
   font-size: 24px;
-  font-family: "TimesNewRomanRegular";
-  margin-bottom: 50px;
+  font-family: "UbuntuMedium";
+  margin: 50px 0px; 
 }
 .news__block {
+  overflow: hidden;
   width: 600px;
+  margin-bottom: 30px;
 }
 .news__img {
   position: relative;
   float: left;
-  height: 150px;
 }
 .news__img--calendar {
   position: absolute;
@@ -391,191 +361,28 @@ figure.figure {}
   left: -20px;
 }
 .news__text {
-  padding: 10px 35px 0 35px;
+  padding: 10px 35px;
   color: #8a8a8a;
   float: left;
-  width: 375px;
-  margin-bottom: 30px;
+  width: 370px;
 }
 .news__text a {
-  font-family: "UbuntuMedium";
-  font-size: 13px;
+  font-size: 16px;
   text-decoration: none;
-  font-weight: bold;
-}
-.news__text p, .news__text p a  {
-  font-family: "Arial";
-  font-size: 13px;
-  line-height: 19px;
 }
 .news__edit {
-  padding: 7px 0 19px 0;
+  padding: 7px 0 20px 0;
 }
 .news__text--title {
-  color: #2a2d32;
-  font-size: 16px;
+  color-profile: black:;
 }
 .news__text--title:hover {
-  color: #248cec;
-
-}
-.banners {
-  float: right;
-  width: 50%;
-  margin-top: 50px;
-}
-.banner__title {
-  font-family: "UbuntuMedium";
-  font-size: 24px;
-  margin-bottom: 50px;
-}
-.banners__main {
-  width:100%;
-  height: 38px;
-  background: white;
-  z-index: 1;
-  font-family: "UbuntuMedium";
-  margin-bottom: 5px;
-}
-.banners__main--title {
-  width: 525px;
-  padding-left: 15px;
-}
-.banners__main--add {
-  width: 37px;
-  border-right: 1px solid rgba(255,255,255,0.2);
-  text-align: center;
-}
-.banners__main--add, .banners__main--title {
-  float: left;
-  line-height: 38px;
-  font-size: 13px;
-  outline: 1px solid #e8e8e8;
-}
-.banners__active {
-  text-decoration:none;
-}
-.banners__main:hover .banners__text {
-  display: block;
-}
-.banners__main:hover {
-  background: #f4b60d;
-}
-.banners__main:hover .banners__main--add {
-  border-right: 1px solid rgba(255,255,255,0.2);
-}
-.banners__text {
-  display: none;
-  /* visibility: hidden; */
-  color: #8a8a8a;
-  font-family: "Arial";
-  font-size: 13px;
-  line-height: 19px;
-  text-align: start;
-  padding: 30px 0 38px 38px;
-}
-
-/*aside*/
-
-.aside__logo {
-  margin: 100px 0 105px 0;
-}
-.aside__logo img {
-  padding-right: 4%;
-}
-.aside__logo img:last-child {
-  padding-right: 0;
+  color-profile: #248cec;
 }
 
 
 
 
 
-/*footer*/
 
-.footer, .end {
-  background: #2a2d32;
-  overflow: hidden;
-}
-.footer__block {
-  color: white;
-  width: 25%;
-  float: left;
-  margin-bottom: 70px;
-}
-.footer__title {
-  padding: 62px 0 38px 0;
-  cursor: default;
-}
-.footer__link {
-  font-size: 12px;
-  line-height: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  margin-right: 40px;
-  line-height: 35px;
-} 
-.footer__link:last-child {
-  border: none;
-}
-.footer__link a {
-  opacity: 0.3;
-  cursor: pointer;
-}
-.footer__link a:hover {
-  color: #248cec;
-  opacity: 1;
-}
 
-.end__content {
-  background: rgba(255,255,255,0.05);
-  margin: 0 8px;
-  line-height: 30px;
-}
-.end__block {
-  padding: 0 25px;
-  color: white;
-  float: left;
-}
-.end__block p {
-    opacity: 0.2;
-    cursor: auto;
-}
-.end__block:last-child {
-  float: right;
-}
-.place {
-  /* background-position: 0px 5px; */
-}
-.fone {
-  background-position: 0 0;
-}
-.email {
-  background-position: 0 0;
-}
-.end__block::before {
-  position: absolute;
-  width: 12px;
-  height: 15px;
-  background: url(../../img/white-sprite.png) -14px 0px;
-  content: "";
-}
-.place::before {
-  top: 7px;
-  left: 5px;
-  background: url(../../img/white-sprite.png) -15px 0px;
-}
-.fone::before {
-  top: 7px;
-  left: 370px;
-  width: 11px;
-  background: url(../../img/white-sprite.png) -28px 0px;
-}
-.email::before {
- top: 9px;
- left: 535px;
- width: 15px;
- background: url(../../img/white-sprite.png) -40px 0px;
-}
-.zero::before {
-  background: none;
-}

@@ -19,13 +19,13 @@ module.exports = function(grunt) {
                 },
                 src: ['src/js/*.js'],
                 dest: 'public/js/script.js'
-            }
+            },
             css: {	//	конкатенируем все *.css в style.css
                 options: {
                     separator: '' 
                 },
                 src: ['src/css/*.css'],
-                dest: 'public/css/style.css'
+                dest: 'public/css/style.main.css'
             }
 		},
 		uglify: {	//	делает минификацыю *.js в *min.js
@@ -37,16 +37,16 @@ module.exports = function(grunt) {
 		cssmin: {	//	делает минификацию и конкатенацию css.
 			target: {
 				files: [{
-					src: 'public/css/style.css',
+					src: 'public/css/style.main.css',
 					dest: 'public/css/style.min.css'
 				}]
 			}
 		},
 		watch: {
 			sass: {
-				files: ['public/*.sass'],
+				files: ['src/css/*.scss'],
 				tasks: ['sass', 'concat']
-			},
+			}
 		}
 	});
 
@@ -57,6 +57,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default', ['sass', 'concat', 'uglify', 'cssmin', 'watch']);	//	$ grunt
-
 
 };
