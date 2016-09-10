@@ -131,12 +131,12 @@ body {
   line-height: 55px;
   border-right: 1px solid #151515;
   margin-left: -5px;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 14px; }
 
 .menu__link:first-child {
   background-color: #248cec;
-  margin-left: 0px;
-  font-size: 14px; }
+  margin-left: 0px; }
 
 /* .menu__link:hover {
   background-color: $exclusive-text;
