@@ -1,0 +1,79 @@
+
+body{
+	background-color: #efefef;
+	line-height: 20px;
+	font-size: 14px;
+	margin: 0;	
+}
+.test {
+    width: 500px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-family: Helvetica;
+    background: #ffffff;
+    box-shadow: 0 0 5px 0 grey;
+}
+.title {
+    text-align: center;
+    margin: 10px auto 30px auto;
+    font-weight: bolder;
+    font-size: 16px;
+}
+form {
+    list-style: none;
+}
+.content {
+    padding: 10px 0;
+    font-weight: 100;
+    font-style: italic;
+    font-size: 14px;
+}
+.content > a {
+    font-weight: 500;
+    font-style: initial;
+    display: block;
+    margin-bottom: 5px;
+}
+button#result {
+    margin: 40px auto;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+}
+.modalBox {
+	position:fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: silver;
+	opacity: 0.9;
+}
+.modal {
+	position:absolute;
+	width: 260px;
+	height: 120px;
+	top:50%;
+	left:50%;
+	margin: -83px 0 0 -153px;
+	text-align:center;
+	background: rgb(255, 255, 255);
+	border: 3px double rgba(110,110,110,1);
+	border-radius: 10px;
+	display: block;
+	padding: 20px;
+}
+.modal a {
+	margin: 10px 10px;
+	font-size: 20px;
+	font-style: italic;
+}
+.modalButtom {
+    position: absolute;
+    bottom: 10%;
+    left: 42%;
+}
+input[type="submit"] {
+    padding: 2px 15px;
+}

@@ -1,6 +1,6 @@
 (function init($) {
 
-	var questions = [
+	let questions = [
 		{
 			'title': '1. Какой формат передачи данных наиболее распостранен?',
 			'answers': [
@@ -35,28 +35,28 @@
 $(document).ready(function() { 
 'use strict'
 	$(function () {
-		var questions = JSON.parse(localStorage.getItem('questions'));
+		let questions = JSON.parse(localStorage.getItem('questions'));
 	
-		var html = $('#opros').html(); 
-		var template = tmpl(html, {
+		let html = $('#opros').html(); 
+		let template = tmpl(html, {
 			questions: questions
 		});
-		var box;
-		var show;
-		var modal = "";
-		var body=$('body');
+		let box;
+		let show;
+		let modal = "";
+		let body = $('body');
 		
 		body.append(template);
 		
-		$("#result").on('click', function() {
-
+		$("#result").on('click', () => {			
 			// проверка на сделаный "checked"  на каждий "question"
-			var needAnswer = false;
-			for (var i = 0; i < questions.length; i++) {
-				var inputs = $('form[name="question_' + i + '"] input');
-				var hasChecked = false;
-				for (var j = 0; j < inputs.length; j++) {
-					var input = inputs[j];
+			let needAnswer = false;
+			for (let i = 0; i < questions.length; i++) {
+				let inputQuestion = `form[name="question_${i}"]`;
+				let inputs = $(inputQuestion + ' input');
+				let hasChecked = false;
+				for (let j = 0; j < inputs.length; j++) {
+					let input = inputs[j];
 					if (input.checked) {
 						hasChecked = true;
 					}
@@ -64,19 +64,19 @@ $(document).ready(function() {
 				// выделяем каждий "question" в катором не сделаный "checked" рамкой
 				if (!hasChecked) {
 					needAnswer = true;
-					$('form[name="question_' + i + '"]').css('border', '1px solid red');
+					$(inputQuestion).css('border', '1px solid red');
 				} else {
-					$('form[name="question_' + i + '"]').css('border', 'none');
+					$(inputQuestion).css('border', 'none');
 				}
 			};
 			if (needAnswer) {
 				alert("Сделайте выбор")
 			} else {
 				// проверка на правильные "answers" на каждый "questions" 
-				var allChecked = true;
-				for ( var i = 0; i < questions.length; i++ ) {
-					var n = questions[i].check;
-					var check = $('#questions'+i+'_lab'+n)[0].checked;
+				let allChecked = true;
+				for ( let i = 0; i < questions.length; i++ ) {
+					let n = questions[i].check;
+					let check = $('#questions'+i+'_lab'+n)[0].checked;
 					if (!check) {
 						allChecked = false;
 						break;
@@ -95,13 +95,11 @@ $(document).ready(function() {
 				body.append(show);
 			}
 			// при клике на кнопку "Ok" удаляет модальное окно и чистит форму
-			$('#submit').on('click', function () {
+			$('#submit').on('click', () => {
 				box.remove();
 				show.remove();
-				var inputs = $('form input');
-				for (var i = 0; i < inputs.length; i++) { 
-					inputs[i].checked = false; 
-				};
+				let inputs = $('form input');
+				Array.prototype.forEach.call(inputs, input => input.checked = false);
 			});
 		});
 	});
