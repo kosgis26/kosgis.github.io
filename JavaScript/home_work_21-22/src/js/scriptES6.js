@@ -33,7 +33,7 @@
 })(jQuery);
 
 $(document).ready(function() { 
-'use strict'
+
 	$(function () {
 		let questions = JSON.parse(localStorage.getItem('questions'));
 	
@@ -48,7 +48,7 @@ $(document).ready(function() {
 		
 		body.append(template);
 		
-		$("#result").on('click', () => {			
+		$("#result").on('click', () => {
 			// проверка на сделаный "checked"  на каждий "question"
 			let needAnswer = false;
 			for (let i = 0; i < questions.length; i++) {
