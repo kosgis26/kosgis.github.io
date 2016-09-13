@@ -18,7 +18,7 @@ $(document).ready(function() {
 	$.each(names, function(i, item) {
 	  namesArr.push(item.name);  
 	});
-	console.log("Names: ", namesArr);
+	console.log ("Names: ", namesArr);
 
 	var allNames = [];
 	$.each(data, function(i, item) {  
@@ -30,6 +30,11 @@ $(document).ready(function() {
 	allNames = _.sortBy(allNames);
 	allNames = _.uniq(allNames);
 	console.log(allNames);
+
+	$('.banners__main').click(
+    function(){
+        $(this).toggleClass("focused")
+    });
 
 	function getData() {
 	  return [
