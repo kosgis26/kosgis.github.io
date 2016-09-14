@@ -7,10 +7,10 @@ define(['tmpl'], function() {
 
 			$('body').append(wrapper);
 			self.elements = {
-				input: $('.item-value'),	////////////////
-				addBtn: $('.item-add'),	/////////////////
-				listContainer: $('.item-list'),	////////////////
-				item: $('.item')	////////////////		
+				input: $('.item-value'),
+				addBtn: $('.item-add'),
+				listContainer: $('.item-list'),
+				item: $('.item')		
 			};
 			self.renderList(model.data);
 		};

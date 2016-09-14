@@ -20,7 +20,7 @@ define([], function () {
 		}
 
 		function editItem() {		
-			var item = $(this).children().attr("data-value");
+			var item = $(this).attr("data-value");
 			var value = prompt('Введите новое значение', '');
 			value = value.trim();
 			if (!value) {
