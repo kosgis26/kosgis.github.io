@@ -2,29 +2,176 @@
 <html lang="en-EN">
 <head>
 	<meta charset="UTF-8">
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>require</title>
-	<link rel="stylesheet" href="css/style.css">
-	<script data-main="js/modules" src="js/require.js"></script>
-
-	<script type="text/template" id="wrapper-template">
-		<div class="wrapper">
-			<ul class="item-list"></ul>
-			<div class="controlls">
-				<input type="text" class="item-value" placeholder="Enter name of new list">
-				<button class="item-add">Add list</button>
-			</div>
-		</div>
-	</script>
-
-	<script type="text/template" id="list-template">
-		<% for (var i = 0; i < data.length; i++) { %>
-			<li class="item"><%= data[i] %> <img src="img/edit.png" data-value="<%= data[i] %>" class="item-edit"><img src="img/delete-row.png" data-value="<%= data[i] %>" class="item-delete"></li>
-		<% }; %>
-	</script>
+	<link rel="stylesheet" href="src/css/style.css">
+	<!-- <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script> -->
+	<script src="public/js/masonry.pkgd.js"></script>
+	<script src="public/js/jquery-3.1.0.js"></script>
+	<script src="src/js/script.js"></script>
+	<!-- <![if lte IE 8]>
+	<script src="public/js//html5shiv.js"></script>
+	<script src="public/js//respond.js"></script>
+	<![endif]> -->
 
 </head>
 <body>
-	
+<div class="wrapper">
+	<div class="promo">
+		<form class="promo__header">
+			<button name="login" class="promo__header--btn login">Log in</button>
+			<button name="sing" class="promo__header--btn sing">Sing up</button>
+		</form>
+		<div class="promo__content">
+			<h3>Urlaubsglück</h3>
+			<h1>Share your holiday dreams</h1>
+			<a class="promo__content--text">And find the perfect partner to fullfill it</a>
+		</div>
+		<form class="promo__search">
+			<button name="search" class="promo__search--btn btn__bg">Find your holiday partner</button>
+		</form>
+	</div>
+	<div class="about">
+		<div class="about__main title">
+			<h2>How Urlaubsglück works?</h2>
+		</div>
+		<div class="steps">
+			<div class="about__step step-1">
+				<img src="public/img/step.png">
+				<div class="step__text">
+					<span class="step__block btn__bg">step 1</span>
+					<p class="step__main">Sed leo enim, condimentum</p>
+					<a class="step__content">Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a>
+				</div>
+			</div>
+			<div class="about__step step-2">
+				<img src="public/img/step.png">
+				<div class="step__text">
+					<span class="step__block btn__bg">step 2</span>
+					<p class="step__main">Morbi velit risus</p>
+					<a class="step__content">Nulla venenatis tempor dui in molestie. Nulla quis dictum purus, sit amet porttitor est.</a>
+				</div>
+			</div>
+			<div class="about__step step-3">
+				<img src="public/img/step.png">
+				<div class="step__text">
+					<span class="step__block btn__bg">step 3</span>
+					<p class="step__main">Sed leo enim, condimentum</p>
+					<a class="step__content">Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="partners">
+		<div class="partners__main title">
+			<h2>Meet a partner for your best holiday</h2>
+		</div>
+		<div class="partner__block">
+			<div class="partner__img">
+				<img src="public/img/partner_1.png">
+				<div class="img__hobby hobby-1"></div>
+			</div>
+			<p class="partner__name">Bradley Hunter</p>
+			<a class="partner__history">Based in Chicago. I love playing tennis and loud music.</a>
+		</div>
+		<div class="partner__block">
+			<div class="partner__img">
+				<img src="public/img/partner_2.png">
+				<div class="img__hobby hobby-2"></div>
+			</div>
+			<p class="partner__name">Lucas Marsha</p>
+			<a class="partner__history">I get my inspiration from nature and objects around me. I have a passion to colours, typography and skateboards.
+</a>
+		</div>
+		<div class="partner__block">
+			<div class="partner__img">
+				<img src="public/img/partner_3.png">
+				<div class="img__hobby hobby-3"></div>
+			</div>
+			<p class="partner__name">Heather Walker</p>
+			<a class="partner__history">I'm a happy person that loves cats and climbing on mountains. </a>
+		</div>
+		<div class="partner__block">
+			<div class="partner__img">
+				<img src="public/img/partner_4.png">
+				<div class="img__hobby hobby-4"></div>
+			</div>
+			<p class="partner__name">Bradley Hunter</p>
+			<a class="partner__history">Based in Chicago. I love playing tennis and loud music.</a>
+		</div>
+		<form class="partner__other">
+			<button name="partners" class="partner__btn">See other partners</button>
+		</form>
+	</div>
+	<div class="ideas">
+		<div class="ideas__main title">
+			<h2>Discover holiday activity ideas</h2>
+		</div>
+		<div class="ideas__img grid">
+			<!-- <div class="grid-item"></div>
+			<div class="grid-item grid-item--height2"></div>
+			<div class="grid-item grid-item--height3"></div>
+			<div class="grid-item grid-item--height2"></div>
+			<div class="grid-item"></div>
+			<div class="grid-item"></div>
+			<div class="grid-item"></div> -->
+			<!-- <div class="discovery grid-item">
+				<p class="idea__sport">Sport and Activity</p>
+			</div>
+			<div class="discovery grid-item">
+				<p class="idea__wellnes">Wellnes and Health</p>
+			</div>
+			<div class="discovery grid-item">
+				<p class="idea__expeditions">Extreme Sports and Expeditions</p>
+			</div>
+			<div class="discovery grid-item">
+				<p class="idea__games">Games</p>
+			</div>
+			<div class="discovery grid-item">
+				<p class="idea__culture">Culture and Education</p>
+			</div>
+			<div class="discovery grid-item">
+				<p class="idea__relaction">Relaxation</p>
+			</div>
+			<div class="discovery grid-item">
+				<p class="idea__traveling">Travelling</p>
+			</div> -->
+		</div>	
+	</div>
+	<div class="search">
+		<div class="search__main title">
+			<h2>Discover holiday activity ideas</h2>
+		</div>
+		<div class="search__block">
+			<a class="search__text">Hi! What are your holiday interests?</a>
+		</div>
+		<div>
+			<input type="text" id="searchInterests" class="search__interests" name="interests" placeholder="Enter your interests">
+			<p><button id="searchButton" name="interests" class="search__btn btn__bg">Search partners</button></p>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer__name">
+			<h3>URLAUBSGLÜCK</h3>
+		</div>
+		<div class="footer__company">
+			<p class="footer__item">Company</p>
+			<div class="footer__list">
+				<a href="#">About</a>
+				<a href="#">Contacts</a>
+				<a href="#">Press</a>
+				<a href="#">Blog</a>
+			</div>
+		</div>
+		<div class="footer__partners">
+			<p class="footer__item">Partners</p>
+			<p class="footer__des">Designed by</p>
+			<div class="footer__logo">
+				<img src="public/img/footer_logo.png">
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>
