@@ -5,10 +5,12 @@
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>require</title>
+	<link rel="stylesheet" href="src/css/slider.css">
 	<link rel="stylesheet" href="src/css/style.css">
 	<!-- <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script> -->
 	<script src="public/js/masonry.pkgd.js"></script>
 	<script src="public/js/jquery-3.1.0.js"></script>
+	<script src="src/js/slider.js"></script>
 	<script src="src/js/script.js"></script>
 	<!-- <![if lte IE 8]>
 	<script src="public/js//html5shiv.js"></script>
@@ -21,7 +23,7 @@
 	<div class="promo">
 		<form class="promo__header">
 			<button name="login" class="promo__header--btn login">Log in</button>
-			<button name="sing" class="promo__header--btn sing">Sing up</button>
+			<button name="sign" class="promo__header--btn sign">Sign up</button>
 		</form>
 		<div class="promo__content">
 			<h3>Urlaubsglück</h3>
@@ -41,26 +43,44 @@
 				<img src="public/img/step.png">
 				<div class="step__text">
 					<span class="step__block btn__bg">step 1</span>
-					<p class="step__main">Sed leo enim, condimentum</p>
-					<a class="step__content">Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a>
+					<div class="step__main"><p>Sed leo enim, condimentum</p></div>
+					<div class="step__content"><a>Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a></div>
 				</div>
 			</div>
 			<div class="about__step step-2">
 				<img src="public/img/step.png">
 				<div class="step__text">
 					<span class="step__block btn__bg">step 2</span>
-					<p class="step__main">Morbi velit risus</p>
-					<a class="step__content">Nulla venenatis tempor dui in molestie. Nulla quis dictum purus, sit amet porttitor est.</a>
+					<div class="step__main"><p>Morbi velit risus</p></div>
+					<div class="step__content"><a>Nulla venenatis tempor dui in molestie. Nulla quis dictum purus, sit amet porttitor est.</a></div>
 				</div>
 			</div>
 			<div class="about__step step-3">
 				<img src="public/img/step.png">
 				<div class="step__text">
 					<span class="step__block btn__bg">step 3</span>
-					<p class="step__main">Sed leo enim, condimentum</p>
-					<a class="step__content">Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a>
+					<div class="step__main"><p>Sed leo enim, condimentum</p></div>
+					<div class="step__content"><a>Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a></div>
 				</div>
 			</div>
+		</div>
+		<div class="steps__slider">
+			<div class="slide-list">
+				<div class="slide-wrap">
+					<div class="slide-item">
+						<img width="280" height="187" src="public/img/step_1.png" alt="" />
+					</div>
+					<div class="slide-item">
+						<img width="280" height="187" src="public/img/step_2.png" alt="" />
+					</div>
+					<div class="slide-item">
+						<img width="280" height="187" src="public/img/step_3.png" alt="" />
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="navy prev-slide"></div>
+			<div class="navy next-slide"></div>
 		</div>
 	</div>
 	<div class="partners">
@@ -108,36 +128,7 @@
 		<div class="ideas__main title">
 			<h2>Discover holiday activity ideas</h2>
 		</div>
-		<div class="ideas__img grid">
-			<!-- <div class="grid-item"></div>
-			<div class="grid-item grid-item--height2"></div>
-			<div class="grid-item grid-item--height3"></div>
-			<div class="grid-item grid-item--height2"></div>
-			<div class="grid-item"></div>
-			<div class="grid-item"></div>
-			<div class="grid-item"></div> -->
-			<!-- <div class="discovery grid-item">
-				<p class="idea__sport">Sport and Activity</p>
-			</div>
-			<div class="discovery grid-item">
-				<p class="idea__wellnes">Wellnes and Health</p>
-			</div>
-			<div class="discovery grid-item">
-				<p class="idea__expeditions">Extreme Sports and Expeditions</p>
-			</div>
-			<div class="discovery grid-item">
-				<p class="idea__games">Games</p>
-			</div>
-			<div class="discovery grid-item">
-				<p class="idea__culture">Culture and Education</p>
-			</div>
-			<div class="discovery grid-item">
-				<p class="idea__relaction">Relaxation</p>
-			</div>
-			<div class="discovery grid-item">
-				<p class="idea__traveling">Travelling</p>
-			</div> -->
-		</div>	
+		<div class="ideas__img grid"></div>	
 	</div>
 	<div class="search">
 		<div class="search__main title">

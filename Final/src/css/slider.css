@@ -1,0 +1,57 @@
+.clear {
+	margin-top: -1px;
+	height: 1px;
+	clear:both;
+	zoom: 1;
+}		
+.steps__slider {
+	width: 900px;
+	margin: 50px auto;
+	position: relative;
+	overflow: hidden;
+}
+.steps__slider::-moz-selection {
+	background: transparent;
+	color: #fff;
+	text-shadow: none;
+}
+.steps__slider::selection {
+	background: transparent; 
+	color: #fff;
+	text-shadow: none;
+}
+.slide-list {
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+.slide-wrap {
+	position: relative;
+	left: 0px;
+	top: 0;
+	width: 10000000px;
+}
+.slide-item {
+	width: 280px;
+	padding: 10px;/
+	float: left;
+}
+.navy {
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	height: 100%;
+	width: 30px;
+	cursor: pointer;
+}
+.prev-slide {
+	left: 10px;
+	background: url(public/img/slider/left-arrow.png) 11px 40% no-repeat;
+}
+.next-slide {
+	right: 10px;
+	background: url(public/img/slider/right-arrow.png) 13px 40% no-repeat;
+}
+.navy.disable {
+	background: #dbdbdb;
+}
