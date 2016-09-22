@@ -1,7 +1,9 @@
 $(document).ready(function(){
 	function htmSlider(){
 
-		// обертка слайдера 
+		// обертка слайдера
+		let i;
+		
 		var slideWrap = $('.slide-wrap');
 		// ссылки на предудыщий иследующий слайд
 		var nextLink = $('.next-slide');
