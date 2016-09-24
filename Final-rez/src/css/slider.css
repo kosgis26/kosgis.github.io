@@ -1,0 +1,119 @@
+.slider {
+	width: 236px;
+	height: 400px;
+	margin: 1px 9px;
+	position: relative;
+	overflow: hidden;
+}	
+.steps__slider {
+	width: 768px;
+	height: 401px;
+	position: relative;
+	overflow: hidden;
+}
+.steps__slider::-moz-selection {
+	background: transparent;
+	color: #fff;
+	text-shadow: none;
+}
+.steps__slider::selection {
+	background: transparent; 
+	color: #fff;
+	text-shadow: none;
+}
+.slide-list1, .slide-list2, .slide-list3 {
+	width: 236px;
+	height: 400px;
+	position: relative;
+	overflow: hidden;
+	float: left;
+	margin: 0px 10px;
+}
+.slide-wrap1, .slide-wrap2, .slide-wrap3 {
+	width: 10000000px;
+}
+.slide-item1, .slide-item2, .slide-item3 {
+	position: relative;
+	width: 236px;
+	padding: 0 10px;/
+	float: left;
+	float: left;
+}
+.navy {
+	position: absolute;
+	top: 39px;
+	height: 55px;
+	width: 30px;
+	cursor: pointer;
+}
+.prev-slide1, .prev-slide2, .prev-slide3 {
+	left: 20px;
+	background: url(../../public/img/slider/left-arrow.png) 0px 12% no-repeat;
+}
+.prev-slide2 {
+	left: 10px;
+}
+.prev-slide3 {
+	left: 21px;
+}
+.next-slide1, .next-slide2, .next-slide3 {
+	right: 21px;
+	background: url(../../public/img/slider/right-arrow.png) 0px 0% no-repeat;
+}
+.next-slide2 {
+	right: 10px;
+}
+.next-slide3 {
+	right: 20px;
+}
+/*.clear {
+	margin-top: -1px;
+	height: 1px;
+	clear:both;
+	zoom: 1;
+}*/
+@media (max-width: 1440px) and (min-width: 1024px) {
+	.slider {
+		width: 236px;
+		height: 400px;
+		margin: 1px 9px;
+		position: relative;
+		overflow: hidden;
+	}	
+	.steps__slider {
+		width: 960px;
+		height: 400px;
+		position: relative;
+		overflow: hidden;
+	}
+	.slide-list1, .slide-list2, .slide-list3 {
+		width: 300px;
+		height: 400px;
+		position: relative;
+		overflow: hidden;
+		float: left;
+		margin: 0px 10px 0px 10px;
+	}
+	.slide-item1, .slide-item2, .slide-item3 {
+		position: relative;
+		width: 236px;
+		padding: 0 10px;/
+		float: left;
+		float: left;
+	}
+	.navy {
+		position: absolute;
+		top: 152px;
+		height: 55px;
+		width: 30px;
+		cursor: pointer;
+	}
+	.prev-slide1, .prev-slide2, .prev-slide3 {
+		left: 21px;
+		background: url(../../public/img/slider/left-arrow.png) 0px 12% no-repeat;
+	}
+	.next-slide1, .next-slide2, .next-slide3 {
+		right: 21px;
+		background: url(../../public/img/slider/right-arrow.png) 0px 0% no-repeat;
+	}
+}

@@ -1,0 +1,240 @@
+@media (max-width: 1023px) and (min-width: 768px) {
+  .wrapper {
+    width: 768px;
+  }
+  .promo {
+    padding-bottom: 96px;
+    background-position-x: 50%;
+  }
+  .promo__header, .promo__name {
+    margin: 38px 50px 0 48px;
+    padding: 0;
+  }
+  .promo__header {
+    float: right;
+  }
+  .promo__name {
+    float: left;
+   margin-top: 46px;
+  }
+  .promo__header--btn {
+    padding: 7px 16px 7px 17px;
+  }
+  .login {
+    padding-right: 15px;
+  }
+  .promo__content {
+    clear: both;
+    padding-top: 114px;
+  }
+  .promo__content h1 {
+    margin: 0 auto;
+    font-size: 52px;
+    width: 500px;
+    margin-left: 130.5px;
+    padding-bottom: 28px;
+  }
+  .promo__content--text {
+    font-size: 24px;
+    margin-left: 98px;
+  }
+  .promo__search {
+    padding-top: 38px;
+  }
+  .promo__search--btn {
+    padding: 12px 51px 10px 50px;
+    border: none;
+  }
+  .about {
+    margin: 93px auto 96px;
+  }
+  .about h3 {
+    font-size: 22px;
+  }
+  .about .title {
+    margin-left: 8px;
+    margin-bottom: 34px;
+    letter-spacing: -0.3px;
+  }
+  .steps {
+    display: none;
+  }
+  .steps__slider {
+    display: block;
+    margin: 0 auto;
+    height: 400px;
+  }
+  .partners {
+    position: relative;
+    width: 768px;
+  }
+  .step-1 .step__main {
+    margin-left: -1px;
+  }
+  .step-2 .step__block  {
+  padding: 3px 11px 4px 13px;
+  margin-left: 1px;
+  }
+  .step-2 .step__main {
+    padding-bottom: 9px;
+    margin-left: -1px;
+  }
+  .step-2 .step__content {
+    letter-spacing: 0.1px;
+    width: 200px;
+  }
+  .about__step {
+    width: 236px;
+    height: 400px;
+    padding: 0;
+    background-position: 53.5% 50%;
+    background-size: auto;
+  }
+  .step-2 {
+    background-position: -187px 425px;
+  }
+  .step-3 {
+  background-position: 448px -23px;
+  }
+  .about__bg {
+    position: relative;
+    padding: 7px 15px ;
+  }
+  .btn__bg {
+    background: #ff4e50;
+    padding: 11px 25px 11px 20px;
+  }
+  .step__block {
+    padding: 3px 12px 4px 13px;
+  }
+  .step__main {
+    padding-top: 19px;
+    padding-bottom: 11px;
+    line-height: 28px;
+  }
+  .step__content {
+    font-size: 17px;
+    letter-spacing: -0.1px;
+  }
+  .partners__main  {
+    line-height: 26px;
+    margin-bottom: 32px;
+    margin-left: 2px;
+  }
+  .partner__block {
+    margin: 0px 100px 0px 125px;
+    padding-bottom: 57px;
+  }
+  .partners__content {
+    margin: 0 auto;
+    text-align: center;
+    width: 95%;
+  }
+  .partner__1, .partner__2 {
+    float: left;
+  }
+  .partner__2 {
+  padding-bottom: 36px;
+  }
+  .partner__3, .partner__4 {
+    position: absolute;
+    float: right;
+    left: 276px;
+  }
+  .partner__4 {
+    top: 317px;
+    margin-left: 124px;
+  }
+  .partner__other {
+    clear: both;
+  }
+  .partner__btn {
+    padding: 9px 29px 9px 27px;
+    margin-right: 2px;
+  }
+  .ideas {
+    display: block;
+    margin-top: 96px;
+    overflow: hidden;
+  }
+  .ideas__main {
+    margin-bottom: 24px;
+  }
+  .ideas__img {
+    padding: 0;
+  }
+  .grid-title {
+    float: left;
+    display: block;
+  }
+  .grid-item {
+    width: 236px;
+    height: 310px;
+    margin: 10px;
+  }
+  .grid-item--width2 {
+    width: 492px;
+  }
+  .search {
+  margin-top: 86px;
+  margin-bottom: 78px;
+  clear: both;
+  }
+  .search__main {
+  margin-bottom: 30px;
+  }
+  .search__article {
+    margin-bottom: 25px;
+  }
+  input[type="text"] {
+    margin: 0 4px 0 4px;
+    width: 240px;
+  }
+  .search__btn {
+    padding: 11px 23px 11px 23px;
+    width: 164px;
+    margin: 9px 4px 20px 0px;
+  }
+  .footer {
+    padding-left: 18px;
+    padding-top: 36px;
+  }
+  .footer__name, .footer__company, .footer__partners, .footer__logo {
+    float: left;
+    width: 25%;
+    margin: 0;
+    padding: 0;
+  }
+  .footer__name h3 {
+    margin-right: 2px;
+  }
+  .footer__partners .footer__item {
+    padding-right: 40px;
+    letter-spacing: 0px
+  }
+  .footer__list {
+    padding-top: 6px;
+  }
+  .footer__list a {
+    width: 100%;
+  }
+  .footer__list li {
+    width: 50%;
+    padding: 5px 1px 0 54px;
+    list-style: none;
+    text-align: left;
+    letter-spacing: 0px;
+  }
+  .footer__des {
+  padding: 1px 0 0 40px;
+  letter-spacing: 1px;
+  }
+  .footer__logo {
+  float: right;
+  }
+}
+
+
+
+
+
