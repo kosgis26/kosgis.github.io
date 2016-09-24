@@ -24,9 +24,9 @@ body::-webkit-scrollbar {
 	display: none;
 }
 .wrapper {
-  min-width: 320px;
-  /* width: 320px; */
-  max-width: 767px;
+  /* min-width: 320px; */
+  width: 320px;
+  /* max-width: 767px; */
   overflow: hidden;
   margin: 0 auto;
   font-family: MontserratBold;
@@ -71,7 +71,7 @@ button {
 h3 {
   font-size: 20px;
   text-transform: uppercase;
-  letter-spacing: 1.1px;
+  letter-spacing: 1px;
 }
 h1 {
   font-size: 30px;
@@ -79,23 +79,24 @@ h1 {
 }
 h2 {
   letter-spacing: -0.25px;
+  margin: 0px auto;
 }
 a {
   font-family: RobotoLight;
   font-size: 14px;
 }
 .promo__content h1 {
-  padding: 26px 0px 7px 1px;
+  padding: 26px 0px 8px 1px;
 }
 .promo__search {
-  padding: 19px 0 138px 0;
+  padding: 18px 0 138px 0;
 }
 .promo__search--btn {
   padding: 12px 51px 10px 50px;
   border: none;
 }
 .about {
-  margin: 33.5px auto;
+  margin: 34px auto;
   text-align: center;
 }
 .about h3 {
@@ -123,9 +124,10 @@ a {
   margin: 0 auto 10px auto;
   text-align: left;
   color: #fff;
-  border-radius: 3px;
+  border-radius: 5px;
   position: relative;
   cursor: default;
+  background-size: 405px;
 }
 .about__step img {
   height: 165%;
@@ -145,16 +147,20 @@ a {
   height: 100%;
 }
 .step-1 {
-  background: url('../../public/img/step_1.png') center;
-  background-size: 360px auto;
+  background: url('../../public/img/step_1.png');
+  background-size: 405px;
+  background-position-x: 345px;
+  background-position-y: -25px;
 }
 .step-2 {
-  background: url('../../public/img/step_2.png') center;
-  background-size: 360px auto;
+  background: url('../../public/img/step_2.png');
+  background-size: 405px;
+  background-position: 375px 20px;
 }
 .step-3 {
-  background: url('../../public/img/step_3.png') center;
-  background-size: 360px auto;
+  background: url('../../public/img/step_3.png');
+  background-size: 405px;
+  background-position: 352px 20px;
 }
 .step-2 .step__main {
   padding-bottom: 12px;
@@ -174,10 +180,16 @@ a {
 .step__block {
   font-family: MontserratRegular;
   font-size: 10px;
-  padding: 4px 12px 3px 14px;
+  padding: 4px 11px 3px 13px;
   margin: 0px 0px 15px 2px;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+.step-1 .step__block {
+  padding: 4px 12px 3px 14px;
+}
+.step-2 .step__block {
+  margin-left: 1px;
 }
 .step__main {
   font-size: 24px;
@@ -191,24 +203,27 @@ a {
   color: #cccccc;
 }
 .partners__main  {
-  width: 97%;
   line-height: 26px;
   margin-left: 0px;
-  margin-bottom: 16px;
+  margin-bottom: 15px;
+  padding-right: 8px;
 }
 .partner__block {
   text-align: center;
-  padding-bottom: 26.7px;
+  padding-bottom: 27px;
   width: 223px;
   margin: 0 auto;
   padding-right: 2px;
 }
+.partner__2 {padding-bottom: 26px;}
 .partner__3 {
+  padding-right: 4px;
 }
 .partner__3 > .partner__name {
   margin-left: -2px;
 }
 .partner__4 {
+  padding-right: 6px;
 }
 .partner__img {
   position:relative;
@@ -275,8 +290,10 @@ a {
   padding: 9px 72px;
   margin-right: 4px;
 }
-.ideas {}
-.ideas__main {line-height: 26px;margin-bottom: 4px;}
+.ideas__main {
+  line-height: 26px;
+  margin-bottom: 4px;
+}
 .ideas__img {
   padding: 10px 10px 26px 10px;
   margin: 0 auto;
@@ -286,6 +303,7 @@ a {
 }
 .grid-title {
   position: relative;
+  margin: 0 auto;
 }
 .grid-item {
   width: 300px;
@@ -320,12 +338,13 @@ a {
 }
 .search__main {
   line-height: 26px;
-  margin-bottom: 11px;
+  margin-bottom: 10px;
+  padding-right: 4px;
 }
 .search__text {
   font-size: 18px;
   color: #333333;
-  margin-bottom: 14px;
+  margin-bottom: 15px;
   display:block;
   padding-right: 3px;
 }
@@ -342,7 +361,7 @@ input[type="text"] {
 }
 ::-webkit-input-placeholder {
   font-size: 14px;
-  padding-left: 4px;
+  padding-left: 2px;
   letter-spacing: -0.2px;
 }
 .search__btn {
@@ -359,20 +378,33 @@ input[type="text"] {
 .footer__name h3 {
   color: #ff4e50;
   font-size: 16px;
+  letter-spacing: 0.7px;
+  margin-right: 2px;
+  font-family: MontserratBold;
 }
 .footer__company, .footer__partners {
   color: #333333;
   font-size: 14px;
-  margin: 11px;
+  margin: 12px;
   padding-right: 4px;
 }
-.footer__item {
-    padding-bottom: 4px;
-    font-family: MontserratRegular;
+.footer__partners {
+    padding-top: 19px;
+}
+.footer__item, .footer__des {
+    font-family: MontserratBold;
+    letter-spacing: 0px;
+}
+.footer__list {width: 210px;margin: 0 auto;}
+.footer__list-item {
+}
+.footer__list li {
+  float: left;
+  padding: 0 1px 0 2px;
+  list-style: none;
 }
 .footer__list a {
   text-decoration: none;
-  list-style: none;
   font-family: RobotoLight;
   color: #666666;
   font-size: 14px;
@@ -382,11 +414,12 @@ input[type="text"] {
   font-size: 10px;
   text-transform: uppercase;
   color: #cccccc;
-  padding: 9px 0;
   margin-left: -11px;
-  display: block;
-  letter-spacing: 0px;
+  letter-spacing: 0.2px;
 }
 .footer__logo {
-  padding-left: 1px;
+    padding: 2px 4px 0 0;
+}
+.footer__logo img {
+  padding-top: 7px;
 }

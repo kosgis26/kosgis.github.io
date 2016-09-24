@@ -1,20 +1,13 @@
-.clear {
-	margin-top: -1px;
-	height: 1px;
-	clear:both;
-	zoom: 1;
-}
 .slider {
 	width: 236px;
 	height: 400px;
-	margin: 0 10px;
+	margin: 1px 9px;
 	position: relative;
 	overflow: hidden;
-	float: left;
 }	
 .steps__slider {
-	min-width: 768px;
-	height: 400px;
+	width: 768px;
+	height: 401px;
 	position: relative;
 	overflow: hidden;
 }
@@ -28,14 +21,18 @@
 	color: #fff;
 	text-shadow: none;
 }
-.slide-list {
+.slide-list1, .slide-list2, .slide-list3 {
+	width: 236px;
+	height: 400px;
 	position: relative;
-	/* height: 100%; */
+	overflow: hidden;
+	float: left;
+	margin: 0px 10px;
 }
-.slide-wrap {
+.slide-wrap1, .slide-wrap2, .slide-wrap3 {
 	width: 10000000px;
 }
-.slide-item {
+.slide-item1, .slide-item2, .slide-item3 {
 	position: relative;
 	width: 236px;
 	padding: 0 10px;/
@@ -44,20 +41,79 @@
 }
 .navy {
 	position: absolute;
-	top: 40px;
-	z-index: 1;
+	top: 39px;
 	height: 55px;
 	width: 30px;
 	cursor: pointer;
 }
-.prev-slide {
-	left: 21px;
+.prev-slide1, .prev-slide2, .prev-slide3 {
+	left: 20px;
 	background: url(../../public/img/slider/left-arrow.png) 0px 12% no-repeat;
 }
-.next-slide {
+.prev-slide2 {
+	left: 10px;
+}
+.prev-slide3 {
+	left: 21px;
+}
+.next-slide1, .next-slide2, .next-slide3 {
 	right: 21px;
 	background: url(../../public/img/slider/right-arrow.png) 0px 0% no-repeat;
 }
-.navy.disable {
-	background: #dbdbdb;
+.next-slide2 {
+	right: 10px;
+}
+.next-slide3 {
+	right: 20px;
+}
+/*.clear {
+	margin-top: -1px;
+	height: 1px;
+	clear:both;
+	zoom: 1;
+}*/
+@media (max-width: 1440px) and (min-width: 1024px) {
+	.slider {
+		width: 236px;
+		height: 400px;
+		margin: 1px 9px;
+		position: relative;
+		overflow: hidden;
+	}	
+	.steps__slider {
+		width: 960px;
+		height: 400px;
+		position: relative;
+		overflow: hidden;
+	}
+	.slide-list1, .slide-list2, .slide-list3 {
+		width: 300px;
+		height: 400px;
+		position: relative;
+		overflow: hidden;
+		float: left;
+		margin: 0px 10px 0px 10px;
+	}
+	.slide-item1, .slide-item2, .slide-item3 {
+		position: relative;
+		width: 236px;
+		padding: 0 10px;/
+		float: left;
+		float: left;
+	}
+	.navy {
+		position: absolute;
+		top: 152px;
+		height: 55px;
+		width: 30px;
+		cursor: pointer;
+	}
+	.prev-slide1, .prev-slide2, .prev-slide3 {
+		left: 21px;
+		background: url(../../public/img/slider/left-arrow.png) 0px 12% no-repeat;
+	}
+	.next-slide1, .next-slide2, .next-slide3 {
+		right: 21px;
+		background: url(../../public/img/slider/right-arrow.png) 0px 0% no-repeat;
+	}
 }
