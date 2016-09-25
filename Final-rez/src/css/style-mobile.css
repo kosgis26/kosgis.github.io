@@ -35,7 +35,7 @@ body::-webkit-scrollbar {
 .promo {
   background: url('../../public/img/header.png') no-repeat top, rgb(26,25,21);
   background-size: cover;
-  background-position-x: 51%;
+  background-position: -406px 0px;
   margin: 0 auto;
   text-align: center;
   color: #fff;
@@ -96,7 +96,7 @@ a {
   border: none;
 }
 .about {
-  margin: 34px auto;
+  margin: 34px auto 25px;
   text-align: center;
 }
 .about h3 {
@@ -154,13 +154,13 @@ a {
 }
 .step-2 {
   background: url('../../public/img/step_2.png');
-  background-size: 405px;
-  background-position: 375px 20px;
+  background-size: 400px 262px;
+  background-position: 370px -17px;
 }
 .step-3 {
   background: url('../../public/img/step_3.png');
-  background-size: 405px;
-  background-position: 352px 20px;
+  background-size: 390px 260px;
+  background-position: 345px -15px;
 }
 .step-2 .step__main {
   padding-bottom: 12px;
@@ -295,7 +295,7 @@ a {
   margin-bottom: 4px;
 }
 .ideas__img {
-  padding: 10px 10px 26px 10px;
+  padding: 10px 10px 25px 10px;
   margin: 0 auto;
 }
 .loader {
@@ -378,7 +378,7 @@ input[type="text"] {
 .footer__name h3 {
   color: #ff4e50;
   font-size: 16px;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.8px;
   margin-right: 2px;
   font-family: MontserratBold;
 }
@@ -386,7 +386,7 @@ input[type="text"] {
   color: #333333;
   font-size: 14px;
   margin: 12px;
-  padding-right: 4px;
+  padding-right: 3px;
 }
 .footer__partners {
     padding-top: 19px;
@@ -414,11 +414,11 @@ input[type="text"] {
   font-size: 10px;
   text-transform: uppercase;
   color: #cccccc;
-  margin-left: -11px;
-  letter-spacing: 0.2px;
+  padding-right: 15px;
+  letter-spacing: -0.2px;
 }
 .footer__logo {
-    padding: 2px 4px 0 0;
+    padding: 1px 2px 0 0;
 }
 .footer__logo img {
   padding-top: 7px;

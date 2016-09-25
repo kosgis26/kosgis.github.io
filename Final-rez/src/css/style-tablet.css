@@ -196,17 +196,26 @@
     margin: 9px 4px 20px 0px;
   }
   .footer {
-    padding-left: 18px;
     padding-top: 36px;
   }
   .footer__name, .footer__company, .footer__partners, .footer__logo {
     float: left;
-    width: 25%;
+    width: 24%;
     margin: 0;
     padding: 0;
   }
-  .footer__name h3 {
-    margin-right: 2px;
+  .footer__name {
+    padding-left: 20px;
+  }
+  .footer__company {
+    padding-left: 3px;
+  }
+  .footer__partners {
+    
+padding-left: 3px;
+  }
+  .footer__log {
+
   }
   .footer__partners .footer__item {
     padding-right: 40px;
@@ -220,17 +229,21 @@
   }
   .footer__list li {
     width: 50%;
-    padding: 5px 1px 0 54px;
+    padding: 5px 1px 0 52px;
     list-style: none;
     text-align: left;
     letter-spacing: 0px;
   }
   .footer__des {
-  padding: 1px 0 0 40px;
+  padding-left: 45px;
   letter-spacing: 1px;
   }
   .footer__logo {
   float: right;
+  padding: 1px 2px;
+  }
+  .footer__logo img {
+   padding-right: 2px;
   }
 }
 

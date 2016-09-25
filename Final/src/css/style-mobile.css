@@ -24,9 +24,8 @@ body::-webkit-scrollbar {
 	display: none;
 }
 .wrapper {
-  /* min-width: 320px; */
-  width: 320px;
-  /* max-width: 767px; */
+   min-width: 320px; 
+   max-width: 767px; 
   overflow: hidden;
   margin: 0 auto;
   font-family: MontserratBold;
@@ -312,8 +311,6 @@ a {
   display: block;
   border-radius: 5px;
   margin-bottom: 10px;
-}
-.grid-item--width2 {
 }
 .grid-text {
   text-align: center;
