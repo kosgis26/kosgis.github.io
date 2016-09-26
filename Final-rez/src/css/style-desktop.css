@@ -1,17 +1,50 @@
 @media (max-width: 1440px) and (min-width: 1024px) {
   .wrapper {
-    min-width: 1024px;
-    max-width: 1440px;
+    /* min-width: 1024px; */
+    width: 1024px;
+    /* max-width: 1440px; */
+    margin: 0 auto;
   }
-  .promo {padding-bottom: 96px;background-position: 100%;background-size: auto;}
-  .promo__header, .promo__name {padding: 38px 42px 0px 48px;}
-  .promo__header {float: right;}
-  .promo__name {float: left;padding: 46px 0 0 42px;}
-  .promo__header--btn {padding: 7px 16px 7px 17px;}
-  .login {padding-right: 15px;}
-  .promo__content {clear: both;padding-top: 114px;}
-  .promo__content h1 {margin: 0 auto;font-size: 51px;width: 560px;/* margin-left: 130.5px; */padding-bottom: 29px;padding-right: 2px;letter-spacing: 0.8px;}
-  .promo__content--text {font-size: 24px;}
+  .promo {
+    padding-bottom: 96px;
+    background-position: 100%;
+    background-size: auto;
+  }
+  .promo header, .footer__box, .ideas__box {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .promo__header, .promo__name {
+    padding: 38px 1px 0px 0px;
+  }
+  .promo__header {
+    float: right;
+  }
+  .promo__name {
+    float: left;
+    padding: 46px 0 0 0px;
+  }
+  .promo__header--btn {
+    padding: 7px 16px 7px 17px;
+  }
+  .login {
+    padding-right: 15px;
+  }
+  .promo__content {clear: both;
+  padding-top: 114px;
+  }
+  .promo__content h1 {
+    margin: 0 auto;
+    font-size: 51px;
+    width: 560px;
+    padding-bottom: 29px;
+    padding-right: 2px;
+    letter-spacing: 0.8px;
+  }
+  .promo__content--text {
+    font-size: 24px;
+  }
   .promo__search {
     padding-top: 39px;
     padding-left: 2px;
@@ -38,7 +71,6 @@
   .steps__slider {
     display: block;
     margin: 0 auto;
-    /* margin-left: 240px; */
   }
   .partners {
     position: relative;
@@ -47,8 +79,8 @@
     margin-left: -1px;
   }
   .step-2 .step__block  {
-  padding: 3px 11px 4px 13px;
-  margin-left: 1px;
+    padding: 3px 11px 4px 13px;
+    margin-left: 1px;
   }
   .step-2 .step__main {
     padding-bottom: 9px;
@@ -63,10 +95,10 @@
     background-size: auto;
   }
   .step-2 {
-  background-position: 44% 40%;
+    background-position: 44% 40%;
   }
   .step-3 {
-  background-position: 50% 66%;
+    background-position: 50% 66%;
   }
   .about__bg {
     position: relative;
@@ -95,28 +127,19 @@
   .partner__block {
   }
   .partners__content {
+    width: 940px;
     margin: 0 auto;
-    padding: 0px 41px;
   }
   .partner__1, .partner__2, .partner__3, .partner__4 {
     float: left;
-    padding: 0 18px 0px 0px;
+    padding: 0 0px 0px 16px;
   }
-  .partner__2, .partner__3 {
-     padding-right: 18px;
-   }
-  .partner__4 {
-    float: right;
-    padding-right: 0px;
-  }
-  .partner__2 {
-    float: right;
-    position: absolute;
-    right: 32.7%;
+  .partner__1 {
+    padding-left: 0;
   }
   .partner__other {
     clear: both;
-    padding-top: 70px;
+    padding-top: 36px;
   }
   .partner__btn {
     padding: 9px 29px 9px 27px;
@@ -124,16 +147,16 @@
   }
   .ideas {
     display: block;
-
-    overflow: hidden;
+    /* margin: 0 auto; */
   }
   .ideas__main {
     margin-top: 62px;
     margin-bottom: 25px;
   }
   .ideas__img {
-    padding: 0 32px;
-    margin: 0 auto;
+    padding: 0;
+    /* width: 1024px; */
+    /* margin: 0 0px; */
   }
   .grid-title {
     float: left;
@@ -142,17 +165,17 @@
   .grid-item {
     width: 300px;
     height: 310px;
-    margin: 10px;
+    margin: 10px 10px 10px 10px;
   }
   .grid-item--width2 {
     width: 492px;
   }
   .search {
-  margin-top: 85px;
-  margin-bottom: 78px;
+    margin-top: 85px;
+    margin-bottom: 78px;
   }
   .search__main {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
   }
   .search__article {
     margin-bottom: 27px;
@@ -167,7 +190,6 @@
     margin: 9px 4px 20px 0px;
   }
   .footer {
-    padding-left: 48px;
     padding-top: 36px;
   }
   .footer__name, .footer__company, .footer__partners, .footer__logo {
@@ -175,20 +197,25 @@
     width: 180px;
     margin: 0;
     padding: 0;
+    text-align: left;
+  }
+  .footer__name {
   }
   .footer__company {
-    margin-left: 21px;
+    text-align: left;
+  }
+  .footer__company .footer__item {
+    padding-left: 60px;
   }
   .footer__logo {
     float: right;
-    padding-right: 31px;
+    text-align: right;
   }
   .footer__name h3 {
-  letter-spacing: 0.8px;
+    letter-spacing: 0.8px;
   }
   .footer__partners .footer__item {
-    padding-right: 46px;
-    letter-spacing: 0px;
+    padding-left: 40px;
   }
   .footer__list {
     padding-top: 6px;
@@ -198,18 +225,13 @@
   }
   .footer__list li {
     width: 50%;
-    padding: 5px 1px 0 51px;
+    padding: 5px 1px 0 54px;
     list-style: none;
     text-align: left;
     letter-spacing: 0px;
   }
   .footer__des {
-  padding: 1px 0 0 30px;
-  letter-spacing: 1px;
+    padding: 1px 0 0 30px;
+    letter-spacing: 1px;
   }
 }
-
-
-
-
-

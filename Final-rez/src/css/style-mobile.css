@@ -24,9 +24,9 @@ body::-webkit-scrollbar {
 	display: none;
 }
 .wrapper {
-  /* min-width: 320px; */
-  width: 320px;
-  /* max-width: 767px; */
+  min-width: 320px;
+  /* width: 320px; */
+  max-width: 767px;
   overflow: hidden;
   margin: 0 auto;
   font-family: MontserratBold;
@@ -35,7 +35,6 @@ body::-webkit-scrollbar {
 .promo {
   background: url('../../public/img/header.png') no-repeat top, rgb(26,25,21);
   background-size: cover;
-  background-position: -406px 0px;
   margin: 0 auto;
   text-align: center;
   color: #fff;
