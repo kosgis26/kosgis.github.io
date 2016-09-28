@@ -1,44 +1,50 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="en-EN">
 <head>
-	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>require</title>
-	<link rel="stylesheet" href="src/css/slider.css">
-	<link rel="stylesheet" href="src/css/style-mobile.css">
-	<link rel="stylesheet" href="src/css/style-tablet.css">
-	<link rel="stylesheet" href="src/css/style-desktop.css">
-	<!-- <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script> -->
-	<script src="public/js/masonry.pkgd.js"></script>
-	<script src="public/js/jquery-3.1.0.js"></script>
-	<script src="src/js/slider.js"></script>
-	<script src="src/js/script.js"></script>
-	<!-- <![if lte IE 8]>
-	<script src="public/js//html5shiv.js"></script>
-	<script src="public/js//respond.js"></script>
-	<![endif]> -->
+	<title>URLAUBSGLÜCK</title>
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<!-- <link rel="stylesheet" href="style/style.main.min.css"> -->
+	<link rel="stylesheet" href="style/slider.css">
+	<link rel="stylesheet" href="style/style__mobile.css">
+	<link rel="stylesheet" href="style/style__tablet.css">
+	<link rel="stylesheet" href="style/style__desktop.css">
+	<!-- <script src="js/plagins.min.js"></script> -->
+	<!-- <script src="js/script.main.min.js"></script> -->
+	<script src="js/jquery-3.1.0.js"></script>
+	<script src="js/masonry.pkgd.js"></script>
+	<script src="js/slider.js"></script>
+	<script src="js/script.js"></script>
+
+	<!--[if IE 8]>
+	<link rel="stylesheet" href="styles/PIE.css">
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript" src="js/respond.src.js"></script>
+	<![endif]-->
 
 </head>
 <body>
 <div class="promo">
-	<div class="wrapper">
-		<header>
-			<form class="promo__header">
-				<button name="login" class="promo__header--btn login">Log in</button>
-				<button name="sign" class="promo__header--btn sign">Sign up</button>
-			</form>
-			<div class="promo__name">
-				<h3>Urlaubsglück</h3>
+	<div class="promo-background">
+		<div class="wrapper">
+			<div class="header">
+				<form class="promo__header">
+					<button name="login" class="promo__header--btn login">Log in</button>
+					<button name="sign" class="promo__header--btn sign">Sign up</button>
+				</form>
+				<div class="promo__name">
+					<h3>Urlaubsglück</h3>
+				</div>
 			</div>
-		</header>
-		<div class="promo__content">		
-			<h1>Share your holiday dreams</h1>
-			<a class="promo__content--text">And find the perfect partner to fullfill it</a>
+			<div class="promo__content">		
+				<h1>Share your holiday dreams</h1>
+				<a class="promo__content--text">And find the perfect partner to fullfill it</a>
+			</div>
+			<form class="promo__search">
+				<button name="search" class="promo__search--btn btn__bg">Find your holiday partner</button>
+			</form>
 		</div>
-		<form class="promo__search">
-			<button name="search" class="promo__search--btn btn__bg">Find your holiday partner</button>
-		</form>
 	</div>
 </div>
 <div class="about">
@@ -72,10 +78,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="steps__slider">
-			<div class="slide-list1">
-				<div class="slide-wrap1">
-					<div class="slide-item1 about__step step-1">
+		<div id="slider">
+			<div id="list">
+				<div id="wrap1">
+					<div id="item" class="about__step step-1">
 						<div class="step__bg"></div>
 						<div class="step__text">
 							<span class="step__block btn__bg">step 1</span>
@@ -83,7 +89,7 @@
 							<div class="step__content"><a>Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a></div>
 						</div>
 					</div>
-					<div class="slide-item1 about__step step-2">
+					<div id="item" class="about__step step-2">
 						<div class="step__bg"></div>
 						<div class="step__text">
 							<span class="step__block btn__bg">step 2</span>
@@ -91,7 +97,7 @@
 							<div class="step__content"><a>Nulla venenatis tempor dui in molestie. Nulla quis dictum purus, sit amet porttitor est.</a></div>
 						</div>
 					</div>
-					<div class="slide-item1 about__step step-3">
+					<div id="item" class="about__step step-3">
 						<div class="step__bg"></div>
 						<div class="step__text">
 							<span class="step__block btn__bg">step 3</span>
@@ -99,13 +105,13 @@
 							<div class="step__content"><a>Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a></div>
 						</div>
 					</div>
-					<div class="navy prev-slide1"></div>
-					<div class="navy next-slide1"></div>
 				</div>
+				<div id="prev-slide1" class="navy"></div>
+				<div id="next-slide1" class="navy"></div>
 			</div>
-			<div class="slide-list2">
-				<div class="slide-wrap2">
-					<div class="slide-item2 about__step step-2">
+			<div id="list">
+				<div id="wrap2">
+					<div id="item" class="about__step step-2">
 						<div class="step__bg"></div>
 						<div class="step__text">
 							<span class="step__block btn__bg">step 2</span>
@@ -113,7 +119,7 @@
 							<div class="step__content"><a>Nulla venenatis tempor dui in molestie. Nulla quis dictum purus, sit amet porttitor est.</a></div>
 						</div>
 					</div>
-					<div class="slide-item2 about__step step-3">
+					<div id="item" class="about__step step-3">
 						<div class="step__bg"></div>
 						<div class="step__text">
 							<span class="step__block btn__bg">step 3</span>
@@ -121,7 +127,7 @@
 							<div class="step__content"><a>Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a></div>
 						</div>
 					</div>
-					<div class="slide-item2 about__step step-1">
+					<div id="item" class="about__step step-1">
 						<div class="step__bg"></div>
 						<div class="step__text">
 							<span class="step__block btn__bg">step 1</span>
@@ -129,13 +135,13 @@
 							<div class="step__content"><a>Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a></div>
 						</div>
 					</div>
-					<div class="navy prev-slide2"></div>
-					<div class="navy next-slide2"></div>
 				</div>
+				<div id="prev-slide2" class="navy"></div>
+				<div id="next-slide2" class="navy"></div>
 			</div>
-			<div class="slide-list3">
-				<div class="slide-wrap3">
-					<div class="slide-item3 about__step step-3">
+			<div id="list">
+				<div id="wrap3">
+					<div id="item" class="about__step step-3">
 						<div class="step__bg"></div>
 						<div class="step__text">
 							<span class="step__block btn__bg">step 3</span>
@@ -143,7 +149,7 @@
 							<div class="step__content"><a>Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a></div>
 						</div>
 					</div>
-					<div class="slide-item3 about__step step-1">
+					<div id="item" class="about__step step-1">
 						<div class="step__bg"></div>
 						<div class="step__text">
 							<span class="step__block btn__bg">step 1</span>
@@ -151,7 +157,7 @@
 							<div class="step__content"><a>Quisque libero libero, dictum non turpis in, luctus semper lorem. Donec rhoncus a leo sit amet facilisis.</a></div>
 						</div>
 					</div>
-					<div class="slide-item3 about__step step-2">
+					<div id="item" class="about__step step-2">
 						<div class="step__bg"></div>
 						<div class="step__text">
 							<span class="step__block btn__bg">step 2</span>
@@ -159,9 +165,9 @@
 							<div class="step__content"><a>Nulla venenatis tempor dui in molestie. Nulla quis dictum purus, sit amet porttitor est.</a></div>
 						</div>
 					</div>
-					<div class="navy prev-slide3"></div>
-					<div class="navy next-slide3"></div>
 				</div>
+				<div id="prev-slide3" class="navy"></div>
+				<div id="next-slide3" class="navy"></div>
 			</div>
 		</div>
 		<!-- <div class="clear"></div> -->
@@ -175,7 +181,7 @@
 		<div class="partners__content">
 			<div class="partner__block partner__1">
 				<div class="partner__img">
-					<img src="public/img/partner_1.png">
+					<img src="img/partner_1.jpg">
 					<div class="img__hobby hobby-1"></div>
 				</div>
 				<p class="partner__name">Bradley Hunter</p>
@@ -183,7 +189,7 @@
 			</div>
 			<div class="partner__block partner__2">
 				<div class="partner__img">
-					<img src="public/img/partner_2.png">
+					<img src="img/partner_2.jpg">
 					<div class="img__hobby hobby-2"></div>
 				</div>
 				<p class="partner__name">Lucas Marsha</p>
@@ -191,7 +197,7 @@
 			</div>
 			<div class="partner__block partner__3">
 				<div class="partner__img">
-					<img src="public/img/partner_3.png">
+					<img src="img/partner_3.jpg">
 					<div class="img__hobby hobby-3"></div>
 				</div>
 				<p class="partner__name">Heather Walker</p>
@@ -199,7 +205,7 @@
 			</div>
 			<div class="partner__block partner__4">
 				<div class="partner__img">
-					<img src="public/img/partner_4.png">
+					<img src="img/partner_4.jpg">
 					<div class="img__hobby hobby-4"></div>
 				</div>
 				<p class="partner__name">Bradley Hunter</p>
@@ -265,7 +271,7 @@
 			</div>
 			<div class="footer__logo">
 				<p class="footer__des">Designed by</p>
-				<img src="public/img/footer_logo.png">
+				<img src="img/footer_logo.png">
 			</div>
 		</div>
 	</div>

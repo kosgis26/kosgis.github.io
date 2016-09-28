@@ -1,18 +1,19 @@
+/*Mobile*/
 @font-face {
   font-family: MontserratBold;
-  src: url("../../public/fonts/Montserrat-Bold.ttf") format("truetype");
+  src: url("../fonts/Montserrat-Bold.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: MontserratRegular;
-  src: url("../../public/fonts/Montserrat-Regular.ttf") format("truetype");
+  src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 @font-face {
   font-family: RobotoLight;
-  src: url("../../public/fonts/Roboto-Light.ttf") format("truetype");
+  src: url("../fonts/Roboto-Light.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
 }
@@ -33,22 +34,31 @@ body::-webkit-scrollbar {
   top: 50px;
 }
 .promo {
-  background: url('../../public/img/header.png') no-repeat top, rgb(26,25,21);
+  background-image: url(../img/header.jpg);
+  background-color: rgba(0,0,0,0.2);
+  background-position: top;
+  background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
   text-align: center;
   color: #fff;
-  font-family: "MontserratBold";
+  font-family: MontserratBold;
   position: relative;
+  behavior: url(../PIE/PIE.htc);
+}
+.promo-background {
+    background-color: rgba(0,0,0,0.2);
+    behavior: url(../PIE/PIE.htc);
 }
 button {
   color: #fff;
   border: 2px solid #fff;
-  background: none;
+  background-color: transparent;
   border-radius: 50px;
-  font-family: "MontserratBold";
+  font-family: MontserratBold;
   font-size: 14px;
   outline: none;
+  behavior: url(../PIE/PIE.htc);
 }
 .promo__content--text {
   width: 74%;
@@ -60,12 +70,19 @@ button {
 
 .promo__header--btn {
   padding: 7px 16px 8px 16px;
+  transition: color 1.0s;
+  transition: border-color 1.0s;
+}
+.promo__header--btn:hover {
+  color: #ff4e50;
+  border-color: #ff4e50;
 }
 .promo__header--btn.login {
   border: none;
 }
 .promo__header {
   padding: 20px 18px 115px 0px;
+  border-color: #ff4e50;
 }
 h3 {
   font-size: 20px;
@@ -91,7 +108,7 @@ a {
   padding: 18px 0 138px 0;
 }
 .promo__search--btn {
-  padding: 12px 51px 10px 50px;
+  padding: 10px 49px 8px 48px;
   border: none;
 }
 .about {
@@ -110,7 +127,7 @@ a {
   letter-spacing: -0.2px;
   padding-right: 2px;
 }
-.steps__slider {
+#slider {
   display: none;
 }
 .partners {
@@ -139,27 +156,30 @@ a {
 }
 .step__bg {
   background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
-  /* background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%); */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%); 
   background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#99000000',GradientType=0 );
   width: 100%;
   height: 100%;
+  behavior: url(../PIE/PIE.htc);
 }
 .step-1 {
-  background: url('../../public/img/step_1.png');
+  background-image: url('../img/step_1.jpg');
   background-size: 405px;
-  background-position-x: 345px;
-  background-position-y: -25px;
+  background-position: 345px -25px;
+  behavior: url(../PIE/PIE.htc);
 }
 .step-2 {
-  background: url('../../public/img/step_2.png');
+  background-image: url('../img/step_2.jpg');
   background-size: 400px 262px;
   background-position: 370px -17px;
+  behavior: url(../PIE/PIE.htc);
 }
 .step-3 {
-  background: url('../../public/img/step_3.png');
+  background-image: url('../img/step_3.jpg');
   background-size: 390px 260px;
   background-position: 345px -15px;
+  behavior: url(../PIE/PIE.htc);
 }
 .step-2 .step__main {
   padding-bottom: 12px;
@@ -173,19 +193,28 @@ a {
   padding: 7px 15px ;
 }
 .btn__bg {
-  background: #ff4e50;
+  background-color: #ff4e50;
   border-radius: 50px;
+  border: 2px solid #ff4e50;
+  transition: color 1.5s;
+  transition: background-color .4s;
+  box-sizing: border-box;
+  behavior: url(../PIE/PIE.htc);
+}
+.btn__bg:hover {
+  color: #ff4e50;
+  background-color: #fff;
 }
 .step__block {
   font-family: MontserratRegular;
   font-size: 10px;
-  padding: 4px 11px 3px 13px;
+  padding: 2px 9px 1px 11px;
   margin: 0px 0px 15px 2px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 .step-1 .step__block {
-  padding: 4px 12px 3px 14px;
+  padding: 2px 10px 1px 12px;
 }
 .step-2 .step__block {
   margin-left: 1px;
@@ -197,7 +226,6 @@ a {
   padding-bottom: 13px;
 }
 .step__content {
-  font-size: 14px;
   line-height: 16px;
   color: #cccccc;
 }
@@ -230,6 +258,15 @@ a {
   height: 120px;
   margin: 0 auto;
 }
+.partner__img img {
+  border-radius: 50%;
+  width: 120px;
+  behavior: url(../PIE/PIE.htc);
+}
+.partner__img:hover {
+  transform: scale(1.1);
+  transition: transform .5s;
+}
 .partner__name {
     font-size: 14px;
 }
@@ -240,7 +277,8 @@ a {
   height: 40px;
   bottom: -5px;
   right: -5px;
-  background: url(../../public/img/partner_sprite.png);
+  background-image: url(../img/partner_sprite.png);
+  behavior: url(../PIE/PIE.htc);
 }
 .img__hobby:before {
   position: absolute;
@@ -248,7 +286,10 @@ a {
   width: 40px;
   height: 40px;
   content: "";
-  background: url(../../public/img/partner_sprite.png) 0px -40px;
+  background-image: url(../img/partner_sprite.png);
+  background-position: 0px -40px;
+
+  behavior: url(../PIE/PIE.htc);
 }
 .hobby-2 {
   background-position: -80px 0px;
@@ -288,6 +329,12 @@ a {
   border: 2px solid #ff4e50;
   padding: 9px 72px;
   margin-right: 4px;
+  transition:  background-color 0.5s;
+  transition: color 1.5s;
+}
+.partner__btn:hover {
+  background-color: #ff4e50;
+  color: #ffffff;
 }
 .ideas__main {
   line-height: 26px;
@@ -311,6 +358,7 @@ a {
   display: block;
   border-radius: 5px;
   margin-bottom: 10px;
+  behavior: url(../PIE/PIE.htc);
 }
 .grid-item--width2 {
 }
@@ -333,7 +381,7 @@ a {
 }
 .search {
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 .search__main {
   line-height: 26px;
@@ -357,6 +405,7 @@ input[type="text"] {
   color: black;
   padding-left: 12px;
   box-sizing: border-box;
+  behavior: url(../PIE/PIE.htc);
 }
 ::-webkit-input-placeholder {
   font-size: 14px;
@@ -364,9 +413,9 @@ input[type="text"] {
   letter-spacing: -0.2px;
 }
 .search__btn {
-  padding: 11px 0px;
-  width: 284px;
-  margin: 8px 4px 20px 0px;
+  padding: 9px 0px;
+  width: 280px;
+  margin: 10px 4px 20px 0px;
 }
 .footer {
   padding-top: 16px;
@@ -399,7 +448,7 @@ input[type="text"] {
 }
 .footer__list li {
   float: left;
-  padding: 0 1px 0 2px;
+  padding: 0px 1px 0 2px;
   list-style: none;
 }
 .footer__list a {
@@ -407,7 +456,10 @@ input[type="text"] {
   font-family: RobotoLight;
   color: #666666;
   font-size: 14px;
-  padding: 0px 6px;
+  margin: 0px 6px;
+}
+.footer__list li a:hover {
+  border-bottom: 2px solid #ff4e50;
 }
 .footer__des {
   font-size: 10px;

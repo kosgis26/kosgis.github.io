@@ -1,34 +1,31 @@
-$(document).ready(function(){
-	function htmSlider(){
+$(document).ready(function() {
+	function htmSlider() {
 
+		var slideWrap1 = $('#wrap1');
+		var slideWrap2 = $('#wrap2');
+		var slideWrap3 = $('#wrap3');
 
-		var slideWrap1 = $('.slide-wrap1');
-		var slideWrap2 = $('.slide-wrap2');
-		var slideWrap3 = $('.slide-wrap3');
-
-		var nextLink1 = $('.next-slide1');
-		var nextLink2 = $('.next-slide2');
-		var nextLink3 = $('.next-slide3');
-		var prevLink1 = $('.prev-slide1');
-		var prevLink2 = $('.prev-slide2');
-		var prevLink3 = $('.prev-slide3');
+		var nextLink1 = $('#next-slide1');
+		var prevLink1 = $('#prev-slide1');
+		var nextLink2 = $('#next-slide2');
+		var prevLink2 = $('#prev-slide2');
+		var nextLink3 = $('#next-slide3');
+		var prevLink3 = $('#prev-slide3');
 		
 		var is_animate = false;
 		
-		var slideWidth1 = $('.slide-item1').outerWidth();
-		var slideWidth2 = $('.slide-item2').outerWidth();
-		var slideWidth3 = $('.slide-item3').outerWidth();
+		var slideWidth = $('#item').outerWidth();
 		
-		var newLeftPos1 = slideWrap1.position().left - slideWidth1;
-		var newLeftPos2 = slideWrap2.position().left - slideWidth2;
-		var newLeftPos3 = slideWrap3.position().left - slideWidth3;
-		
+		var newLeftPos1 = slideWrap1.position().left - slideWidth;
+		var newLeftPos2 = slideWrap2.position().left - slideWidth;
+		var newLeftPos3 = slideWrap3.position().left - slideWidth;
+
 		nextLink1.click(function(){
 			if(!slideWrap1.is(':animated')) {
 	
-				slideWrap1.animate({left: newLeftPos1}, 200, function(){
+				slideWrap1.animate({left: newLeftPos1}, 500, function(){
 					slideWrap1
-						.find('.slide-item1:first')
+						.find('#item:first')
 						.appendTo(slideWrap1)
 						.parent()
 						.css({'left': 0});
@@ -38,9 +35,9 @@ $(document).ready(function(){
 		nextLink2.click(function(){
 			if(!slideWrap2.is(':animated')) {
 	
-				slideWrap2.animate({left: newLeftPos2}, 200, function(){
+				slideWrap2.animate({left: newLeftPos2}, 500, function(){
 					slideWrap2
-						.find('.slide-item2:first')
+						.find('#item:first')
 						.appendTo(slideWrap2)
 						.parent()
 						.css({'left': 0});
@@ -50,9 +47,9 @@ $(document).ready(function(){
 		nextLink3.click(function(){
 			if(!slideWrap3.is(':animated')) {
 	
-				slideWrap3.animate({left: newLeftPos3}, 200, function(){
+				slideWrap3.animate({left: newLeftPos3}, 500, function(){
 					slideWrap3
-						.find('.slide-item3:first')
+						.find('#item:first')
 						.appendTo(slideWrap3)
 						.parent()
 						.css({'left': 0});
@@ -65,10 +62,10 @@ $(document).ready(function(){
 			
 				slideWrap1
 					.css({'left': newLeftPos1})
-					.find('.slide-item1:last')
+					.find('#item:last')
 					.prependTo(slideWrap1)
 					.parent()
-					.animate({left: 0}, 200);
+					.animate({left: 0}, 500);
 			}
 		});
 		prevLink2.click(function(){
@@ -76,10 +73,10 @@ $(document).ready(function(){
 			
 				slideWrap2
 					.css({'left': newLeftPos2})
-					.find('.slide-item2:last')
+					.find('#item:last')
 					.prependTo(slideWrap2)
 					.parent()
-					.animate({left: 0}, 200);
+					.animate({left: 0}, 500);
 			}
 		});
 		prevLink3.click(function(){
@@ -87,10 +84,10 @@ $(document).ready(function(){
 			
 				slideWrap3
 					.css({'left': newLeftPos3})
-					.find('.slide-item3:last')
+					.find('#item:last')
 					.prependTo(slideWrap3)
 					.parent()
-					.animate({left: 0}, 200);
+					.animate({left: 0}, 500);
 			}
 		});
 	}

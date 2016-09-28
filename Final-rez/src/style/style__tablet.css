@@ -1,3 +1,4 @@
+/*Tablet*/
 @media (max-width: 1023px) and (min-width: 768px) {
   .wrapper {
     min-width: 768px;
@@ -5,8 +6,10 @@
     max-width: 1023px;
   }
   .promo {
-    padding-bottom: 96px;
     background-position-x: 50%;
+  }
+  .promo-background {
+    height: 700px;
   }
   .promo__header, .promo__name {
     margin: 38px 50px 0 48px;
@@ -17,7 +20,7 @@
   }
   .promo__name {
     float: left;
-   margin-top: 46px;
+    margin-top: 46px;
   }
   .promo__header--btn {
     padding: 7px 16px 7px 17px;
@@ -44,7 +47,7 @@
     padding-top: 38px;
   }
   .promo__search--btn {
-    padding: 12px 51px 10px 50px;
+    padding: 10px 49px 8px 48px;
     border: none;
   }
   .about {
@@ -61,7 +64,7 @@
   .steps {
     display: none;
   }
-  .steps__slider {
+  #slider {
     display: block;
     margin: 0 auto;
     height: 400px;
@@ -74,7 +77,7 @@
     margin-left: -1px;
   }
   .step-2 .step__block  {
-  padding: 3px 11px 4px 13px;
+  padding: 1px 9px 2px 11px;
   margin-left: 1px;
   }
   .step-2 .step__main {
@@ -91,23 +94,26 @@
     padding: 0;
     background-position: 53.5% 50%;
     background-size: auto;
+    behavior: url(../PIE/PIE.htc);
   }
   .step-2 {
     background-position: -187px 425px;
   }
   .step-3 {
-  background-position: 448px -23px;
+    background-position: 448px -23px;
   }
   .about__bg {
     position: relative;
     padding: 7px 15px ;
   }
   .btn__bg {
-    background: #ff4e50;
-    padding: 11px 25px 11px 20px;
+    background-color: #ff4e50;
+    padding: 9px 23px 9px 18px;
+    border: 2px solid #ff4e50;
+    behavior: url(../PIE/PIE.htc);
   }
   .step__block {
-    padding: 3px 12px 4px 13px;
+    padding: 1px 10px 2px 11px;
   }
   .step__main {
     padding-top: 19px;
@@ -159,7 +165,7 @@
     margin-top: 96px;
     overflow: hidden;
   }
-  .promo header, .footer__box, .ideas__box {
+  .promo .header, .footer__box, .ideas__box {
     width: 768px;
     margin: 0 auto;
   }
@@ -183,23 +189,23 @@
   }
   .search {
   margin-top: 86px;
-  margin-bottom: 78px;
+  margin-bottom: 80px;
   clear: both;
   }
   .search__main {
   margin-bottom: 30px;
   }
   .search__article {
-    margin-bottom: 25px;
+    margin-bottom: 27px;
   }
   input[type="text"] {
     margin: 0 4px 0 4px;
     width: 240px;
   }
   .search__btn {
-    padding: 11px 23px 11px 23px;
-    width: 164px;
-    margin: 9px 4px 20px 0px;
+    padding: 9px 21px 9px 21px;
+    width: 160px;
+    margin: 9px 6px 20px 2px;
   }
   .footer {
     padding-top: 36px;
@@ -218,7 +224,7 @@
     text-align: left;
   }
   p.footer__item {
-    padding-left: 58px; */
+    padding-left: 58px;
   }
   .footer__partners {
     padding-left: 3px;

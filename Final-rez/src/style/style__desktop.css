@@ -1,19 +1,24 @@
+/*Desktop*/
 @media (max-width: 1440px) and (min-width: 1024px) {
   .wrapper {
-    /* min-width: 1024px; */
     width: 1024px;
-    /* max-width: 1440px; */
     margin: 0 auto;
   }
   .promo {
-    padding-bottom: 96px;
     background-position: 100%;
     background-size: auto;
+    behavior: url(../PIE/PIE.htc);
   }
-  .promo header, .footer__box, .ideas__box {
+  .promo-background {
+    height: 700px;
+  }
+  .header, .footer__box, .ideas__box {
     width: 960px;
     margin: 0 auto;
     text-align: center;
+  }
+  .header, .footer__box {
+    width: 940px;
   }
   .promo__header, .promo__name {
     padding: 38px 1px 0px 0px;
@@ -68,7 +73,7 @@
   .steps {
     display: none;
   }
-  .steps__slider {
+  #slider {
     display: block;
     margin: 0 auto;
   }
@@ -93,6 +98,7 @@
     padding: 0;
     background-position: 52% 50%;
     background-size: auto;
+    behavior: url(../PIE/PIE.htc);
   }
   .step-2 {
     background-position: 44% 40%;
@@ -105,7 +111,7 @@
     padding: 7px 15px ;
   }
   .btn__bg {
-    background: #ff4e50;
+    background-color: #ff4e50;
     padding: 11px 25px 11px 20px;
   }
   .step__block {
@@ -168,11 +174,11 @@
     margin: 10px 10px 10px 10px;
   }
   .grid-item--width2 {
-    width: 492px;
+    width: 620px;
   }
   .search {
     margin-top: 85px;
-    margin-bottom: 78px;
+    margin-bottom: 80px;
   }
   .search__main {
     margin-bottom: 30px;
@@ -185,9 +191,9 @@
     width: 240px;
   }
   .search__btn {
-    padding: 11px 23px 11px 23px;
-    width: 164px;
-    margin: 9px 4px 20px 0px;
+    padding: 9px 20px 9px 20px;
+    width: 160px;
+    margin: 11px 4px 20px 0px;
   }
   .footer {
     padding-top: 36px;
