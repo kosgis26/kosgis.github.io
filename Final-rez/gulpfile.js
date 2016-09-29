@@ -97,7 +97,7 @@ gulp.task('min__plugins',['plugins'] , function() {
 });
 
 gulp.task('Clean', function () {
-    return gulp.src(['build/js', 'build/style'], {read: false})
+    return gulp.src(['build/js', 'build/style', 'src/js/partials', 'src/css/partials'], {read: false})
         .pipe(clean());
 });
 
@@ -110,13 +110,13 @@ gulp.task('watch', function() {
 gulp.task('Html', ['html:build']);
 gulp.task('Copy', ['image:build', 'fonts:build', 'PIE:build', 'respond:build']);
 
-gulp.task('Style', ['min__css']);
+gulp.task('CSS', ['min__css']);
 
-gulp.task('JavaScript', ['min__scripts', 'min__plugins']);
+gulp.task('JS', ['min__scripts', 'min__plugins']);
 
 gulp.task('default', ['Clean',
-					  'Style',
-					  'JavaScript'
+					  'CSS',
+					  'JS'
 					  ], function() {
 });
 
