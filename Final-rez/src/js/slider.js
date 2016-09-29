@@ -35,7 +35,7 @@ $(document).ready(function() {
 			if(!slideWrap2.is(':animated')) {
 				slideWrap2.animate({left: newLeftPos2}, 500, function(){
 					slideWrap2
-						.find('slider__item:first')
+						.find('.slider__item:first')
 						.appendTo(slideWrap2)
 						.parent()
 						.css({'left': 0});
