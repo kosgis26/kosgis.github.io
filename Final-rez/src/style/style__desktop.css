@@ -1,13 +1,10 @@
 /*Desktop*/
-@media (max-width: 1440px) and (min-width: 1024px) {
+@media (min-width: 1024px) {
   .wrapper {
     width: 1024px;
     margin: 0 auto;
   }
   .promo {
-    background-position: 100%;
-    background-size: auto;
-    behavior: url(../PIE/PIE.htc);
   }
   .promo-background {
     height: 700px;
@@ -53,10 +50,6 @@
   .promo__search {
     padding-top: 39px;
     padding-left: 2px;
-  }
-  .promo__search--btn {
-    padding: 12px 51px 10px 50px;
-    border: none;
   }
   .about {
     margin: 93px auto;
@@ -111,7 +104,6 @@
     padding: 7px 15px ;
   }
   .btn__bg {
-    background-color: #ff4e50;
     padding: 11px 25px 11px 20px;
   }
   .step__block {

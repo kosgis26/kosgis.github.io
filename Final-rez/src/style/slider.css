@@ -52,7 +52,7 @@
 	clear:both;
 	zoom: 1;
 }*/
-@media (max-width: 1440px) and (min-width: 1024px) {
+@media (min-width: 1024px) {
 	#slider {
 		width: 960px;
 		height: 400px;
