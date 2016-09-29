@@ -64,7 +64,7 @@
   .steps {
     display: none;
   }
-  #slider {
+  .slider {
     display: block;
     margin: 0 auto;
     height: 400px;
