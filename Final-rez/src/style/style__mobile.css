@@ -62,7 +62,7 @@ button {
   behavior: url(../PIE/PIE.htc);
 }
 .promo__content--text {
-  width: 74%;
+  width: 73%;
   display: block;
   margin: auto;
   line-height: 20px;
@@ -181,7 +181,7 @@ a {
   behavior: url(../PIE/PIE.htc);
 }
 .step-2 .step__main {
-  padding-bottom: 12px;
+  padding-bottom: 9px;
   margin-left: -1px;
 }
 .step-2 .step__content {
@@ -221,7 +221,7 @@ a {
   font-size: 24px;
   width: 200px;
   padding-top: 17px;
-  padding-bottom: 13px;
+  padding-bottom: 10px;
 }
 .step__content {
   line-height: 16px;
@@ -382,7 +382,7 @@ a {
 }
 .search__main {
   line-height: 26px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   padding-right: 4px;
 }
 .search__text {
@@ -434,25 +434,25 @@ input[type="text"] {
   padding-right: 3px;
 }
 .footer__partners {
-    padding-top: 19px;
+  padding-top: 19px;
 }
 .footer__item, .footer__des {
     font-family: "Montserrat", "MontserratBold";
     letter-spacing: 0px;
 }
-.footer__list {width: 210px;margin: 0 auto;}
-.footer__list-item {
-}
+.footer__list {margin: 0 auto;}
+.footer__list-item {margin: 0 auto;margin-left: 42px;}
 .footer__list li {
-  float: left;
-  padding: 0px 1px 0 2px;
+  padding-top: 1px;
   list-style: none;
+  /* display: inline-block; */
+  float: left;
 }
 .footer__list a {
   text-decoration: none;
   color: #666666;
   font-size: 14px;
-  margin: 0px 6px;
+  margin: 0px 8px;
 }
 .footer__list li a:hover {
   border-bottom: 2px solid #ff4e50;
