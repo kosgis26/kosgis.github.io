@@ -9,7 +9,6 @@
 
 	//define update even in native-mq-supporting browsers, to avoid errors
 	respond.update = function(){};
-
 	//define ajax obj
 	var requestQueue = [],
 		xmlHttp = (function() {
