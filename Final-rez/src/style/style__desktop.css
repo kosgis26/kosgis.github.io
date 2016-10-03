@@ -84,10 +84,7 @@
     width: 300px;
     height: 400px;
     float: left;
-    padding: 0;
     background-position: 52% 50%;
-    background-size: auto;
-    behavior: url(../PIE/PIE.htc);
   }
   .step-2 {
     background-position: 44% 40%;

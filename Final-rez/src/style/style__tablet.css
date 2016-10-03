@@ -91,10 +91,7 @@
   .about__step {
     width: 236px;
     height: 400px;
-    padding: 0;
     background-position: 53.5% 50%;
-    background-size: auto;
-    behavior: url(../PIE/PIE.htc);
   }
   .step-2 {
     background-position: -187px 425px;
@@ -110,7 +107,6 @@
     background-color: #ff4e50;
     padding: 9px 23px 9px 18px;
     border: 2px solid #ff4e50;
-    behavior: url(../PIE/PIE.htc);
   }
   .step__block {
     padding: 1px 10px 2px 11px;
