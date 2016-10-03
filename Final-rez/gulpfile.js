@@ -31,7 +31,7 @@ gulp.task('PIE:build', function() {
 });
 
 gulp.task('respond:build', function() {
-    gulp.src('src/js/partials/respond.js')
+    gulp.src('src/js/respond.js')
         .pipe(gulp.dest('build/js'));
 });
 
@@ -97,7 +97,7 @@ gulp.task('min__plugins',['plugins'] , function() {
 });
 
 gulp.task('Clean', function () {
-    return gulp.src(['build/js', 'build/style', 'src/js/partials', 'src/style/partials'], {read: false})
+    return gulp.src(['src/js/partials', 'src/style/partials'], {read: false})
         .pipe(clean());
 });
 
