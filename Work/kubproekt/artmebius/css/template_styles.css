@@ -4055,7 +4055,7 @@ a {
 
 .bg_feedback {
   padding-top: 30px;
-  /* margin-bottom: 5px; */
+  padding-bottom: 9px;
   /* background: url(../img/wood-trash-2.png) no-repeat 2% 80%, url(../img/wood-trash-3.png) no-repeat 95% 50%, url(../img/list-top.png) no-repeat 10% 0, #dcdece; */
   background: #dcdece;
 }
@@ -5951,7 +5951,7 @@ span.ltitle:hover {
     padding-left: 0;
 }
 .bottom-footer .title {
-    font-size: 20px;
+    font-size: 22px;
     padding-bottom: 10px;
 }
 .bottom-footer {
@@ -6152,7 +6152,7 @@ span.ltitle:hover {
     padding: 10px 22px;
   }
   .bottom-footer ul li {
-    font-size: 12px;
+    font-size: 13px;
   }
   .bottom-footer .title {
     font-size: 18px;
@@ -6227,7 +6227,7 @@ span.ltitle:hover {
     font-size: 16px;
   }
   #ftr_inner {
-    font-size: 14px;
+    font-size: 12px;
   }
 
 }
@@ -6344,6 +6344,6 @@ span.ltitle:hover {
     left: 39px;
   }
   .bottom-footer ul li {
-    font-size: 9px;
+    font-size: 8px;
   }
 }
