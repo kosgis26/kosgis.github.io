@@ -1,0 +1,228 @@
+/*Desktop*/
+@media (min-width: 1024px) {
+  .wrapper {
+    width: 1024px;
+    margin: 0 auto;
+  }
+  .promo {
+  }
+  .promo-background {
+    height: 700px;
+  }
+  .header, .footer__box, .ideas__box {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .header, .footer__box {
+    width: 940px;
+  }
+  .promo__header, .promo__name {
+    padding: 38px 1px 0px 0px;
+  }
+  .promo__header {
+    float: right;
+  }
+  .promo__name {
+    float: left;
+    padding: 46px 0 0 0px;
+  }
+  .promo__header--btn {
+    padding: 7px 16px 7px 17px;
+  }
+  .login {
+    padding-right: 15px;
+  }
+  .promo__content {clear: both;
+  padding-top: 114px;
+  }
+  .promo__content h1 {
+    margin: 0 auto;
+    font-size: 51px;
+    width: 560px;
+    padding-bottom: 29px;
+    padding-right: 2px;
+    letter-spacing: 0.8px;
+  }
+  .promo__content--text {
+    font-size: 24px;
+  }
+  .promo__search {
+    padding-top: 39px;
+    padding-left: 2px;
+  }
+  .about {
+    margin: 93px auto;
+  }
+  .about h3 {
+    font-size: 22px;
+  }
+  .about .title {
+    margin-left: 8px;
+    margin-bottom: 34px;
+    letter-spacing: -0.3px;
+    padding-right: 11px;
+  }
+  .steps {
+    display: none;
+  }
+  .slider {
+    display: block;
+    margin: 0 auto;
+  }
+  .partners {
+    position: relative;
+  }
+  .step-2 .step__block, .step-3 .step__block  {
+    padding: 2px 8px 1px 12px;
+  }
+  .step-2 .step__main {
+    padding-top: 18px;
+    padding-bottom: 12px;
+  }
+  .about__step {
+    width: 300px;
+    height: 400px;
+    float: left;
+    background-position: 52% 50%;
+  }
+  .step-2 {
+    background-position: 44% 40%;
+  }
+  .step-3 {
+    background-position: 50% 66%;
+  }
+  .about__bg {
+    position: relative;
+    padding: 7px 15px ;
+  }
+  .btn__bg {
+    padding: 9px 25px 9px 20px;
+  }
+  .step__block {
+    padding: 0px 12px 4px 13px;
+  }
+  .step__main {
+    padding-top: 19px;
+    padding-bottom: 13px;
+    line-height: 28px;
+  }
+  .step__content {
+  line-height: 15px;
+  }
+  .partners__main  {
+    margin: 0px 0px 33px 5px;
+    padding-top: 2px;
+  }
+  .partner__block {
+  }
+  .partners__content {
+    width: 940px;
+    margin: 0 auto;
+  }
+  .partner__1, .partner__2, .partner__3, .partner__4 {
+    float: left;
+    padding: 0 0px 0px 16px;
+  }
+  .partner__1 {
+    padding-left: 0;
+  }
+  .partner__other {
+    clear: both;
+    padding-top: 36px;
+  }
+  .partner__btn {
+    padding: 9px 29px 9px 27px;
+    margin-right: 0px;
+  }
+  .ideas {
+    display: block;
+    /* margin: 0 auto; */
+  }
+  .ideas__main {
+    margin-top: 62px;
+    margin-bottom: 25px;
+  }
+  .ideas__img {
+    padding: 0;
+    /* width: 1024px; */
+    /* margin: 0 0px; */
+  }
+  .grid-title {
+    float: left;
+    display: block;
+  }
+  .grid-item {
+    width: 300px;
+    height: 310px;
+    margin: 10px 10px 10px 10px;
+  }
+  .grid-item--width2 {
+    width: 620px;
+  }
+  .search {
+    margin-top: 85px;
+    margin-bottom: 80px;
+  }
+  .search__main {
+    margin-bottom: 32px;
+  }
+  .search__article {
+    margin-bottom: 27px;
+  }
+  input[type="text"] {
+    margin: 0 4px 0 4px;
+    width: 240px;
+  }
+  .search__btn {
+    padding: 9px 20px 9px 20px;
+    width: 160px;
+    margin: 11px 4px 20px 0px;
+  }
+  .footer {
+    padding-top: 36px;
+  }
+  .footer__name, .footer__company, .footer__partners, .footer__logo {
+    float: left;
+    width: 180px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+  .footer__name {
+  }
+  .footer__company {
+    text-align: left;
+  }
+  .footer__company .footer__item {
+    padding-left: 60px;
+  }
+  .footer__logo {
+    float: right;
+    text-align: right;
+  }
+  .footer__name h3 {
+    letter-spacing: 0.8px;
+  }
+  .footer__partners .footer__item {
+    padding-left: 40px;
+  }
+  .footer__list {
+    padding-top: 6px;
+  }
+  .footer__list a {
+    width: 100%;
+  }
+  .footer__list li {
+    width: 50%;
+    padding-top: 6px;
+    padding-left: 10px;
+    list-style: none;
+    text-align: left;
+    letter-spacing: 0px;
+  }
+  .footer__des {
+    padding: 1px 0 0 30px;
+    letter-spacing: 1px;
+  }
+}
