@@ -6191,7 +6191,7 @@ span.ltitle:hover {
   transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
   margin-left: 20px;
-  width: 104%;
+  width: 100%;
 }
 
 @media (min-width: 1440px) {
@@ -6213,6 +6213,9 @@ span.ltitle:hover {
     padding-top: 50px;
     padding-left: 20px;
     padding-right: 15%;
+  }
+  #left li.menu_item {
+    margin-right: 10px;
   }
 }
 @media (min-width: 1280px) {
@@ -6317,7 +6320,12 @@ span.ltitle:hover {
   #ftr_inner {
     font-size: 12px;
   }
-
+  #left .menu_item a {
+    font-size: 14px
+  }
+  #left .sub_menu .menu_item span {
+    font-size: 10px;
+  }
 }
 
 @media screen and (max-width: 767px) {
