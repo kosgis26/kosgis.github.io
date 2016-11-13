@@ -3,6 +3,15 @@
   src: url('../fonts/cambria.eot');
   src: url('../fonts/cambria.eot') format('embedded-opentype'), url('../fonts/cambria.woff2.html') format('woff2'), url('../fonts/cambria.woff') format('woff'), url('../fonts/cambria.ttf') format('truetype'), url('../fonts/cambria.svg') format('svg');
 }
+@font-face {
+    font-family: "OpenSansLight";
+    src: url("../fonts/OpenSansLight/OpenSansLight.eot");
+    src: url("../fonts/OpenSansLight/OpenSansLight.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/OpenSansLight/OpenSansLight.woff") format("woff"),
+    url("../fonts/OpenSansLight/OpenSansLight.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300;
+}
 article,
 aside,
 details,
@@ -603,6 +612,7 @@ pre code {
   .container {
     width: 1248px;
   }
+  
 }
 .container-fluid {
   margin-right: auto;
@@ -3787,7 +3797,7 @@ a {
 }
 .mdl_site_description {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 35px;
   font-size: 19px;
   font-weight: 700;
   margin-bottom: 15px;
@@ -4381,6 +4391,7 @@ a {
   .mdl_phones .mod-title {
     font-size: 20px;
     font-weight: 900;
+    padding-bottom: 5px;
   }
   .topmenu {
     position: static;
@@ -5799,8 +5810,8 @@ transform: rotate(360deg);
   max-height: 700px;
 }
 .mdl.mdl_site_description {
-  font-size: 27px;
-  line-height: 26px;
+  font-size: 26px;
+  /* line-height: 26px; */
 }
 span.ltitle {
   font-size: 14px;
@@ -5883,7 +5894,7 @@ span.ltitle {
   text-align: center;
   color: #080908;
   line-height: 10px;
-  margin-top: 45px;
+  margin-top: 50px;
 }
 .mdl_search .sf_text {
   padding-top: 6px;
@@ -5973,6 +5984,7 @@ span.ltitle:hover {
     background: url(../img/footer.png);
     background-position-y: -50%;
     color: white;
+    /* font-family: 'Open Sans'; */
 }
 .bottom-footer ul {
   font-weight: 100;
@@ -6179,17 +6191,24 @@ span.ltitle:hover {
     width: 15%;
   }
   .mdl.mdl_site_description {
-    font-size: 30px;
+    font-size: 28px;
     line-height: 26px;
+    font-family: OpenSansLight;
+    margin-top: 50px;
   }
   .mdl_search_wrapper {
     position: relative;
     margin-left: 0;
     padding-top: 50px;
-    padding-right: 20%
+    padding-left: 20px;
+    padding-right: 15%;
   }
 }
-
+@media (min-width: 1280px) {
+  .mod-contact {
+    padding-top: 15px;
+  }
+}
 @media (min-width: 1024px) and (max-width: 1279px) {
   .topmenu .menu_horz_multi > li > a {
     padding: 10px 22px;
@@ -6257,7 +6276,7 @@ span.ltitle:hover {
     font-size: 10px;
   }
   .mdl.mdl_site_description {
-    margin-top: 45px;
+    margin-top: 25px;
     margin-bottom: 0;
   }
   .tooltip p {
