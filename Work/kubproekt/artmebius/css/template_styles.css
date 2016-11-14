@@ -600,7 +600,7 @@ pre code {
 }
 @media (min-width: 768px) {
   .container {
-    /* width: 753px; */
+    width: 753px;
   }
 }
 @media (min-width: 1024px) {
@@ -1627,7 +1627,7 @@ select,
 input[type="password"],
 input[type="text"] {
   display: inline-block;
-  height: 28px;
+  /* height: 28px; */
   padding: 3px 7px;
   font-size: 13px;
   line-height: 1.4;
@@ -1984,6 +1984,7 @@ input[type="button"].btn-block {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
+  margin: 0 1px 0 0;
 }
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
@@ -3582,11 +3583,11 @@ a {
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 3px;
-  background: #372a26;
+  /* background: #372a26; */
 }
 .btn:active,
 .btn:hover {
-  color: #da8a3e;
+  /* color: #da8a3e; */
 }
 #wrap {
   /* height: 750px; */
@@ -5632,6 +5633,7 @@ ul.resources_list li {
   text-align: center;
   font-size: 26px;
   margin-bottom: 20px;
+  border-bottom: none;
 }
 /*new 12.04.16*/
 #overlay {
@@ -5752,7 +5754,7 @@ transform: rotate(360deg);
 }
 .float_btn {
   position: fixed;
-  bottom: 25px;
+  bottom: 9px;
   right: 25px;
   padding: 10px 20px;
   font-size: 20px;
@@ -5772,24 +5774,8 @@ transform: rotate(360deg);
   border: 1px solid grey;
 }
 
-
-
-.float_btn_text a {
-  text-decoration: none;
-  color: white;
-}
-.float_btn:hover .float_btn_text_h {
-/*   top: 0; */
-}
 @media (max-width: 767px) {
-  .float_btn {
-/*     width: 65px; */
-/*     height: 65px; */
-/*     line-height: 58px; */
-/*     font-size: 25px; */
-/*     left: 20px; */
-/*     right: 20px; */
-  }
+  .float_btn {/*     width: 65px; *//*     height: 65px; *//*     line-height: 58px; *//*     font-size: 25px; *//*     left: 20px; *//*     right: 20px; */font-size: 14px;padding: 5px 10px;}
   .float_btn .float_btn_text_h {
 /*     font-size: 13px; */
 /*     margin-top: 15px; */
@@ -5855,7 +5841,7 @@ span.ltitle {
 }
 .topmenu .menu_horz_multi > li > a {
   line-height: 14px;
-  padding: 10px 35px;
+  padding: 10px 15px;
 }
 .topmenu li:hover > a,
 .topmenu li.active > a {
@@ -6417,20 +6403,6 @@ span.ltitle:hover {
     width: 60px;
     height: 60px;
   }
-  .float_btn {
-    bottom: 30px;
-    left: 30px;
-    width: 60px;
-    height: 60px;
-    line-height: 53px;
-    font-size: 16px;
-  }
-  .float_btn .float_btn_text_h {
-    top: 100%;
-    font-size: 12px;
-    line-height: 1;
-    margin-top: 15px;
-  }
   .call-button-inner {
     height: 60px;
     right: -39px;
@@ -6445,5 +6417,8 @@ span.ltitle:hover {
   }
   .bottom-footer ul li {
     font-size: 8px;
+  }
+  .map {
+    padding-left: 20px
   }
 }
