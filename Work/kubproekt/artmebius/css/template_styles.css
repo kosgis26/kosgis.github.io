@@ -5606,7 +5606,7 @@ ul.resources_list li {
   border: 3px solid #040404;
   border-radius: 100%;
   margin: 0px auto 10px auto;
-  max-width: 120px;
+  max-width: 100px;
   max-height: 105px;
 }
 // .mdl_advantages .items_img:hover {
@@ -5828,7 +5828,7 @@ transform: rotate(360deg);
   top: 0px;
   margin: 0 auto;
   z-index: 0;
-  max-height: 600px;
+  max-height: 550px;
   /* top: -20px; */
 }
 .mdl.mdl_site_description {
@@ -5971,8 +5971,7 @@ span.ltitle:hover {
 }
 
 .items_img_border img {
-  width: 60px;
-
+  width: 50px;
 }
 .container.media_hd {
   width: 100%;

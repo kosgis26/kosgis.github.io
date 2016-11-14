@@ -311,7 +311,8 @@
   .owl-carousel .owl-item img,
     .owl-cover .owl-item img,
     .owl-photo .owl-item img {
-  width: 85%;
+  width: 70%;
+  margin-top: -50px;
   }
 }
 
