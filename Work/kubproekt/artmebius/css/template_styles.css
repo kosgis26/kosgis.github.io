@@ -5587,6 +5587,8 @@ ul.resources_list li {
   /* border-top: 2px solid #ecf3f8; */
   /* padding: 0 0 50px; */
   /* background: url(../img/-left-2.png) no-repeat 0 50%,url(../img/list-right-2.png) no-repeat 100% 0%,url(../img/list-right-3.png) no-repeat 100% 100%, url(../img/wood.jpg) repeat-y; */
+  position: relative;
+  /* top: 0; */
 }
 .mdl_advantages .page-header {
   text-align: center;
@@ -5603,7 +5605,7 @@ ul.resources_list li {
 .items_img_border {
   border: 3px solid #040404;
   border-radius: 100%;
-  margin: 10px auto;
+  margin: 0px auto 10px auto;
   max-width: 120px;
   max-height: 105px;
 }
@@ -5826,7 +5828,7 @@ transform: rotate(360deg);
   top: 0px;
   margin: 0 auto;
   z-index: 0;
-  max-height: 670px;
+  max-height: 600px;
   /* top: -20px; */
 }
 .mdl.mdl_site_description {
@@ -5899,7 +5901,7 @@ span.ltitle {
 #hdr_inner .items_title a {
   color: #231f16;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 24px;
 }
 #hdr_inner .items_block {
   color: black;
@@ -5908,7 +5910,7 @@ span.ltitle {
   cursor: pointer;
 }
 #hdr_inner .items_block .item_text {
-  font-size: 16px;
+  font-size: 15px;
 }
 .mdl_phones, .blizko {
   font-size: 16px;
