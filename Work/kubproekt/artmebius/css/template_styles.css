@@ -5826,7 +5826,8 @@ transform: rotate(360deg);
   top: 0px;
   margin: 0 auto;
   z-index: 0;
-  max-height: 700px;
+  max-height: 670px;
+  /* top: -20px; */
 }
 .mdl.mdl_site_description {
   font-size: 26px;
@@ -5914,7 +5915,7 @@ span.ltitle {
   text-align: center;
   color: #080908;
   line-height: 10px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .mdl_search .sf_text {
   padding-top: 6px;
@@ -5978,7 +5979,7 @@ span.ltitle:hover {
 #logo .shadow img{
   /* padding-top: 15px; */
   max-width: 300px;
-  width: 100%;
+  width: 90%;
 }
 .bottom-logo {
     text-align: center;
@@ -6203,7 +6204,7 @@ span.ltitle:hover {
   .mdl_search_wrapper {
     position: relative;
     margin-left: 0;
-    padding-top: 50px;
+    padding-top: 40px;
     padding-left: 20px;
     padding-right: 15%;
   }
