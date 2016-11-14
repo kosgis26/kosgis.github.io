@@ -15,6 +15,11 @@
 	<link rel="shortcut icon" type="image/x-icon" href="artmebius/favicon.ico">
 	<link rel="apple-touch-icon" href="artmebius/apple-touch-icon.png">
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<!-- modal -->
+	<link rel="stylesheet" type="text/css" href="feedback/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="feedback/css/jquery.arcticmodal.css">
+    <link rel="stylesheet" type="text/css" href="feedback/css/jquery.jgrowl.css">
+	<!-- /modal -->
 	<link rel="stylesheet" href="artmebius/css/template_styles.css">
 	<script src="artmebius/js/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/owl.carousel.min.js"></script>
@@ -24,6 +29,8 @@
 	<link rel="stylesheet" href="artmebius/css/template_styles.css">	
 
 	<link rel="stylesheet" href="assets/components/ajaxform/css/default.css" type="text/css" />
+
+
 </head>
 
 <body class="main_page">
@@ -266,6 +273,7 @@
 				</div>
 				<!-- /menu -->
 			</header>
+<!-- Carusel -->
 			<div class="mdl mdl_main_slider hidden-xs">
 				<div class="container-fluid">
 					<div class="row">
@@ -286,6 +294,33 @@
 					</div>
 				</div>
 			</div>
+
+<script>
+		$('.owl-carousel').owlCarousel({
+			loop: !0,
+			nav: !1,
+			navText: !1,
+			autoplay: !0,
+			autoplaySpeed: 2e3,
+			autoplayTimeout: 15e3,
+			autoplayHoverPause: !0,
+			dots: !1,
+			center: !0,
+			responsive:{
+				0:{
+					items:1
+				},
+				600:{
+					items:1
+				},
+				1000:{
+					items:1
+				}
+			}
+		});
+	</script>
+
+<!-- /Carusel -->
 			<div class="mdl mdl_advantages">
 				<div class="page-header"></div>
 				<div id="hdr_inner" class="container">
@@ -394,20 +429,19 @@
 
 
 <!-- feedback -->
-<div class="bg_feedback">
+<!-- <div class="bg_feedback">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
 				<div class="free_consilting">
-					<!-- <span class="att_text">Получите</span>
-					консультациию бесплатно -->
+					<span class="att_text"></span>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
 				<div id="feedback" class="mdl mdl_feedback">
 					<h3 class="page-header">Заказать звонок</h3>
 					<form class="ajax_form" id="feedbackForm" name="feedbackForm" method="post" action="index.html">
-						<!-- Hidden Required Fields -->
+ 
 						<div class="form-group">
 							<div class="control-input">
 								<input type="hidden" name="project_name" value="Kubproekt.ru">
@@ -423,18 +457,13 @@
 								<input type="hidden" name="form_subject" value="Заявка с формы">
 							</div>
 						</div>
-						<!-- END Hidden Required Fields -->
+ 
 						<div class="form-group">
 							ФИО&nbsp<span class="req">*</span>
 							<div class="control-input">
 								<input size="100" name="Name" id="fb_name" value="" placeholder="Как к Вам обращаться?" maxlength="100" class="input" type="text" required="">
 							</div>
 						</div>
-						<!-- <div class="form-group">
-							<div class="control-input">
-								<input size="100" name="fb_email" id="fb_email" value="" placeholder="Ваш E-mail" maxlength="100" class="input" type="text" />
-							</div>
-						</div> -->
 						<div class="form-group">
 							Номер телефона&nbsp<span class="req">*</span>
 							<div class="control-input">
@@ -457,7 +486,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 <!-- /feedback -->
 
 
@@ -761,7 +790,7 @@
 									<li class="contact-item">
 										<div class="work">
 											<div class="fone-title"></div>
-											<i style="" class="icon-phone"></i>
+											<i style="" class="icon-times-circle-o"></i>
 											Пн-Пт 9:00 -18:00, Сб 9:00-16:00
 										</div>
 									</li>
@@ -835,15 +864,59 @@
 	</footer>
 	<script src="artmebius/content_defender/script.js"></script>
 
-	
-
-
 	<!-- modal -->
-	<div class="float_btn">
-		<div class="float_btn_text"><a href="#feedback">Получить консультацию</a></div>
-		<!-- <div class="float_btn_text_h">Первый взнос 0%</div> -->
+	<div class="modal_btn float_btn">Получить консультацию
+		<div class="float_btn_text"></div>
 	</div>
 	<!-- /modal -->
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="feedback/js/feedback.js"></script>
+    <script src="feedback/js/jquery.arcticmodal.js"></script>
+    <script src="feedback/js/jquery.jgrowl.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(document).on('click', '.modal_btn', function () {
+				$('#small-modal').arcticmodal();
+			});
+		});
+	</script>
+
+	<!-- modalUp-->
+	<div class="modal_btn">
+		<div style="display: none;">
+			<div class="box-modal" id="small-modal">
+				<div class="modal-close arcticmodal-close">x</div>
+				<div class="modal-content-box">
+					<div class="well">
+						<legend>Заказать звонок</legend>
+						<form action="" method="get" name="form-1">
+							ФИО&nbsp<span class="req">*</span>
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-user"></i></span>
+								<input class="input-medium focused" name="name" type="text" placeholder="Как к Вам обращаться?">
+							</div>
+							Ваш номер телефона&nbsp<span class="req">*</span>
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-book"></i></span>
+								<input class="input-medium focused" name="tell" type="text" placeholder="Номер телефона">
+							</div>
+							Ваша пошта
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-envelope"></i></span>
+								<input class="input-medium focused" name="e-mail" type="text" placeholder="Ваш E-mail">
+							</div>
+							Kомментарий
+							<textarea class="input-lage focused" name="text" placeholder="Ваш комментарий"></textarea>
+							<input class="feedback btn btn-block btn-large btn-success" name="send" type="button"
+								   value="Отправить">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /modalUp -->
 
 
 	<!-- <script crossorigin="anonymous" async type="text/javascript" src="http://api.pozvonim.com/widget/callback/v3/62e9f3e79dca4ab179eee24853f971a8/connect" id="check-code-pozvonim" charset="UTF-8"></script> -->
@@ -952,284 +1025,17 @@
 			]
 		});
 	</script>
-	<script>
-		$('.owl-carousel').owlCarousel({
-			loop: !0,
-			nav: !1,
-			navText: !1,
-			autoplay: !0,
-			autoplaySpeed: 2e3,
-			autoplayTimeout: 15e3,
-			autoplayHoverPause: !0,
-			dots: !1,
-			center: !0,
-			responsive:{
-				0:{
-					items:1
-				},
-				600:{
-					items:1
-				},
-				1000:{
-					items:1
-				}
-			}
-		});
-	</script>
 	
-	<div class="modal fade count_cost_calc" id="count_cost_house_hdr" tabindex="-1" role="dialog" aria-labelledby="ask_about_product_label">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<span class="icon-times-circle close" data-dismiss="modal"></span>
-					<span class="modal-title" id="ask_about_product_label">Заявка на расчет стоимости: </span>
-				</div>
-				<div class="modal-body">
-					<form class="ajax_form" id="countCostHouseBlockForm" name="countCostHouseBlockForm" method="post" action="index.html" autocomplete="off">
-						<!-- STEP 1 -->
-						<div class="step_block step_1">
-
-							<div class="page-header"><span>Шаг 1:</span> Тип проекта</div>
-
-							<div class="row">
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib section-header" for="cblock_etazh">Этажность:</label>
-										</div>
-										<div class="control-input">
-											<label><input name="cblock_etazh[]" type="checkbox" value="1 этаж" /> 1 этаж</label><br>
-											<label><input name="cblock_etazh[]" type="checkbox" value="2 этаж" /> 2 этаж</label><br>
-											<label><input name="cblock_etazh[]" type="checkbox" value="3 этаж" /> 3 этаж</label><br>
-										</div>
-										<div class="error error_cblock_etazh"></div>
-									</div>
-								</div>
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib section-header" for="cblock_square">Площадь:</label>
-										</div>
-										<div class="control-input">
-											<input class="input" type="text" name="cblock_square[]" id="cblock_square_1" size="20" > -
-											<input class="input" type="text" name="cblock_square[]" id="cblock_square_2" size="20" > м<sup>2</sup>
-											<div class="filter-slider" id="cblock_square"></div>
-											<div class="error error_cblock_square"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib section-header" for="cblock_materwall">Материал стен:</label>
-										</div>
-										<div class="control-input">
-											<label><input name="cblock_materwall[]" type="checkbox" value="Каркас" /> Каркас</label><br>
-											<label><input name="cblock_materwall[]" type="checkbox" value="Оцилиндрованное бревно" /> Оцилиндрованное бревно</label><br>
-											<label><input name="cblock_materwall[]" type="checkbox" value="Профилированный брус" /> Профилированный брус</label><br>
-											<label><input name="cblock_materwall[]" type="checkbox" value="Газосиликатные блоки" /> Газосиликатные блоки</label><br>
-										</div>
-										<div class="error error_cblock_materwall"></div>
-									</div>	
-								</div>
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib section-header" for="cblock_size">Размер по периметру:</label>
-										</div>
-										<div class="control-input">
-											<input class="input" type="text" name="cblock_size_1" id="cblock_size_1" size="20"> x
-											<input class="input" type="text" name="cblock_size_2" id="cblock_size_2" size="20"> 
-											<div class="error error_cblock_size"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- new -->
-							<div class="row">
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib section-header" for="cblock_season">Проживание:</label>
-										</div>
-										<div class="control-input">
-											<label><input name="cblock_season[]" type="checkbox" value="Летнее" /> Летнее</label><br>
-											<label><input name="cblock_season[]" type="checkbox" value="Круглогодичное" /> Круглогодичное</label><br>
-
-										</div>
-										<div class="error error_cblock_materwall"></div>
-									</div>	
-								</div>
-
-							</div>
-							<!-- end new -->
-							<span id="to_step_2" class="btn to_step to_step_next">Продолжить <span class="icon icon-chevron-right"></span></span>
-
-						</div>
-
-						<!-- STEP 2 -->
-						<div class="step_block step_2">
-
-							<div class="page-header"><span>Шаг 2:</span> Детали проекта</div>
-
-							<div class="row">
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib section-header" for="cblock_fundament">Тип фундамента:</label>
-										</div>
-										<div class="control-input">
-											<label><input name="cblock_fundament[]" type="checkbox" value="Блочно-точечный" /> Блочно-точечный</label><br>
-											<label><input name="cblock_fundament[]" type="checkbox" value="Сплошной блочный" /> Сплошной блочный</label><br>
-											<label><input name="cblock_fundament[]" type="checkbox" value="Винтовые сваи" /> Винтовые сваи</label><br>
-											<label><input name="cblock_fundament[]" type="checkbox" value="Монолитная лента" /> Монолитная лента</label><br>
-										</div>
-										<div class="error error_cblock_fundament"></div>
-									</div>
-								</div>
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib section-header" for="cblock_roof">Кровля:</label>
-										</div>
-										<div class="control-input">
-											<label><input name="cblock_roof[]" type="checkbox" value="Оцинкованный профнастил" /> Оцинкованный профнастил</label><br>
-											<label><input name="cblock_roof[]" type="checkbox" value="Окрашенный профнастил" /> Окрашенный профнастил</label><br>
-											<label><input name="cblock_roof[]" type="checkbox" value="Металлочерепица" /> Металлочерепица</label><br>
-											<label><input name="cblock_roof[]" type="checkbox" value="Мягкая черепица" /> Мягкая черепица</label><br>
-										</div>
-										<div class="error error_cblock_roof"></div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib section-header" for="cblock_additional">Дополнительные требования к постройке:</label>
-										</div>
-										<div class="control-input row">
-											<div class="col-sm-6">
-												<label><input name="cblock_additional[]" type="checkbox" value="Терраса" /> Терраса</label><br>
-												<label><input name="cblock_additional[]" type="checkbox" value="Цокольный этаж" /> Цокольный этаж</label><br>
-												<label><input name="cblock_additional[]" type="checkbox" value="Балкон" /> Балкон</label><br>
-											</div>
-											<div class="col-sm-6">
-												<label><input name="cblock_additional[]" type="checkbox" value="Мансарда" /> Мансарда</label><br>
-												<label><input name="cblock_additional[]" type="checkbox" value="Гараж" /> Гараж</label><br>
-											</div>
-										</div>
-										<div class="error error_cblock_additional"></div>
-									</div>
-								</div>
-							</div>
-							<span id="to_step_1" class="btn to_step to_step_back"><span class="icon icon-chevron-left"></span> Назад</span>
-							<span id="to_step_3" class="btn to_step to_step_next">Продолжить <span class="icon icon-chevron-right"></span></span>
-						</div>
-
-						<!-- STEP 3 -->
-						<div class="step_block step_3">
-							<div class="page-header"><span>Шаг 3:</span> Контактная информация</div>
-
-							<div class="row">
-								<div class="col-xs-12">
-
-									<div class="section-header">Контактная информация для связи:</div> 
-									<div class="form-group">
-										<div class="control-input">
-											<input size="100" name="cblock_name" id="cblock_name" value="" placeholder="Ваше имя" maxlength="100" class="input" type="text" />
-										</div>
-										<div class="error error_cblock_name"></div>
-									</div>
-									<div class="form-group">
-										<div class="control-input">
-											<input size="100" name="cblock_email" id="cblock_email" value="" placeholder="Ваш E-mail" maxlength="100" class="input" type="text" />
-										</div>
-										<div class="error error_cblock_email"></div>
-									</div>
-									<div class="form-group">
-										<div class="control-input">
-											<input size="100" name="cblock_phone" id="cblock_phone" value="" placeholder="+7(___)___-__-__" maxlength="100" class="input" type="text" />
-										</div>
-										<div class="error error_cblock_phone"></div>
-									</div>
-
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib section-header" for="cblock_mess">Ваши пожелания:</label>
-										</div>
-										<div class="control-input">
-											<textarea name="cblock_mess" id="cblock_mess" placeholder="Задайте здесь ваш вопрос" rows="5" cols="100" class="form-control"></textarea>
-										</div>
-										<div class="error error_cblock_mess"></div>
-									</div>
-									<div class="form-group">
-										<div class="control-label">
-											<label class="ldib" title="Проверка, что вы не робот">Решите пример: <span class="math_exmpl">17 - 12</span> <span class="req">*</span></label>
-										</div>
-										<div class="control-input">
-											<input type="text" name="cblock_math" id="cblock_math" value="" placeholder="17 - 12 =" size="50" class="input" title="Решите пример" maxlength="5"/>
-											<input type="hidden" id="cblock_op1" name="cblock_op1" value="17" />
-											<input type="hidden" id="cblock_op2" name="cblock_op2" value="12" />
-											<input type="hidden" id="cblock_operator" name="cblock_operator" value="-" />
-										</div>
-										<div class="error error_cblock_math"></div>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="control-input">
-									<span id="to_step_2" class="btn to_step to_step_back"><span class="icon icon-chevron-left"></span> Назад</span>
-									<button type="submit" class="btn btn-submit" value="1" name="cblockSumbit" />Отправить</button>
-								</div>
-							</div>
-						</div>
-
-						<input style="display: none;" type="text" name="cblock_blank_email" value="" />
-
-						<input type="hidden" name="af_action" value="7f297eaf456dae1cfee700defb8470af" />
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
 
 	
 	<script src="artmebius/js/jquery-ui.min.js"></script>
 
 	<!-- <script>
-		jQuery("#cblock_phone").mask("+7(999)999-99-99",{placeholder:'_'});
-
-		jQuery('.to_step').on('click', function(){
-			var idfull = jQuery(this).attr("id");
-			var id= idfull.split('_')[2];
-
-			jQuery(this).parents('form').find('.step_block').hide();
-			jQuery(this).parents('form').find('.step_block.step_'+id).show();
-		});
-
-		// Square block
-		jQuery( "#cblock_square" ).slider({
-			range: true,
-			min: 20,
-			max: 300,
-			values: [ 65, 245 ],
-			step: 1,
-			slide: function( event, ui ) {
-				jQuery("input#cblock_square_1").val( jQuery( "#cblock_square" ).slider( "values", 0 ) );
-				jQuery("input#cblock_square_2").val( jQuery( "#cblock_square" ).slider( "values", 1 ) );
-			}
-		});
-		jQuery("input#cblock_square_1").val( jQuery( "#cblock_square" ).slider( "values", 0 ) );
-		jQuery("input#cblock_square_2").val( jQuery( "#cblock_square" ).slider( "values", 1 ) );
+		
 	</script> -->
 
 
-<!-- <script type="text/javascript" src="artmebius/js/ajaxForm.js"></script> -->
-<script type="text/javascript" src="artmebius/js/ajaxFormModal.js"></script>
+<script type="text/javascript" src="artmebius/js/ajaxForm.js"></script>
 <!-- <script type="text/javascript">AjaxForm.initialize({"assetsUrl":"\/assets\/components\/ajaxform\/","actionUrl":"\/assets\/components\/ajaxform\/action.php","closeMessage":"\u0437\u0430\u043a\u0440\u044b\u0442\u044c \u0432\u0441\u0435","formSelector":"form.ajax_form","pageId":1});</script> -->
 
 </body>
