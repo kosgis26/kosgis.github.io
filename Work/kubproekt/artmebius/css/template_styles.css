@@ -4173,17 +4173,17 @@ a {
   color: #fff;
   text-transform: none;
   font-weight: 700;
-  border-bottom: 3px solid #e5680c;
+  border-bottom: 3px solid grey;
   font-size: 18px;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
-  background: #f2c412;
-  background: -moz-linear-gradient(top,  #f2c412 0%, #f6a106 100%);
-  background: -webkit-linear-gradient(top,  #f2c412 0%,#f6a106 100%);
-  background: linear-gradient(to bottom,  #f2c412 0%,#f6a106 100%);
+  background: #bbb9ad;
+  background: -moz-linear-gradient(top,  #bbb9ad 0%, #94928d 100%);
+  background: -webkit-linear-gradient(top,  #bbb9ad 0%, #94928d 100%);
+  background: linear-gradient(to bottom,  #bbb9ad 0%,#94928d 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2c412', endColorstr='#f6a106',GradientType=0 );
 }
 .mdl_feedback button:hover {
-  background: #f6a106;
+  background: #846650;
   color: #fff;
 }
 .mdl_feedback .form-group {
