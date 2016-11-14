@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	//E-mail Ajax Send
-	$("#feedbackForm").submit(function() { //Change
+	$("form['feedbackForm']").submit(function() { //Change
 		var th = $(this);
 		$.ajax({
 			type: "POST",

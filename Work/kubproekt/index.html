@@ -415,7 +415,7 @@
 						<div class="form-group">
 							ФИО&nbsp<span class="req">*</span>
 							<div class="control-input">
-								<input size="100" name="Name" id="fb_name" value="" placeholder="Как к Вам обращаться?" maxlength="100" class="input" type="text">
+								<input size="100" name="Name" id="fb_name" value="" placeholder="Как к Вам обращаться?" maxlength="100" class="input" type="text" required="">
 							</div>
 						</div>
 						<!-- <div class="form-group">
@@ -1199,21 +1199,21 @@
 			jQuery(this).parents('form').find('.step_block.step_'+id).show();
 		});
 
-	// Square block
-	jQuery( "#cblock_square" ).slider({
-		range: true,
-		min: 20,
-		max: 300,
-		values: [ 65, 245 ],
-		step: 1,
-		slide: function( event, ui ) {
-			jQuery("input#cblock_square_1").val( jQuery( "#cblock_square" ).slider( "values", 0 ) );
-			jQuery("input#cblock_square_2").val( jQuery( "#cblock_square" ).slider( "values", 1 ) );
-		}
-	});
-	jQuery("input#cblock_square_1").val( jQuery( "#cblock_square" ).slider( "values", 0 ) );
-	jQuery("input#cblock_square_2").val( jQuery( "#cblock_square" ).slider( "values", 1 ) );
-</script>
+		// Square block
+		jQuery( "#cblock_square" ).slider({
+			range: true,
+			min: 20,
+			max: 300,
+			values: [ 65, 245 ],
+			step: 1,
+			slide: function( event, ui ) {
+				jQuery("input#cblock_square_1").val( jQuery( "#cblock_square" ).slider( "values", 0 ) );
+				jQuery("input#cblock_square_2").val( jQuery( "#cblock_square" ).slider( "values", 1 ) );
+			}
+		});
+		jQuery("input#cblock_square_1").val( jQuery( "#cblock_square" ).slider( "values", 0 ) );
+		jQuery("input#cblock_square_2").val( jQuery( "#cblock_square" ).slider( "values", 1 ) );
+	</script>
 
 
 <!-- <script type="text/javascript" src="artmebius/js/ajaxForm.js"></script> -->
