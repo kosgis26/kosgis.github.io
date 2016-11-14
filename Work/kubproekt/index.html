@@ -394,56 +394,61 @@
 
 
 <!-- feedback -->
-					<div class="bg_feedback">
-						<div class="container">
-							<div class="row">
-								<div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
-									<div class="free_consilting">
-										<!-- <span class="att_text">Получите</span>
-										консультациию бесплатно -->
-									</div>
-								</div>
-								<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
-									<div id="feedback" class="mdl mdl_feedback">
-										<h3 class="page-header">Заказать звонок</h3>
-										<form class="ajax_form" id="feedbackForm" name="feedbackForm" method="post" action="index.html" autocomplete="off">
-											<div class="form-group">
-												ФИО&nbsp<span class="req">*</span>
-												<div class="control-input">
-													<input size="100" name="fb_name" id="fb_name" value="" placeholder="Как к Вам обращаться?" maxlength="100" class="input" type="text">
-												</div>
-											</div>
-											<!-- <div class="form-group">
-												<div class="control-input">
-													<input size="100" name="fb_email" id="fb_email" value="" placeholder="Ваш E-mail" maxlength="100" class="input" type="text" />
-												</div>
-											</div> -->
-
-											<div class="form-group">
-												Номер телефона&nbsp<span class="req">*</span>
-												<div class="control-input">
-													<input size="100" name="fb_phone" id="fb_phone" value="" placeholder="Номер телефона" maxlength="100" class="input" type="text">
-												</div>
-											</div>
-											<div class="form-group">
-												Kомментарий
-												<div class="control-input">
-													<textarea name="fb_mess" id="fb_mess" placeholder="Ваш комментарий" rows="5" cols="100" class="form-control"></textarea>
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="control-input">
-													<button type="submit"  name="fbSumbit" value="1" class="btn btn-submit">Отправить</button>
-												</div>
-											</div>
-											<input style="display: none;" type="text" name="fb_blank_email" value="">
-											<input type="hidden" name="af_action" value="1cd81daa7301e1c2e07e49588be2aa28">
-										</form>
-									</div>
-								</div>
+<div class="bg_feedback">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+				<div class="free_consilting">
+					<!-- <span class="att_text">Получите</span>
+					консультациию бесплатно -->
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+				<div id="feedback" class="mdl mdl_feedback">
+					<h3 class="page-header">Заказать звонок</h3>
+					<form class="ajax_form" id="feedbackForm" name="feedbackForm" method="post" action="index.html" autocomplete="off">
+						<!-- Hidden Required Fields -->
+						<input type="hidden" name="project_name" value="Kubproekt.ru">
+						<input type="hidden" name="admin_email" value="kosgis@gmail.com">
+						<input type="hidden" name="form_subject" value="Заявка с формы">
+						<!-- END Hidden Required Fields -->
+						<div class="form-group">
+							ФИО&nbsp<span class="req">*</span>
+							<div class="control-input">
+								<input size="100" name="Name" id="fb_name" value="" placeholder="Как к Вам обращаться?" maxlength="100" class="input" type="text">
 							</div>
 						</div>
-					</div>
+						<!-- <div class="form-group">
+							<div class="control-input">
+								<input size="100" name="fb_email" id="fb_email" value="" placeholder="Ваш E-mail" maxlength="100" class="input" type="text" />
+							</div>
+						</div> -->
+
+						<div class="form-group">
+							Номер телефона&nbsp<span class="req">*</span>
+							<div class="control-input">
+								<input size="100" name="Phone" id="fb_phone" value="" placeholder="Номер телефона" maxlength="100" class="input" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							Kомментарий
+							<div class="control-input">
+								<textarea name="Mess" id="fb_mess" placeholder="Ваш комментарий" rows="5" cols="100" class="form-control"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="control-input">
+								<button type="submit"  name="fbSumbit" value="1" class="btn btn-submit">Отправить</button>
+							</div>
+						</div>
+						<input style="display: none;" type="text" name="fb_blank_email" value="">
+						<input type="hidden" name="af_action" value="1cd81daa7301e1c2e07e49588be2aa28">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- /feedback -->
 
 
@@ -1214,7 +1219,8 @@
 </script>
 
 
-<script type="text/javascript" src="artmebius/js/ajaxForm.js"></script>
+<!-- <script type="text/javascript" src="artmebius/js/ajaxForm.js"></script> -->
+<script type="text/javascript" src="artmebius/js/ajaxFormModal.js"></script>
 <script type="text/javascript">AjaxForm.initialize({"assetsUrl":"\/assets\/components\/ajaxform\/","actionUrl":"\/assets\/components\/ajaxform\/action.php","closeMessage":"\u0437\u0430\u043a\u0440\u044b\u0442\u044c \u0432\u0441\u0435","formSelector":"form.ajax_form","pageId":1});</script>
 
 </body>
